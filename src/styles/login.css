@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100%;
+}
+.login-content{
+    width: 50%;
+    margin: 10vh auto 66.2vh auto;
+    background-color: #3B3E46;
+    text-align: center;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    color: white;
+    border-radius: 10px;
+}
+.login-content h2{
+    font-size: 3rem;
+    font-weight: 500;
+}
+.login-content h3{
+    font-size: 1.5rem;
+    padding-top: 3%;
+    font-weight: 400;  
+    padding-bottom: 3%; 
+}
+.btn-login{
+    padding: 2%;
+    border: none;
+}
+.btn-login:active{
+    background-color: white;
+}
+.validate-button{
+    background-color: #5663D1;
+    border: none;
+    margin: 5% auto;
+    padding: 2% 17%;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.2rem;
+}

@@ -1,0 +1,18 @@
+.name-app{
+    margin: 0;
+    width: 15%;
+    background-color: #3B3E46;
+    color: white;
+    position:fixed;
+    top: 0;
+    left: 0;
+    border-right: 1px solid #363941;
+    display: flex;
+    height: 60px;
+    color: #5663D1;
+    padding-top: 10px;
+}
+h1{
+    font-size: 1.8rem;
+  padding-left: 2.5%;
+}

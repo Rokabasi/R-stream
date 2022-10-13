@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.App{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+.navbar{
+    display: flex;
+}
+@media screen and (max-width:450px) {
+    .App{
+        flex-direction: column-reverse;
+        min-height: 100vh;
+        position: relative;
+    }
+    .navbar{
+        
+    }
+}
