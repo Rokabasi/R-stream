@@ -9,7 +9,7 @@ const clientId = '757010538260-arnh8a0826kpi72fdqcb08fsp7agceiq.apps.googleuserc
 export default function Header (){
     const {imgUrl} = useContext(AccountInfosContext)
     console.log(imgUrl);
-    localStorage.setItem('item', imgUrl)
+    sessionStorage.setItem('item', imgUrl)
     const itemImg = (localStorage.getItem('item'))
     console.log(itemImg);
     // console.log(itemImg);

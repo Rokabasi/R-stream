@@ -1,19 +1,19 @@
 import React from "react";
 import { GoogleLogin } from "react-google-login";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
 import { AccountInfosContext } from "../context/AccountContext";
 import { render } from "@testing-library/react";
 import "../styles/login.css"
 
 
 const Login = () => {
-    const {setImgUrl,setLoginState,loginState,setAccessToken} = useContext(AccountInfosContext)
+    const {setImgUrl,setLoginState,setAccessToken} = useContext(AccountInfosContext)
     const clientId = '757010538260-arnh8a0826kpi72fdqcb08fsp7agceiq.apps.googleusercontent.com'   
     const onSuccess = (res)=>{
         console.log(res)
         setImgUrl(res.profileObj.imageUrl)
         console.log(res.profileObj.imageUrl);
+        sessionStorage.setItem('login', true)
         setLoginState(true)
         setAccessToken(res.accessToken)
     }
@@ -40,14 +40,6 @@ const Login = () => {
                     />
                     </div>
                 </div>
-                {
-                    (loginState)? <div>
-                    <Link to='/main'>
-                        <button className="validate-button">connect to R-Stream</button>
-                        </Link>
-                </div>: null
-                }
-                
             </div> 
             
         </>
