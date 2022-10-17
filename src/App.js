@@ -9,6 +9,12 @@ import Like from './Components/Like'
 import PlayVideo from './Components/PlayVideo';
 import Dislike from './Components/Dislike'
 import Subscription from './Components/Subscription'
+import SubscriptionPlayList from './Components/SubscriptionPlayList'
+import Music from './Components/Music'
+import Gaming from './Components/Gaming'
+import Nba from './Components/Nba'
+import Sports from './Components/Sports'
+import News from './Components/News'
 
 const clientId = '757010538260-arnh8a0826kpi72fdqcb08fsp7agceiq.apps.googleusercontent.com' 
 function App() {
@@ -34,6 +40,12 @@ function App() {
         <Route path='/dislike' element={<Dislike/>}/>
         <Route path='/playvideo/:id' element={<PlayVideo/>}/>
         <Route path='/subscription' element={<Subscription/>}/>
+        <Route path='/subscriptionPlayList/:id' element={<SubscriptionPlayList/>}/>
+        <Route path='/gaming' element ={<Gaming/>}/>
+        <Route path='/nba' element ={<Nba/>}/>
+        <Route path='/music' element ={<Music/>}/>
+        <Route path='/sports' element ={<Sports/>}/>
+        <Route path='/news' element={<News/>}/>
       </Routes>
     </AccountInfosContext.Provider>
     </div>

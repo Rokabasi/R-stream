@@ -19,7 +19,7 @@ header h1{
 .search-input{
     padding-top: 1.4%;
     width: 70%;
-    text-align: center;
+    padding-left: 10%;
 }
 .search-input .icon{
     position: absolute;
@@ -37,7 +37,7 @@ header h1{
     padding-left: 60px;
     border: none;
     border-radius: 10px 0 0 10px;
-    width: 30%;
+    width: 60%;
     font-size: 1rem;
     font-weight: 600;
     color: white;
@@ -56,11 +56,9 @@ header h1{
 
   .my-icons{
     display: flex;
-    width: 12%;
-    padding-top: 1%;
-    margin-left: auto;
-    margin-right: auto;
-    gap: 2.6rem;
+    width: 20%;
+  margin-left: 10%;
+    gap: 1rem;
     color: white;
     color: #5663D1;
   }
@@ -75,8 +73,6 @@ header h1{
   .count-img{
     border-radius: 50px;
     width: 40px;
-    margin-top: 9%;
-    margin-right: 60px;
   }
 @media screen and (max-width:450px) {
   header{

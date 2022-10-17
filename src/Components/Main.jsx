@@ -10,13 +10,13 @@ export default function Main (){
     const {loginState} = useContext(AccountInfosContext)
     return(
         <>
-            { (loginState) ? 
+            
             <div className="main-app">
                 <SideBar/>
                 <Header/>
                 <Content/>
-            </div> : null
-            }
+            </div> 
+            
             
         
         </>

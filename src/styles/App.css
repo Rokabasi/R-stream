@@ -12,10 +12,9 @@
 .navbar{
     display: flex;
 }
-@media screen and (max-width:450px) {
+@media screen and (max-width:670px) {
     .App{
         flex-direction: column-reverse;
-        min-height: 100vh;
         position: relative;
     }
     .navbar{

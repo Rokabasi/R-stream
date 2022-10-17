@@ -68,11 +68,16 @@ h3{
     font-weight: 300;
    padding-top: 2%;
 }
-@media screen and (max-width:450px) {
-    .main{
+@media screen and (max-width:670px) {
+    .main-app{
         width: 100%;
         margin-left: 0;
         margin-bottom: 0;
         overflow-y: scroll;
+    }
+    .link{
+        text-decoration: none;
+        width: 80%;
+        margin-bottom: 25px;
     }
 }

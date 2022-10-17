@@ -26,21 +26,22 @@ export default function Header (){
                 <button className='button-search' type="submit"><i className="fa fa-search"></i></button>
             </div>
             <div className='my-icons'>
-                <i className="fa-sharp fa-regular fa-moon fa-2x"></i>
-                <i className="fa-regular fa-bell fa-2x"></i>
-                </div>
+                <i className="fa-sharp fa-regular fa-moon "></i>
+                <i className="fa-regular fa-bell "></i>
+               
                 <div><img src={itemImg} alt='profil' className="count-img"/></div>
             <Link to="/">
 
             <GoogleLogout
                 clientId={clientId}
                 render = { renderProps => (
-                    <button className='btn-logout' onClick={renderProps.onClick} disabled={renderProps.disabled}><i className="fa-solid fa-right-from-bracket fa-2x"></i></button>
+                    <button className='btn-logout' onClick={renderProps.onClick} disabled={renderProps.disabled}><i className="fa-solid fa-right-from-bracket "></i></button>
                     )}
                     onLogoutSuccess = {onSuccess}  
                     />
             </Link>
-            {/* <Login/> */}
+            </div>
+            
                 
         </header>
     )

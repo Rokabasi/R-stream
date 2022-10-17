@@ -9,19 +9,21 @@
     margin-left:15%;
     height: 100vh;
 }
-Link{
+.subscription-like{
     text-decoration: none;
-    width: 23.7%;
+    width: 25%;
+    display: flex;
 }
-.card-main{
+.card-content{
     display: flex;
     flex-wrap: wrap;
     padding: 2% 1%;
+    margin-top: 60px;
     background-color: #2F3238;
     gap: 1rem;
 }
 .card{
-    width: 23.7%;
+   
    
 }
 .card-image{
@@ -38,7 +40,7 @@ Link{
 }
 .card .chanel-info{
     display: flex;
-    border: 1px solid red;
+    
 }
 .card .chanel-info-details{
    display: block;

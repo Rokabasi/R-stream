@@ -39,12 +39,10 @@ Link{
     color: white;
     font-weight: 400;
     font-size: 1rem;
-    border: 1px solid blue;
     height: 70px;
 }
 .card .chanel-info{
     display: flex;
-    border: 1px solid yellowgreen;
 }
 .card .chanel-info-details{
    display: block;
