@@ -10,11 +10,8 @@ import { Link } from "react-router-dom"
 
 export default function Content () {
 
-    let newKey = 'AIzaSyBDohBOVS3nWevO-W-YcAKYJOrsmqJZ19k'
-    const ApiKey = 'AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU'
-    const {accessToken}  = useContext(AccountInfosContext)
-    // const [makeVideoCard, setmakeVideoCard] = useState('') 
-    // const  channel_http = "https://www.googleapis.com/youtube/v3/channels?";
+   
+    const accessToken = sessionStorage.getItem('accessToken')
     const [videoLiked, setVideoLiked] = useState([])
     useEffect(()=>{
         fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&myRating=dislike&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU',
@@ -24,25 +21,9 @@ export default function Content () {
             setVideoLiked(data.items)
             })
     },[accessToken]);
-    // const getChannelIcon = (videoLinked) => {
-    //     fetch(channel_http + new URLSearchParams({
-    //         key: ApiKey,
-    //         part: 'snippet',
-    //         id: videoLinked.snippet.channelId
-    //     }))
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         // video_data.channelThumbnail = data.items[0].snippet.thumbnails.default.url;
-    //         // setmakeVideoCard(video_data);
-    //         setmakeVideoCard(data);
-    //     })
-    // }
-    // console.log(makeVideoCard); 
     console.log(videoLiked);
     
-    return(
-        <>
-        
+    return(  
         <div className="main">
             <SideBar/>
             <Header/>
@@ -69,10 +50,7 @@ export default function Content () {
                         )
                     } )
                 }
-                
             </main>
-            
         </div>
-        </>
     )
 }

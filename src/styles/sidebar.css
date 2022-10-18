@@ -14,6 +14,11 @@
   overflow: auto;
   top: 0;
   left: 0;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.side-bar::-webkit-scrollbar {
+  display: none;
 }
 a{
   text-decoration: none;

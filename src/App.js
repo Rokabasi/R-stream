@@ -18,10 +18,9 @@ import News from './Components/News'
 
 const clientId = '757010538260-arnh8a0826kpi72fdqcb08fsp7agceiq.apps.googleusercontent.com' 
 function App() {
-        const [loginState,setLoginState]=useState(false)
         const [imgUrl, setImgUrl] = useState ()
         const [accessToken, setAccessToken] = useState()
-        const login = sessionStorage.getItem('login')
+        const login = JSON.parse(sessionStorage.getItem('login'))
         console.log(login);
         useEffect(() => {
           function start() {
@@ -34,9 +33,9 @@ function App() {
        })
   return (
     <div className="App">
-      <AccountInfosContext.Provider value={{imgUrl, setImgUrl,loginState,setLoginState, accessToken,setAccessToken}}>
+      <AccountInfosContext.Provider value={{imgUrl, setImgUrl, accessToken,setAccessToken}}>
         <Routes>
-        <Route path='/'element={ !loginState ? <Login/> : <Navigate replace to="/main" />} />
+        <Route path='/'element={ !login ? <Login/> : <Navigate replace to="/main" />} />
         <Route path='/main' element={<Main/>}/>
         <Route path='/like' element={<Like/>}/>
         <Route path='/dislike' element={<Dislike/>}/>

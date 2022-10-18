@@ -11,7 +11,7 @@ export default function Content () {
 
     let newKey = 'AIzaSyBDohBOVS3nWevO-W-YcAKYJOrsmqJZ19k'
     
-    const {accessToken}  = useContext(AccountInfosContext)
+    const accessToken = sessionStorage.getItem('accessToken')
     const [videoLinked, setVideoLinked] = useState([])
     useEffect(()=>{
         fetch('https://youtube.googleapis.com/youtube/v3/subscriptions?part=snippet%2CcontentDetails%2CsubscriberSnippet&mine=true&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU',
@@ -33,17 +33,17 @@ export default function Content () {
                 {
                     videoLinked.map((data, index) =>{
                         return (
-                            <Link to={`/subscriptionPlayList/${data.snippet.channelId}`} className='subscription-like'>
+                            <Link to={`/subscriptionPlayList/${data.snippet.resourceId.channelId}`} className='subscription-like'>
                             
                     <div key={index} className="card">
                         <img src={data.snippet.thumbnails.default.url} alt="" className="card-image"/>
                         <h4>{data.snippet.title}</h4>
                         <h4>Creation : {data.snippet.publishedAt}</h4>
                         <div className="chanel-info">
-                            {/* <i className="fa-solid fa-circle-user fa-2x"></i> */}
+                           
                             <div className="chanel-info-details">
                                 
-                                {/* <h3>{data.snippet.description}</h3> */}
+                               
                                
                                 <div className="chanel-info-details-more">
                                     {/* <h5>{data.statistics.viewCount}</h5><span> - </span><h5>{data.snippet.publishedAt}</h5> */}

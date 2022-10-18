@@ -9,8 +9,7 @@ import { useState,useEffect } from 'react'
 export default function SideBar(){
 
     const {loginState,setLoginState} = useContext(AccountInfosContext)
-    const clientId = '757010538260-arnh8a0826kpi72fdqcb08fsp7agceiq.apps.googleusercontent.com'
-    const {accessToken}  = useContext(AccountInfosContext)
+    const accessToken = sessionStorage.getItem('accessToken')
     const [subscriptionChannel, setsubscriptionChannel] = useState([])
     useEffect(()=>{
         fetch('https://youtube.googleapis.com/youtube/v3/subscriptions?part=snippet%2CcontentDetails%2CsubscriberSnippet&mine=true&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU',
@@ -21,11 +20,6 @@ export default function SideBar(){
             console.log(data.items);
             })
     },[accessToken]);
-    const onSuccess = () => {
-        console.log('logout success');
-        setLoginState(false)
-        console.log(loginState);
-    }
     return(
         <div className='side-bar'>
             <div className='side-bar-header'>
@@ -35,9 +29,9 @@ export default function SideBar(){
             </Link>
             </div>
             <div>
-                <ul id='myDIV'>
+                <ul>
                 <NavLink exact activeClassName="active" to="/main"><li><div><i className="fa-solid fa fa-house"></i></div><h4>Home</h4></li></NavLink>
-                    <NavLink activeClassName="active" to='/subscription'><li><div><i className="fa-solid fa fa-film"></i></div><h4>Subscription</h4></li></NavLink>
+                    <NavLink activeClassName="active" to='/subscription'><li><div></div><h4>Subscription</h4></li></NavLink>
                     <NavLink activeClassName="active" to='/like'><li><div><i className="fa-solid fa fa-thumbs-up"></i></div><h4>Like</h4></li></NavLink>
                     <NavLink activeClassName="active" to='/dislike'><li><div><i className="fa-solid fa fa-thumbs-down"></i></div><h4>Dislike</h4></li></NavLink>
                     <h6 className='abonnements'>Explorer</h6>
@@ -52,12 +46,12 @@ export default function SideBar(){
                         subscriptionChannel.map((channel, index) => {
                             return (
                                 <div>
-                                    <NavLink  to={`/subscriptionPlayList/${channel.snippet.channelId}`}>
+                                    <Link  to={`/subscriptionPlayList/${channel.snippet.resourceId.channelId}`}>
                                         <li>
                                             <img src={channel.snippet.thumbnails.default.url} alt='' className='img-channel'/>
                                             <h5>{channel.snippet.title}</h5>
                                         </li>
-                                    </NavLink>
+                                    </Link>
                                 </div>
                             )
                         })

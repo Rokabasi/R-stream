@@ -1,4 +1,4 @@
-*{
+/* *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -27,10 +27,7 @@ Link{
     transform: scale(1.1);
     border: 1px solid#3B3E46;
 }
-/* .card{
-    width: 23.7%;
-    border: 1px solid white;
-} */
+
 .card-image{
     width: 100%;
     height: 50%;
@@ -51,7 +48,7 @@ Link{
     
 }
 .chanel-info-details h4{
-    /* font-size: 1rem; */
+    
     font-weight: 300;
 }
 .card .chanel-info-details-more{
@@ -70,4 +67,4 @@ Link{
         margin-bottom: 0;
         overflow-y: scroll;
     }
-}
+} */

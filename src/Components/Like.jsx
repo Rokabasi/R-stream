@@ -9,7 +9,7 @@ import { Link } from "react-router-dom"
 
 export default function Content () {
 
-    const {accessToken}  = useContext(AccountInfosContext)
+    const accessToken = sessionStorage.getItem('accessToken')
     const [videoLinked, setVideoLinked] = useState([])
     useEffect(()=>{
         fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&myRating=like&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU',
@@ -21,7 +21,6 @@ export default function Content () {
     },[accessToken]);
        
     console.log(videoLinked);
-    const exemple='tfty'
 
     return(
         <>

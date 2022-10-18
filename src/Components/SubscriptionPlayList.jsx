@@ -10,10 +10,10 @@ export default function Content () {
 
     const {id} = useParams() 
 
-    const {accessToken}  = useContext(AccountInfosContext)
+    const accessToken = sessionStorage.getItem('accessToken')
     const [videoLinked, setVideoLinked] = useState([])
     useEffect(()=>{
-        fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&myRating=like&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU',
+        fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${id}&type=video&maxResults=45&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU`,
         { method : 'GET',headers:new Headers({'Authorization': `Bearer ${accessToken}`})})     
         .then(res => res.json())
         .then(data => {
@@ -33,7 +33,7 @@ export default function Content () {
                 {
                     videoLinked.map((data, index) =>{
                         return (
-                        <Link to={`/playvideo/${data.id}`} className='like'>
+                        <Link to={`/playvideo/${data.id.videoId}`} className='like'>
                     <div key={index}>
                             <img src={data.snippet.thumbnails.medium.url} alt="" className="card-image"/>
                         
@@ -43,7 +43,7 @@ export default function Content () {
                                 <div className="chanel-info-details">
                                     <h4>{data.snippet.channelTitle}</h4>
                                     <div className="chanel-info-details-more">
-                                        <h5>{data.statistics.viewCount}</h5><span> - </span><h5>{data.snippet.publishedAt}</h5>
+                                       <h5>{data.snippet.publishedAt}</h5>
                                     </div>
                                 </div>
                             </div>
