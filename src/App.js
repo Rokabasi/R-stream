@@ -15,6 +15,7 @@ import Gaming from './Components/Gaming'
 import Nba from './Components/Nba'
 import Sports from './Components/Sports'
 import News from './Components/News'
+import  Search  from './Components/Search';
 
 const clientId = '757010538260-arnh8a0826kpi72fdqcb08fsp7agceiq.apps.googleusercontent.com' 
 function App() {
@@ -47,6 +48,7 @@ function App() {
         <Route path='/music' element ={<Music/>}/>
         <Route path='/sports' element ={<Sports/>}/>
         <Route path='/news' element={<News/>}/>
+        <Route path='/search/:id' element={<Search/>}/>
       </Routes>
     </AccountInfosContext.Provider>
     </div>

@@ -13,7 +13,11 @@ const Login = () => {
         console.log(res)
         setImgUrl(res.profileObj.imageUrl)
         console.log(res.profileObj.imageUrl);
+        sessionStorage.setItem('accessToken', res.accessToken)
         sessionStorage.setItem('login', true)
+        sessionStorage.setItem('profilImage',JSON.stringify(res.profileObj.imageUrl))
+        const profilImage = sessionStorage.getItem('profilImage')
+        console.log(profilImage);
     }
     const onFaillure = (res)=>{
         console.log(res);
