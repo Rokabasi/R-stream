@@ -7,10 +7,7 @@ export default function PlayVideo(){
     const {id} = useParams()
     console.log(id);
     return(
-        <div className="main">
-
-            <NameApp/>
-            <Header/> 
+        
         <div className="card-main">
             <iframe 
                 width="560" 
@@ -22,7 +19,5 @@ export default function PlayVideo(){
             </iframe>
                 {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/cetR8PMSK0c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
         </div>
-        </div>
-        
     )
 }

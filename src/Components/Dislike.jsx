@@ -24,9 +24,8 @@ export default function Content () {
     console.log(videoLiked);
     
     return(  
-        <div className="main">
-            <SideBar/>
-            <Header/>
+       
+            
             <main className="card-main">
                 {
                     videoLiked.map((data, index) =>{
@@ -51,6 +50,6 @@ export default function Content () {
                     } )
                 }
             </main>
-        </div>
+        
     )
 }

@@ -36,32 +36,37 @@
 }
 h3{
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 1rem;
     height: 60px;
     padding-top: 5px;
 }
-
-.chanel-info-details > h5{
-    /* font-weight: 700;
-    font-size: 0.9rem; */
+.chanel-info-details-more{
+    /* border: 1px solid red; */
+}
+.chanel-info-details-more > h5{
+    font-size: 1.1rem;
+    font-weight: 300;
+   padding-top: 2%;
 }
 
+.link h5{
+    font-weight: 300;
+    font-size: 1.1rem;   
+}
+.link h5::first-letter{
+text-transform: uppercase;
+}
 
 .chanel-info-details > h4{
     font-size: 1.2rem;
     
 }
  .chanel-info-details-more{
-    padding-top: 3%;
     display: flex;
     gap: 0.4rem;
     flex-wrap: wrap;
 }
-.chanel-info-details-more h5{
-    font-size: 0.9rem;
-    font-weight: 400;
-   padding-top: 2%;
-}
+
 @media screen and (max-width:670px) {
     .main-app{
         width: 100%;

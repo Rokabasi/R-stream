@@ -1,4 +1,4 @@
-/* *{
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,10 +9,7 @@
     margin-left:15%;
     height: 100vh;
 }
-Link{
-    text-decoration: none;
-    width: 23.7%;
-}
+
 .card-main{
     display: flex;
     flex-wrap: wrap;
@@ -20,7 +17,7 @@ Link{
     background-color: #2F3238;
     gap: 1rem;
 }
-.like{
+/* .like{
     width: 23.7%;
 }
 .like:hover{

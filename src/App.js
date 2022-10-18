@@ -16,6 +16,9 @@ import Nba from './Components/Nba'
 import Sports from './Components/Sports'
 import News from './Components/News'
 import  Search  from './Components/Search';
+import Header from './Components/Header';
+import SideBar from './Components/SideBar';
+import Content from './Components/Content';
 
 const clientId = '757010538260-arnh8a0826kpi72fdqcb08fsp7agceiq.apps.googleusercontent.com' 
 function App() {
@@ -32,23 +35,37 @@ function App() {
           }
           gapi.load('client: auth2', start)
        })
+
+       const Layout = ({children}) => {
+        return (
+              <>
+                <Header/>
+                <div className='main-content-app'>
+                  <SideBar/>
+                  <container className='content-app-main'>
+                    {children}
+                  </container>
+                </div>
+              </>
+                )
+       }
   return (
     <div className="App">
       <AccountInfosContext.Provider value={{imgUrl, setImgUrl, accessToken,setAccessToken}}>
         <Routes>
         <Route path='/'element={ !login ? <Login/> : <Navigate replace to="/main" />} />
-        <Route path='/main' element={<Main/>}/>
-        <Route path='/like' element={<Like/>}/>
-        <Route path='/dislike' element={<Dislike/>}/>
-        <Route path='/playvideo/:id' element={<PlayVideo/>}/>
-        <Route path='/subscription' element={<Subscription/>}/>
-        <Route path='/subscriptionPlayList/:id' element={<SubscriptionPlayList/>}/>
-        <Route path='/gaming' element ={<Gaming/>}/>
-        <Route path='/nba' element ={<Nba/>}/>
-        <Route path='/music' element ={<Music/>}/>
-        <Route path='/sports' element ={<Sports/>}/>
-        <Route path='/news' element={<News/>}/>
-        <Route path='/search/:id' element={<Search/>}/>
+        <Route path='/main' element={ <Layout> <Content/></Layout> }/>
+        <Route path='/like' element={<Layout><Like/></Layout>}/>
+        <Route path='/dislike' element={<Layout><Dislike/></Layout>}/>
+        <Route path='/playvideo/:id' element={<Layout><PlayVideo/></Layout>}/>
+        <Route path='/subscription' element={<Layout><Subscription/></Layout>}/>
+        <Route path='/subscriptionPlayList/:id' element={<Layout><SubscriptionPlayList/></Layout>}/>
+        <Route path='/gaming' element ={<Layout><Gaming/></Layout>}/>
+        <Route path='/nba' element ={<Layout><Nba/></Layout>}/>
+        <Route path='/music' element ={<Layout><Music/></Layout>}/>
+        <Route path='/sports' element ={<Layout><Sports/></Layout>}/>
+        <Route path='/news' element={<Layout><News/></Layout>}/>
+        <Route path='/search/:id' element={<Layout><Search/></Layout>}/>
       </Routes>
     </AccountInfosContext.Provider>
     </div>

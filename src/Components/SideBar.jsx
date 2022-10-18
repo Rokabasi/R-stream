@@ -22,12 +22,7 @@ export default function SideBar(){
     },[accessToken]);
     return(
         <div className='side-bar'>
-            <div className='side-bar-header'>
-            <Link to="/main">
-                <div><i className="fa-solid fa-play fa-2x"></i></div>
-                <h1>R Stream</h1>    
-            </Link>
-            </div>
+           
             <div>
                 <ul>
                 <NavLink exact="true"  to="/main"><li><div><i className="fa-solid fa fa-house"></i></div><h4>Home</h4></li></NavLink>

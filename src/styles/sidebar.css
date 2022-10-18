@@ -6,16 +6,18 @@
 }
 .side-bar{
   margin: 0;
+  margin-top: 65px;
   width: 15%;
   background-color: #3B3E46;
   color: white;
-  height:100vh;
+  height:90vh;
   position:fixed;
   overflow: auto;
   top: 0;
   left: 0;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  z-index: 1;
 }
 .side-bar::-webkit-scrollbar {
   display: none;
@@ -25,28 +27,14 @@ a{
   display: flex;
   color: white;
 }
-.side-bar-header{
-  padding-top: 4%;
-  padding-left: 15%;
-  color: #5663D1;
- 
-}
 .fa-play{
   color: #5663D1;
-}
-.side-bar-header h1{
-  font-size: 1.5rem;
-  padding-left: 2.5%;
-  color: #5663D1;
-  padding-top: 2%;
 }
 
 .side-bar-icon{
   padding-left: 10%;
 }
-.side-bar ul {
-  padding-top: 12.5%;
-}
+
 .side-bar ul li {
   list-style: none;
   display: flex;
