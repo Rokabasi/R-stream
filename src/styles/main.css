@@ -25,6 +25,7 @@
     margin-left: auto;
     margin-right: auto;
     border:  1px solid#3B3E46;
+    padding-bottom: 1%;
 }
 .link:hover{
     transform: scale(1.1);
@@ -33,15 +34,21 @@
 .card-image{
     width: 100%;
     height: 50%;
+
 }
-h3{
+.video-details{
+    padding-left: 2%;
+}
+.video-details h3{
     font-weight: 700;
     font-size: 1rem;
-    height: 60px;
     padding-top: 5px;
-}
-.chanel-info-details-more{
-    /* border: 1px solid red; */
+    padding-bottom: 5px;
+    height: 44px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 .chanel-info-details-more > h5{
     font-size: 1.1rem;
@@ -51,20 +58,25 @@ h3{
 
 .link h5{
     font-weight: 300;
-    font-size: 1.1rem;   
+    font-size: 1rem;
+    padding-top: 3%;   
 }
 .link h5::first-letter{
 text-transform: uppercase;
 }
 
 .chanel-info-details > h4{
-    font-size: 1.2rem;
-    
+    font-size: 1rem;
+    font-weight: 400;
+    padding-top: 3%;
 }
  .chanel-info-details-more{
     display: flex;
     gap: 0.4rem;
     flex-wrap: wrap;
+}
+.chanel-info-details-more h5{
+    font-size: 1rem;
 }
 
 @media screen and (max-width:670px) {

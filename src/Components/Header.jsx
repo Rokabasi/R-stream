@@ -36,10 +36,10 @@ export default function Header (){
                     <h1>R Stream</h1>    
                 </Link>
             </div>
-            <div className='search-input'>
+            <form className='search-input'>
                 <input onChange={handleChange}  className='input-field' type="text" placeholder='Search'/>
             <Link to={`/search/${inputValue}`}> <button  className='button-search' type="submit"><i className="fa fa-search"></i></button></Link>   
-            </div>
+            </form>
             <div className='my-icons'>
                 <i className="fa-solid fa-bell fa-2x"></i>
                 <div><img src={profilImage} alt='profil' className="count-img"/></div>

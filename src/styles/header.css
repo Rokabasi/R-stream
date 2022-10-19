@@ -27,6 +27,7 @@ header{
   padding-left: 2.5%;
   color: #5663D1;
   padding-top: 2%; 
+  cursor: pointer;
 }
 .search-input{
     padding-top: 1.4%;

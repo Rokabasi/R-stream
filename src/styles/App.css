@@ -11,6 +11,7 @@
 }
 .main-content-app{
     display: flex;
+    width: 100%;
 }
 .content-app-main{
 margin-left: 15%;

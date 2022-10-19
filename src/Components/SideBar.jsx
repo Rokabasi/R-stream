@@ -19,7 +19,7 @@ export default function SideBar(){
             setsubscriptionChannel(data.items)
             console.log(data.items);
             })
-    },[accessToken]);
+    },[]);
     return(
         <div className='side-bar'>
            

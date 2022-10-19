@@ -19,6 +19,7 @@ import  Search  from './Components/Search';
 import Header from './Components/Header';
 import SideBar from './Components/SideBar';
 import Content from './Components/Content';
+import Channels from './Components/Channels'
 
 const clientId = '757010538260-arnh8a0826kpi72fdqcb08fsp7agceiq.apps.googleusercontent.com' 
 function App() {
@@ -58,7 +59,7 @@ function App() {
         <Route path='/like' element={<Layout><Like/></Layout>}/>
         <Route path='/dislike' element={<Layout><Dislike/></Layout>}/>
         <Route path='/playvideo/:id' element={<Layout><PlayVideo/></Layout>}/>
-        <Route path='/subscription' element={<Layout><Subscription/></Layout>}/>
+        <Route path='/subscription' element={<Layout><Channels/></Layout>}/>
         <Route path='/subscriptionPlayList/:id' element={<Layout><SubscriptionPlayList/></Layout>}/>
         <Route path='/gaming' element ={<Layout><Gaming/></Layout>}/>
         <Route path='/nba' element ={<Layout><Nba/></Layout>}/>
