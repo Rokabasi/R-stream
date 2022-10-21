@@ -18,7 +18,6 @@ export default function Content () {
             setVideoLinked(data.items)
             })
     },[]);
-
        
     return(
         <>
@@ -26,7 +25,7 @@ export default function Content () {
                 {
                     videoLinked.map((data, index) =>{
                         return (
-                            <Link to={`/playvideo/${data.id.videoId}`} className='link'>
+                            <Link to={`/playvideo/${data.id.videoId}/${data.snippet.channelId}`} className='link'>
                             <div key={index}>   
                                 <img src={data.snippet.thumbnails.medium.url} alt="" className="card-image"/>
                                 <div className="video-details">

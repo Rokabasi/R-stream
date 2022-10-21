@@ -5,7 +5,6 @@
     width: 100%;
 }
 .card-main-play-video{
-    border: 1px solid red;
 }
 .related-video-main{
     margin-left: 5%;
@@ -15,7 +14,6 @@
 .related-video-card{
     display: flex;
     height: 130px;
-    border: 1px solid green;
     width: 100%;
     margin-bottom: 3%;
 }
@@ -28,12 +26,11 @@
     margin-left: 3%;
     width: 200px;
     overflow-wrap: break-word;
-    border: 1px solid rgb(197, 14, 173);
     color: white;
 }.related-video-channel-infos h3{
     font-size: 0.8rem;
     font-weight: 400;
-
+   padding-top: 5%;
 }
 
 .related-video-channel-infos .channel{
@@ -48,19 +45,24 @@
  }
  .card-played-video-infos{
 color: white;
+
  }
  .card-played-video-infos h2{
     padding-top: 2%;
     font-size: 1.5rem;
     font-weight: 400;
  }
+ .related-video-channel-infos h5{
+   font-size: 0.8rem;
+   font-weight: 400;
+}
  .played-video-statistics{
     display: flex;
     padding-top: 4%;
     gap: 1rem;
  }
  .played-video-statistics h5{
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     gap:2rem;
     font-weight: 400;
  }
@@ -69,19 +71,36 @@ color: white;
     padding-top: 4%;
     gap: 1rem;
  }
- .related-video-channel-infos h5{
-     font-size: 0.8rem;
-     font-weight: 400;
- }
+.channel-infos .channel-infos-title{
+   display: block;
+   color: white;
+}
+.channel-infos h3{
+   padding-top: 2%;
+   font-size: 1.3rem;
+   font-weight: 500;
+}
+.channel-infos h5{
+   font-weight: 300;
+   padding-top: 1%;
+   text-transform: capitalize;
+}
  .channel-infos h3::first-letter{
     text-transform: capitalize;
  }
+ .channel-infos .channel-infos-image{
+   width: 60px;
+   height: 50px;
+   border-radius: 50%;
+ }
  .channel-infos button{
-    padding: 2% 4%;
+    padding: 0% 4%;
     border-radius: 10px;
     border: none;
     background-color: #5663D1;
     color: white;
+    margin-left: 10%;
+    font-size: 1rem;
  }
  .card-played-video-infos h4{
     font-size: 1.2rem;

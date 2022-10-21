@@ -3,14 +3,15 @@ import Header from "./Header";
 import { useState,useEffect } from "react";
 import "../styles/playvideo.css"
 import NameApp from "./NameApp";
-import photo from "../images/love.jpg"
+import logo from "../images/love.jpg"
 import numeral from "numeral"
 import moment from "moment/moment"
 
 export default function PlayVideo(){
-    const {id} = useParams()
+    const {id,channelId} = useParams()
     const [video, setVideo] = useState([])
     const [videoPlayedInfos, setVideoPlayedInfos] = useState([])
+    const [videoPlayedChannelInfos,setVideoPlayedChannelInfos] = useState([])
     const accessToken = sessionStorage.getItem('accessToken')
     useEffect(()=>{
         fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${id}&type=video&maxResults=16&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU`,
@@ -30,14 +31,22 @@ export default function PlayVideo(){
             console.log(data.items);
         })
     },[id]);
+    useEffect(()=>{
+        fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU`,
+        { method : 'GET',headers:new Headers({'Authorization': `Bearer ${accessToken}`})})     
+        .then(res => res.json())
+        .then(data => { setVideoPlayedChannelInfos(data.items)
+            console.log(data.items);
+        })  
+    },[channelId])
    
     return(
         <>
         <div className="play-video-content">
         <div className="card-main-play-video">
             <iframe 
-                width="560" 
-                height="315" 
+                width="630" 
+                height="320" 
                 src={`https://www.youtube.com/embed/${id}`}
                 title="YouTube video player"  
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -54,16 +63,26 @@ export default function PlayVideo(){
                                     <h5><i className="fa-solid fa-eye"></i> {numeral(video.statistics.viewCount).format("0.a")}  Vues</h5>
                                     <h5>{video.statistics.commentCount} <i className="fa-solid fa-comment"></i> Commentaires</h5>
                                 </div>
-                                <div className="channel-infos">
-                                    <h3>{video.snippet.channelTitle}</h3>
-                                    <button>S'abonner</button>
-                                </div>
-                                <h4>{video.snippet.description}</h4>
+                                
                             </div>
+                        )})
+                }
+                {
+                    videoPlayedChannelInfos.map((data,index)=> {
+                        return(
+                            <>
+                            <div className="channel-infos">
+                                <img src={data.snippet.thumbnails.default.url} className="channel-infos-image" alt="channel logo"/>
+                                <div className="channel-infos-title">
+                                    <h3>{data.snippet.title}</h3>
+                                    <h5> { numeral(data.statistics.subscriberCount).format("O.a")} subscriber</h5>
+                                </div>   
+                                <button className="channel-infos-button">S'abonner</button>
+                            </div>
+                            </>
                         )
                     })
                 }
-              
             </div>
         </div>
         <div className="related-video-main">

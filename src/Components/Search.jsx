@@ -5,7 +5,7 @@ import Header from "./Header"
 import { AccountInfosContext } from '../context/AccountContext'
 import { useContext } from 'react'
 import { Link,useParams } from "react-router-dom"
-
+import moment from "moment/moment"
 
 export default function Content () {
 
@@ -31,20 +31,20 @@ export default function Content () {
                 {
                     videoLinked.map((data, index) =>{
                         return (
-                        <Link to={`/playvideo/${data.id.videoId}`} className='like'>
+                        <Link to={`/playvideo/${data.id.videoId}/${data.snippet.channelId}`} className='link'>
                     <div key={index}>
                             <img src={data.snippet.thumbnails.medium.url} alt="" className="card-image"/>
-                        
+                        <div className="video-details">
                             <h3>{data.snippet.title}</h3>
-                            <div className="chanel-info">
-                                <i className="fa-solid fa-circle-user fa-2x"></i>
+                            <div className="chanel-info"> 
                                 <div className="chanel-info-details">
-                                    <h4>{data.snippet.channelTitle}</h4>
                                     <div className="chanel-info-details-more">
-                                        <h5>{data.snippet.publishedAt}</h5>
                                     </div>
+                                     <h5>{moment(data.snippet.publishedAt).fromNow()}</h5>
+                                    <h4>{data.snippet.channelTitle}</h4>
                                 </div>
                             </div>
+                        </div>
                     </div>
                         </Link>
                         )

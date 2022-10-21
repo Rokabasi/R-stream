@@ -58,7 +58,7 @@ function App() {
         <Route path='/main' element={ <Layout> <Content/></Layout> }/>
         <Route path='/like' element={<Layout><Like/></Layout>}/>
         <Route path='/dislike' element={<Layout><Dislike/></Layout>}/>
-        <Route path='/playvideo/:id' element={<Layout><PlayVideo/></Layout>}/>
+        <Route path='/playvideo/:id/:channelId' element={<Layout><PlayVideo/></Layout>}/>
         <Route path='/subscription' element={<Layout><Channels/></Layout>}/>
         <Route path='/subscriptionPlayList/:id' element={<Layout><SubscriptionPlayList/></Layout>}/>
         <Route path='/gaming' element ={<Layout><Gaming/></Layout>}/>

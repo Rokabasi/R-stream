@@ -21,9 +21,7 @@ export default function Content () {
             setVideoLinked(data.items)
             })
     },[]);
-       
-    console.log(videoLinked);
-
+    
     return(
         <>
        
@@ -32,21 +30,20 @@ export default function Content () {
                 {
                     videoLinked.map((data, index) =>{
                         return (
-                            <Link to={`/playvideo/${data.id}`} className='link'>
+                            <Link to={`/playvideo/${data.id}/${data.snippet.channelId}`} className='link'>
                             <div key={index}>   
                                 <img src={data.snippet.thumbnails.medium.url} alt="" className="card-image"/>
                                 <div className="video-details">
-                                <h3>{data.snippet.title}</h3>
-                                <div className="chanel-info-details">
-                                    <div className="chanel-info-details-more">
-                                    <h5> { numeral(data.statistics.likeCount).format("O.a")} <i className="fa-solid fa-thumbs-up"></i></h5>
-                                    <h5>{numeral(data.statistics.viewCount).format("0.a")} <i className="fa-solid fa-eye"></i> </h5>
-                                    <h5>{data.statistics.commentCount} <i className="fa-solid fa-comment"></i></h5>
-                                   
-                                </div>
-                                <h5>{moment(data.snippet.publishedAt).fromNow()}</h5>
-                                <h4>{data.snippet.channelTitle}</h4>
-                                </div>  
+                                    <h3>{data.snippet.title}</h3>
+                                    <div className="chanel-info-details">
+                                        <div className="chanel-info-details-more">
+                                            <h5> { numeral(data.statistics.likeCount).format("O.a")} <i className="fa-solid fa-thumbs-up"></i></h5>
+                                            <h5>{numeral(data.statistics.viewCount).format("0.a")} <i className="fa-solid fa-eye"></i> </h5>
+                                            <h5>{data.statistics.commentCount} <i className="fa-solid fa-comment"></i></h5>                           
+                                        </div>
+                                    <h5>{moment(data.snippet.publishedAt).fromNow()}</h5>
+                                    <h4>{data.snippet.channelTitle}</h4>
+                                    </div>  
                                 </div> 
                             </div>
                             </Link>

@@ -57,7 +57,7 @@ export default function Content () {
                     video.map((data, index) =>{
                         return (
                             
-                    <Link to={`/playvideo/${data.id}`} className='link'>
+                    <Link to={`/playvideo/${data.id}/${data.snippet.channelId}`} className='link'>
                     <div key={index}>   
                         <img src={data.snippet.thumbnails.medium.url} alt="" className="card-image"/>
                         <div className="video-details">
