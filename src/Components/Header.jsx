@@ -14,6 +14,7 @@ export default function Header (){
     console.log(profilImage);
     const itemImg = (localStorage.getItem('item'))
     console.log(itemImg);
+    const navigate = useNavigate()
     // console.log(itemImg);
     const handleChange = event =>{
         setInputValue(event.target.value)
@@ -23,7 +24,7 @@ export default function Header (){
         console.log('logout success');
         sessionStorage.setItem('login', false)
         const login = JSON.parse(sessionStorage.getItem('login'))
-        Navigate("/") 
+        navigate("/") 
         console.log(login);
     }
    
@@ -41,13 +42,13 @@ export default function Header (){
             <Link to={`/search/${inputValue}`}> <button  className='button-search' type="submit"><i className="fa fa-search"></i></button></Link>   
             </form>
             <div className='my-icons'>
-                <i className="fa-solid fa-bell fa-2x"></i>
+                <i className="fa-solid fa-bell"></i>
                 <div><img src={profilImage} alt='profil' className="count-img"/></div>
             <Link to="/">
             <GoogleLogout
                 clientId={clientId}
                 render = { renderProps => (
-                    <button className='btn-logout' onClick={renderProps.onClick} disabled={renderProps.disabled}><i className="fa-solid fa-right-from-bracket fa-2x"></i></button>
+                    <button className='btn-logout' onClick={renderProps.onClick} disabled={renderProps.disabled}><i className="fa-solid fa-right-from-bracket"></i></button>
                     )}
                     onLogoutSuccess = {onSuccess}  
                     />

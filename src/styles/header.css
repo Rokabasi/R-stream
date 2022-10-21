@@ -31,7 +31,7 @@ header{
 }
 .search-input{
     padding-top: 1.4%;
-    width: 60%;
+    width: 50%;
     padding-left: 10%;
     display: flex;
     height: 50px;
@@ -71,11 +71,11 @@ header{
 
   .my-icons{
     display: flex;
-    width: 20%;
-  margin-left: 5%;
+    width: 7%;
+  margin-left: 21%;
   align-items: center;
   padding-left: 3%;
-  gap: 3rem;
+  gap: 2rem;
   color: white;
   }
   .fa-moon, .fa-regular{
@@ -86,12 +86,12 @@ header{
   }
   .btn-logout{
    margin-right: 5px;
-    width: 8%;
+    width: 2%;
     margin-top: 0px;
   }
   .count-img{
     border-radius: 50px;
-    width: 40px;
+    width: 30px;
   }
 @media screen and (max-width:450px) {
   header{

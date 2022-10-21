@@ -3,21 +3,24 @@ import { GoogleLogin } from "react-google-login";
 import { useContext } from "react";
 import { AccountInfosContext } from "../context/AccountContext";
 import { render } from "@testing-library/react";
-import "../styles/login.css"
+import "../styles/login.css";
+import { useNavigate } from "react-router-dom";
 
 
 const Login = () => {
-    const {setImgUrl} = useContext(AccountInfosContext)
+    
+    const navigate = useNavigate()
     const clientId = '757010538260-arnh8a0826kpi72fdqcb08fsp7agceiq.apps.googleusercontent.com'   
     const onSuccess = (res)=>{
         console.log(res)
-        setImgUrl(res.profileObj.imageUrl)
         console.log(res.profileObj.imageUrl);
         sessionStorage.setItem('accessToken', res.accessToken)
         sessionStorage.setItem('login', true)
         sessionStorage.setItem('profilImage',JSON.stringify(res.profileObj.imageUrl))
         const profilImage = sessionStorage.getItem('profilImage')
         console.log(profilImage);
+        navigate('/main')
+
     }
     const onFaillure = (res)=>{
         console.log(res);

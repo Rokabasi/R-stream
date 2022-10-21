@@ -54,7 +54,7 @@ function App() {
     <div className="App">
       <AccountInfosContext.Provider value={{imgUrl, setImgUrl, accessToken,setAccessToken}}>
         <Routes>
-        <Route path='/'element={ !login ? <Login/> : <Navigate replace to="/main" />} />
+        <Route path='/'element={<Login/>}/>
         <Route path='/main' element={ <Layout> <Content/></Layout> }/>
         <Route path='/like' element={<Layout><Like/></Layout>}/>
         <Route path='/dislike' element={<Layout><Dislike/></Layout>}/>
