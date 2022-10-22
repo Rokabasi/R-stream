@@ -114,7 +114,7 @@
       display: block;
   }
   iframe{
-  margin-left: 1%;
+  margin-left: 4%;
    width :90%; 
    height :30vh;
  }
@@ -132,12 +132,13 @@
 }
 .related-video-card{
    display: flex;
+   margin-left: 3%;
    width: 90%;
    height: 80%;
    border:  1px solid#3B3E46;
 }
 .related-video-profil{
-   width: 140px;
+   width: 180px;
    height: 130px;
 }
 .related-video-channel-infos{
@@ -151,4 +152,7 @@
    font-weight: 400;
   padding-top: 5%;
 }
+.card-played-video-infos{
+   padding-left: 4%;
+ }
 }

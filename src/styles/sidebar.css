@@ -81,7 +81,7 @@ h6{
   padding-left: 24%;
   border-top: 1px solid rgb(153, 148, 148);
 }
-.btn-logout{
+.side-bar .btn-logout{
   display: none;
 }
 .bar{
@@ -94,7 +94,7 @@ h6{
     /* top:40rem; */
     height:100px;
     z-index: 1;
-    border: 1px solid red;
+  
     width: 100%;
     margin-top: 90vh;
     bottom: 0;
@@ -107,7 +107,7 @@ h6{
     margin-left: 7%;
     height:100px;
     gap: 4rem;
-    border: 1px solid red;
+   
   }
   .side-bar ul li{
     width: 80px;
@@ -118,7 +118,7 @@ h6{
   padding-bottom: 7%;
   cursor: pointer;
   justify-content: center;
-  border: 1px solid green;
+  
   }
   .side-bar ul li h4 {
     display: none;
@@ -131,5 +131,12 @@ h6{
   }
   .fa-right-from-bracket{
     padding-top: 7%;
+  }
+  .side-bar .btn-logout{
+    display: block;
+    width: 80px;
+    padding-top: 5%;
+    background-color: #3B3E46;
+    border: none;
   }
 }
