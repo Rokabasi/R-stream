@@ -51,7 +51,7 @@ button:active{
 @media screen  and (max-width:450px) {
     .video-critere{
         padding: 2%;
-        margin-top: 77px;
+        margin-top: 60px;
     }
     button, .all-video{
         padding: 2% 4%;

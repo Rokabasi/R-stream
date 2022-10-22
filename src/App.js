@@ -1,14 +1,12 @@
 import Login from './Components/Login';
 import "./styles/App.css"
-import {  Route,Routes, Navigate} from 'react-router-dom'
+import {  Route,Routes} from 'react-router-dom'
 import { AccountInfosContext} from './context/AccountContext';
-import Main from './Components/Main';
 import { useEffect, useState } from 'react';
 import { gapi } from 'gapi-script';
 import Like from './Components/Like'
 import PlayVideo from './Components/PlayVideo';
 import Dislike from './Components/Dislike'
-import Subscription from './Components/Subscription'
 import SubscriptionPlayList from './Components/SubscriptionPlayList'
 import Music from './Components/Music'
 import Gaming from './Components/Gaming'

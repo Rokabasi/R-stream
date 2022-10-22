@@ -45,8 +45,6 @@ export default function PlayVideo(){
         <div className="play-video-content">
         <div className="card-main-play-video">
             <iframe 
-                width="630" 
-                height="320" 
                 src={`https://www.youtube.com/embed/${id}`}
                 title="YouTube video player"  
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 

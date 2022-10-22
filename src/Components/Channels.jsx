@@ -33,7 +33,6 @@ export default function Content () {
                                 <img src={data.snippet.thumbnails.medium.url} alt="" className="card-profil"/>
                                 <div className="video-detail">
                                 <h3>{data.snippet.title}</h3>
-                                {/* <h5>{data.snippet.description}</h5> */}
                                 <div>
                                 </div>  
                                 </div> 

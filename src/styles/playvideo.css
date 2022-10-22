@@ -4,8 +4,6 @@
     display: flex;
     width: 100%;
 }
-.card-main-play-video{
-}
 .related-video-main{
     margin-left: 5%;
     height: 100%;
@@ -13,14 +11,15 @@
 }
 .related-video-card{
     display: flex;
-    height: 130px;
+    height: 100px;
     width: 100%;
     margin-bottom: 3%;
+    border:  1px solid#3B3E46;
 }
 
 .related-video-profil{
-    width: 180px;
-    height: 130px;
+    width: 140px;
+    height: 100px;
 }
 .related-video-channel-infos{
     margin-left: 3%;
@@ -44,8 +43,7 @@
     text-transform: capitalize;
  }
  .card-played-video-infos{
-color: white;
-
+   color: white;
  }
  .card-played-video-infos h2{
     padding-top: 2%;
@@ -102,8 +100,55 @@ color: white;
     margin-left: 10%;
     font-size: 1rem;
  }
+ iframe{
+   width :630px; 
+   height :320px;
+ }
  .card-played-video-infos h4{
     font-size: 1.2rem;
     font-weight: 400;
     padding-top: 4%;
  }
+ @media screen and (max-width:670px) {
+   .play-video-content{
+      display: block;
+  }
+  iframe{
+  margin-left: 1%;
+   width :90%; 
+   height :30vh;
+ }
+ .play-video-content{
+   padding-top: 80px;
+}
+
+.related-video-main{
+   margin-left: 1%;
+   padding-top: 10%;
+   width: 100%;
+}
+.channel-infos{
+   padding-top: 5%;
+}
+.related-video-card{
+   display: flex;
+   width: 90%;
+   height: 80%;
+   border:  1px solid#3B3E46;
+}
+.related-video-profil{
+   width: 140px;
+   height: 130px;
+}
+.related-video-channel-infos{
+   margin-left: 3%;
+   width: 100%;
+   overflow-wrap: break-word;
+   color: white;
+}
+.related-video-channel-infos h3{
+   font-size: 1rem;
+   font-weight: 400;
+  padding-top: 5%;
+}
+}

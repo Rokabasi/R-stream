@@ -1,21 +1,15 @@
 import '../styles/header.css'
-import { AccountInfosContext } from '../context/AccountContext'
-import { useContext, useState } from 'react'
+import {  useState } from 'react'
 import { GoogleLogout } from 'react-google-login'
-import { Link,Navigate,useNavigate } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 
 const clientId = '757010538260-arnh8a0826kpi72fdqcb08fsp7agceiq.apps.googleusercontent.com' 
 
 export default function Header (){
     
     const [inputValue,setInputValue] = useState("")
-    const accessToken = sessionStorage.getItem('accessToken')
     const profilImage = JSON.parse(sessionStorage.getItem('profilImage'))
-    console.log(profilImage);
-    const itemImg = (localStorage.getItem('item'))
-    console.log(itemImg);
     const navigate = useNavigate()
-    // console.log(itemImg);
     const handleChange = event =>{
         setInputValue(event.target.value)
     }
@@ -23,9 +17,7 @@ export default function Header (){
     const onSuccess = () => {
         console.log('logout success');
         sessionStorage.setItem('login', false)
-        const login = JSON.parse(sessionStorage.getItem('login'))
         navigate("/") 
-        console.log(login);
         sessionStorage.clear()
     }
    

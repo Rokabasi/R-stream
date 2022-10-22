@@ -3,14 +3,12 @@ import { GoogleLogin } from "react-google-login";
 import { render } from "@testing-library/react";
 import "../styles/login.css";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
 
 const Login = () => {
     
     const navigate = useNavigate()
     const clientId = '757010538260-arnh8a0826kpi72fdqcb08fsp7agceiq.apps.googleusercontent.com'  
-    const accessToken =  sessionStorage.getItem('accessToken')
     const onSuccess = (res)=>{
         console.log(res)
         console.log(res.profileObj.imageUrl);
