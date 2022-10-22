@@ -8,18 +8,11 @@ import { useContext } from 'react'
 export default function Main (){
 
     const {loginState} = useContext(AccountInfosContext)
-    return(
-        <>
-            { (loginState) ? 
+    return(          
             <div className="main-app">
-                <SideBar/>
-                <Header/>
-                <Content/>
-            </div> : null
-            }
-            
-        
-        </>
-        
+                
+                
+               
+            </div> 
     )
 }

@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 .main-app{
-    width: 85%;
+    width: 50%;
     margin-left: 15%;
-    border: 1px solid red;
+    justify-content: center;
 }

@@ -6,48 +6,49 @@
 }
 .side-bar{
   margin: 0;
+  margin-top: 65px;
   width: 15%;
   background-color: #3B3E46;
   color: white;
-  min-height:100%;
+  height:100vh;
   position:fixed;
+  overflow: auto;
   top: 0;
   left: 0;
-  border-right: 1px solid #363941;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  z-index: 1;
+}
+.side-bar::-webkit-scrollbar {
+  display: none;
 }
 a{
   text-decoration: none;
   display: flex;
   color: white;
 }
-.side-bar-header{
-  display: flex;justify-content: center;
-  padding-top: 4%;
-  padding-left: 3%;
+.fa-play{
   color: #5663D1;
- 
 }
-.side-bar-header h1{
-  font-size: 1.8rem;
-  padding-left: 2.5%;
-}
+
 .side-bar-icon{
   padding-left: 10%;
 }
-.side-bar ul {
-  padding-top: 38%;
-}
+
 .side-bar ul li {
   list-style: none;
   display: flex;
-  padding: 5% 15%;
+  padding: 2% 15%;
   font-size: 1rem;
-  padding-top: 11%;
-  padding-bottom: 11%;
+  padding-top: 8%;
+  padding-bottom: 8%;
   cursor: pointer;
   width: 100%;
 }
-.side-bar ul li:hover{
+.abonnements{
+  font-size: 1rem;
+  }
+.active, .side-bar ul li:hover{
   border: none;
   background-color: #5663D1;
 }
@@ -58,49 +59,77 @@ a{
   text-align: center;
   width: 40px;
 }
-.btn-logout{
+/* .btn-logout{
   border: none;
   background-color: #3B3E46;
   color: white;
   font-size: 1.1rem;
   width: 100%;
+} */
+.img-channel{
+  border-radius: 50px;
+  width: 40px;
 }
-@media screen and (max-width:450px) {
+li h5{
+  padding-top: 8%;
+  padding-left: 2%;
+}
+h6{
+  padding-top: 10%;
+  padding-bottom: 5%;
+  font-size: 0.75rem;
+  padding-left: 24%;
+  border-top: 1px solid rgb(153, 148, 148);
+}
+.btn-logout{
+  display: none;
+}
+.bar{
+  border-bottom: 1px solid rgb(153, 148, 148);
+}
+@media screen and (max-width:670px) {
   .side-bar{
-    /* overflow: hidden;
-    position:relative;
-    top:40rem;
-    left:50px;
-    width: 100%;
+    overflow: hidden;
+    position:fixed;
+    /* top:40rem; */
     height:100px;
     z-index: 1;
-    background-color: red; */
-    position: sticky;
+    border: 1px solid red;
     width: 100%;
+    margin-top: 90vh;
     bottom: 0;
 
-
-  }
-  .side-bar-header{
-    display: none;
   }
   .side-bar ul {
     display: flex;
     width: 100%;
     padding-top: 0;
+    margin-left: 7%;
+    height:100px;
+    gap: 4rem;
+    border: 1px solid red;
   }
   .side-bar ul li{
-    width: 25%;
+    width: 80px;
     list-style: none;
   padding: 0;
   font-size: 1.3rem;
-  padding-top: 7%;
+  padding-top: 30%;
   padding-bottom: 7%;
   cursor: pointer;
   justify-content: center;
+  border: 1px solid green;
   }
   .side-bar ul li h4 {
     display: none;
   }
-
+  .no-visible-link{
+    display: none;
+  }
+  .btn-logout{
+    display: contents;
+  }
+  .fa-right-from-bracket{
+    padding-top: 7%;
+  }
 }

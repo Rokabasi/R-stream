@@ -9,10 +9,7 @@
     margin-left:15%;
     height: 100vh;
 }
-Link{
-    text-decoration: none;
-    width: 23.7%;
-}
+
 .card-main{
     display: flex;
     flex-wrap: wrap;
@@ -20,17 +17,14 @@ Link{
     background-color: #2F3238;
     gap: 1rem;
 }
-.like{
+/* .like{
     width: 23.7%;
 }
 .like:hover{
     transform: scale(1.1);
     border: 1px solid#3B3E46;
 }
-/* .card{
-    width: 23.7%;
-    border: 1px solid white;
-} */
+
 .card-image{
     width: 100%;
     height: 50%;
@@ -39,12 +33,10 @@ Link{
     color: white;
     font-weight: 400;
     font-size: 1rem;
-    border: 1px solid blue;
     height: 70px;
 }
 .card .chanel-info{
     display: flex;
-    border: 1px solid yellowgreen;
 }
 .card .chanel-info-details{
    display: block;
@@ -53,7 +45,7 @@ Link{
     
 }
 .chanel-info-details h4{
-    /* font-size: 1rem; */
+    
     font-weight: 300;
 }
 .card .chanel-info-details-more{
@@ -72,4 +64,4 @@ Link{
         margin-bottom: 0;
         overflow-y: scroll;
     }
-}
+} */

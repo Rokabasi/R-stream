@@ -7,6 +7,18 @@
     background-color: #42464F;
     height: 3.4rem;
     margin-top: 60px;
+    display: flex;
+   width: 100%;
+   padding-left: 1%;
+    
+}
+.link-video-critere{
+    background-color: #42464F;
+    height: 2rem;
+    margin-top: 15px;
+    display: flex;
+    gap : 2rem ;
+    width: 8%;
     
 }
 .other-critere{
@@ -19,14 +31,16 @@
     font-size: 0.8rem;
 }
 .all-video{
-    padding:8px 20px;
+    padding:2px 20px;
     border-radius: 10px;
     border: none;
     margin-top: 1%;
-    margin-left: 1%;
+    margin-left: 3%;
+    margin-right: 3%;
     background-color: #2B2F37;
     color: white;
     font-size: 0.8rem;
+    cursor: pointer;
 }
 .all-video:hover, .other-critere:hover{
     background-color: #5663D1;
@@ -37,7 +51,7 @@ button:active{
 @media screen  and (max-width:450px) {
     .video-critere{
         padding: 2%;
-        margin-top: 77px;
+        margin-top: 60px;
     }
     button, .all-video{
         padding: 2% 4%;

@@ -1,24 +1,29 @@
 import React from "react";
 import { GoogleLogin } from "react-google-login";
-import { useContext } from "react";
-import { Link } from "react-router-dom";
-import { AccountInfosContext } from "../context/AccountContext";
-import "../styles/login.css"
 import { render } from "@testing-library/react";
+import "../styles/login.css";
+import { useNavigate } from "react-router-dom";
+
 
 const Login = () => {
-    const {setImgUrl,setLoginState,loginState,accessToken,setAccessToken} = useContext(AccountInfosContext)
-    const clientId = '757010538260-arnh8a0826kpi72fdqcb08fsp7agceiq.apps.googleusercontent.com'   
+    
+    const navigate = useNavigate()
+    const clientId = '757010538260-arnh8a0826kpi72fdqcb08fsp7agceiq.apps.googleusercontent.com'  
     const onSuccess = (res)=>{
         console.log(res)
-        setImgUrl(res.profileObj.imageUrl)
         console.log(res.profileObj.imageUrl);
-        setLoginState(true)
-        setAccessToken(res.accessToken)
+        sessionStorage.setItem('accessToken', res.accessToken)
+        sessionStorage.setItem('login', true)
+        sessionStorage.setItem('profilImage',JSON.stringify(res.profileObj.imageUrl))
+        const profilImage = sessionStorage.getItem('profilImage')
+        console.log(profilImage);
+        navigate('/main')
+
     }
     const onFaillure = (res)=>{
         console.log(res);
     }
+ 
     
     return(
         <>
@@ -30,7 +35,7 @@ const Login = () => {
                     <GoogleLogin
                         clientId = {clientId}
                         render = { renderProps => (
-                            <button className="btn-login" onClick={renderProps.onClick} disabled={renderProps.disabled}><i className="fa-brands fa-google"></i> Select your Google account for login</button>
+                            <button className="btn-login" onClick={renderProps.onClick} disabled={renderProps.disabled}><i className="fa-brands fa-google fa-2x"></i> <span>Select your Google account for login</span></button>
                         )}
                         buttonText = 'Select Google account'
                         onSuccess={onSuccess}
@@ -39,14 +44,6 @@ const Login = () => {
                     />
                     </div>
                 </div>
-                {
-                    (loginState)? <div>
-                    <Link to='/main'>
-                        <button className="validate-button">connect to R-Stream</button>
-                        </Link>
-                </div>: null
-                }
-                
             </div> 
             
         </>

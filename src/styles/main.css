@@ -1,26 +1,29 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    
+    box-sizing: border-box;   
 }
 .main-app{
     width: 85%;
     margin-left:15%;
     height: 100vh;
 }
-
 .main-card{
     display: flex;
     flex-wrap: wrap;
     padding: 2% 1%;
     background-color: #2F3238;
-    gap: 1rem;
+    gap: 1rem; 
 }
 .link{
     text-decoration: none;
-    width: 23.7%;
+    width: 23.5%;
     margin-bottom: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    border:  1px solid#3B3E46;
+    padding-bottom: 1%;
+    overflow-wrap: break-word;
 }
 .link:hover{
     transform: scale(1.1);
@@ -29,50 +32,68 @@
 .card-image{
     width: 100%;
     height: 50%;
-}
-h3{
-    font-weight: 500;
-    font-size: 0.9rem;
-    height: 60px;
-    padding-top: 5px;
-}
-.chanel-info{
-    display: flex;
-}
-.chanel-info-details{
-   display: block;
-   width: 60%;
-   margin-left: 5%;
-   
-    
-}
 
-.chanel-logo{
-    width: 100%;
-    height: 40px;
-    border-radius: 150px;
-    margin-left: 10%;
-    margin-top: 1px;
- }
-.chanel-info-details > h4{
-    font-size: 1.2rem;
-    font-weight: 500;
 }
- .chanel-info-details-more{
-    padding-top: 3%;
-    gap: 0.4rem;
-    width: 100%;
+.video-details{
+    padding-left: 2%;
 }
-.chanel-info-details-more h5{
+.video-details h3{
+    font-weight: 700;
     font-size: 1rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 44px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.chanel-info-details-more > h5{
+    font-size: 1.1rem;
     font-weight: 300;
    padding-top: 2%;
 }
-@media screen and (max-width:450px) {
-    .main{
+
+.link h5{
+    font-weight: 300;
+    font-size: 1rem;
+    padding-top: 3%;   
+}
+.link h5::first-letter{
+text-transform: uppercase;
+}
+
+.chanel-info-details > h4{
+    font-size: 1rem;
+    font-weight: 420;
+    padding-top: 3%;
+}
+ .chanel-info-details-more{
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+}
+.chanel-info-details-more h5{
+    font-size: 1rem;
+}
+.card-main .subscription-like{
+    text-decoration: none;
+    width: 25%;
+    display: flex;
+    height: 130px;
+    border: 1px solid red;
+    
+}
+@media screen and (max-width:670px) {
+    .main-app{
         width: 100%;
         margin-left: 0;
         margin-bottom: 0;
         overflow-y: scroll;
+    }
+    .link{
+        text-decoration: none;
+        width: 70%;
+        margin-bottom: 25px;
     }
 }

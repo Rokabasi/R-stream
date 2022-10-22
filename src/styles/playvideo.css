@@ -1,3 +1,154 @@
-.header-Play-video{
+.play-video-content{
+    padding-left: 2%;
+    padding-top: 90px;
+    display: flex;
     width: 100%;
+}
+.related-video-main{
+    margin-left: 5%;
+    height: 100%;
+    width: 60%;
+}
+.related-video-card{
+    display: flex;
+    height: 100px;
+    width: 100%;
+    margin-bottom: 3%;
+    border:  1px solid#3B3E46;
+}
+
+.related-video-profil{
+    width: 140px;
+    height: 100px;
+}
+.related-video-channel-infos{
+    margin-left: 3%;
+    width: 200px;
+    overflow-wrap: break-word;
+    color: white;
+}.related-video-channel-infos h3{
+    font-size: 0.8rem;
+    font-weight: 400;
+   padding-top: 5%;
+}
+
+.related-video-channel-infos .channel{
+   padding-top: 5%;
+}
+.related-video-channel-infos .see{
+    padding-top: 5%;
+ }
+ .related-video-channel-infos .creation::first-letter{
+    padding-top: 5%;
+    text-transform: capitalize;
+ }
+ .card-played-video-infos{
+   color: white;
+ }
+ .card-played-video-infos h2{
+    padding-top: 2%;
+    font-size: 1.5rem;
+    font-weight: 400;
+ }
+ .related-video-channel-infos h5{
+   font-size: 0.8rem;
+   font-weight: 400;
+}
+ .played-video-statistics{
+    display: flex;
+    padding-top: 4%;
+    gap: 1rem;
+ }
+ .played-video-statistics h5{
+    font-size: 1.1rem;
+    gap:2rem;
+    font-weight: 400;
+ }
+ .channel-infos{
+    display: flex;
+    padding-top: 4%;
+    gap: 1rem;
+ }
+.channel-infos .channel-infos-title{
+   display: block;
+   color: white;
+}
+.channel-infos h3{
+   padding-top: 2%;
+   font-size: 1.3rem;
+   font-weight: 500;
+}
+.channel-infos h5{
+   font-weight: 300;
+   padding-top: 1%;
+   text-transform: capitalize;
+}
+ .channel-infos h3::first-letter{
+    text-transform: capitalize;
+ }
+ .channel-infos .channel-infos-image{
+   width: 60px;
+   height: 50px;
+   border-radius: 50%;
+ }
+ .channel-infos button{
+    padding: 0% 4%;
+    border-radius: 10px;
+    border: none;
+    background-color: #5663D1;
+    color: white;
+    margin-left: 10%;
+    font-size: 1rem;
+ }
+ iframe{
+   width :630px; 
+   height :320px;
+ }
+ .card-played-video-infos h4{
+    font-size: 1.2rem;
+    font-weight: 400;
+    padding-top: 4%;
+ }
+ @media screen and (max-width:670px) {
+   .play-video-content{
+      display: block;
+  }
+  iframe{
+  margin-left: 1%;
+   width :90%; 
+   height :30vh;
+ }
+ .play-video-content{
+   padding-top: 80px;
+}
+
+.related-video-main{
+   margin-left: 1%;
+   padding-top: 10%;
+   width: 100%;
+}
+.channel-infos{
+   padding-top: 5%;
+}
+.related-video-card{
+   display: flex;
+   width: 90%;
+   height: 80%;
+   border:  1px solid#3B3E46;
+}
+.related-video-profil{
+   width: 140px;
+   height: 130px;
+}
+.related-video-channel-infos{
+   margin-left: 3%;
+   width: 100%;
+   overflow-wrap: break-word;
+   color: white;
+}
+.related-video-channel-infos h3{
+   font-size: 1rem;
+   font-weight: 400;
+  padding-top: 5%;
+}
 }
