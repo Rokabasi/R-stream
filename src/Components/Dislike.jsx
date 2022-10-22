@@ -18,7 +18,7 @@ export default function Content () {
         .then(data => {
             setVideoLiked(data.items)
             })
-    },[]);
+    },[accessToken]);
     
     return(  
        

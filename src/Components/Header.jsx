@@ -26,6 +26,7 @@ export default function Header (){
         const login = JSON.parse(sessionStorage.getItem('login'))
         navigate("/") 
         console.log(login);
+        sessionStorage.clear()
     }
    
    

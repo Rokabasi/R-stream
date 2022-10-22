@@ -15,7 +15,7 @@ export default function Content () {
         .then(data => {
             setVideoLinked(data.items)
             })
-    },[]);
+    },[accessToken]);
        
     console.log(videoLinked);
 

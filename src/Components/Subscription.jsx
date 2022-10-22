@@ -1,21 +1,19 @@
 import { useEffect, useState } from "react"
 import "../styles/subscription.css"
 import { Link } from "react-router-dom"
-import moment from "moment/moment"
 
-
-export default function Content () {
+export default function Subscription () {
     
     const accessToken = sessionStorage.getItem('accessToken')
     const [videoLinked, setVideoLinked] = useState([])
     useEffect(()=>{
-        fetch('https://youtube.googleapis.com/youtube/v3/subscriptions?part=snippet%2CcontentDetails%2CsubscriberSnippet%2CsubscriberSnippet&mine=true&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU',
+        fetch('https://youtube.googleapis.com/youtube/v3/subscriptions?part=snippet%2CcontentDetails%2CsubscriberSnippet%2CsubscriberSnippet&maxResults=16&mine=true&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU',
         { method : 'GET',headers:new Headers({'Authorization': `Bearer ${accessToken}`})})     
         .then(res => res.json())
         .then(data => {
             setVideoLinked(data.items)
             })
-    },[]);
+    },[accessToken]);
        
     console.log(videoLinked);
 

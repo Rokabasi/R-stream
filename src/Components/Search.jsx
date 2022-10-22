@@ -1,9 +1,5 @@
 import { useEffect, useState } from "react"
 import "../styles/like.css"
-import SideBar from "./SideBar"
-import Header from "./Header"
-import { AccountInfosContext } from '../context/AccountContext'
-import { useContext } from 'react'
 import { Link,useParams } from "react-router-dom"
 import moment from "moment/moment"
 
@@ -20,6 +16,7 @@ export default function Content () {
         .then(data => {
             setVideoLinked(data.items)
             })
+        .catch((error) => console.log(error))
     },[id]);
        
     console.log(videoLinked);

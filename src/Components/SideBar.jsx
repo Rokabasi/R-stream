@@ -1,25 +1,22 @@
 import { Link, NavLink } from 'react-router-dom'
 import '../styles/sidebar.css'
-import { GoogleLogout } from 'react-google-login'
-import { useContext } from 'react'
-import { AccountInfosContext } from '../context/AccountContext'
 import { useState,useEffect } from 'react'
 
 
 export default function SideBar(){
 
-    const {loginState,setLoginState} = useContext(AccountInfosContext)
+   
     const accessToken = sessionStorage.getItem('accessToken')
     const [subscriptionChannel, setsubscriptionChannel] = useState([])
     useEffect(()=>{
-        fetch('https://youtube.googleapis.com/youtube/v3/subscriptions?part=snippet%2CcontentDetails%2CsubscriberSnippet&mine=true&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU',
+        fetch('https://youtube.googleapis.com/youtube/v3/subscriptions?part=snippet%2CcontentDetails%2CsubscriberSnippet&maxResults=16&mine=true&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU',
         { method : 'GET',headers:new Headers({'Authorization': `Bearer ${accessToken}`})})     
         .then(res => res.json())
         .then(data => {
             setsubscriptionChannel(data.items)
             console.log(data.items);
             })
-    },[]);
+    },[accessToken]);
     return(
         <div className='side-bar'>
            

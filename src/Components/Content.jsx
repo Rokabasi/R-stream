@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react"
-import Header from "./Header"
-import VideoCritere from "./VideoCritere"
-import { AccountInfosContext } from '../context/AccountContext'
-import { useContext } from 'react'
+import "../styles/videocritere.css"
 import { Link } from "react-router-dom"
 import numeral from "numeral"
 import moment from "moment/moment"
@@ -12,8 +9,6 @@ export default function Content () {
     
    
     const [video, setVideo] = useState([])
-    const [channelId, setChannelId] = useState([])
-    const [channelImage, setChannelImage] = useState([])
     const accessToken = sessionStorage.getItem('accessToken')
     useEffect(()=>{
         fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=66&&region&Code=US&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU',
@@ -22,7 +17,7 @@ export default function Content () {
         .then(data => {
             setVideo(data.items)
         })
-    },[]);
+    },[accessToken]);
 
     // useEffect(()=>{
     //     for ( let i = 0; i < video.length ; i++){

@@ -1,9 +1,5 @@
 import { useEffect, useState } from "react"
 import "../styles/main.css"
-import SideBar from "./SideBar"
-import Header from "./Header"
-import { AccountInfosContext } from '../context/AccountContext'
-import { useContext } from 'react'
 import { Link } from "react-router-dom"
 import numeral from "numeral"
 import moment from "moment/moment"
@@ -20,7 +16,7 @@ export default function Content () {
         .then(data => {
             setVideoLinked(data.items)
             })
-    },[]);
+    },[accessToken]);
     
     return(
         <>

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import "../styles/like.css"
 import { Link,useParams } from "react-router-dom"
-import numeral from "numeral"
 import moment from "moment/moment"
 
 export default function Content () {
@@ -17,7 +16,7 @@ export default function Content () {
         .then(data => {
             setVideoLinked(data.items)
             })
-    },[]);
+    },[id]);
        
     return(
         <>
