@@ -24,7 +24,7 @@ export default function Content () {
         <>
        
             
-            <main className="card-main">
+            <main className="card-main card-main-channel">
                 {
                     videoLinked.map((data, index) =>{
                         return (
