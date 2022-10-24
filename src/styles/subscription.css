@@ -76,4 +76,8 @@
         margin-bottom: 0;
         overflow-y: scroll;
     }
+    .link-subscription{
+        align-items: center;
+        width: 25%;
+    }
 }

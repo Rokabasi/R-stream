@@ -3,6 +3,7 @@ import { GoogleLogin } from "react-google-login";
 import { render } from "@testing-library/react";
 import "../styles/login.css";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 
 const Login = () => {
@@ -23,7 +24,12 @@ const Login = () => {
     const onFaillure = (res)=>{
         console.log(res);
     }
- 
+    const accessToken = sessionStorage.getItem('accessToken')
+    useEffect(()=>{
+        if(!accessToken){
+            navigate('/')
+        }
+    })
     
     return(
         <>

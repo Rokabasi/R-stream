@@ -84,7 +84,7 @@ export default function PlayVideo(){
             {
                 video.map((data,index)=>{
                     return(
-                    <Link to={`/playvideo/${data.id.videoId}/${data.snippet.channelId}`}>
+                    <Link href="#" to={`/playvideo/${data.id.videoId}/${data.snippet.channelId}`}>
                         <div key={index} className="related-video-card">
                             <div className="related-video-image">
                                 <img src={data.snippet.thumbnails.medium.url} className="related-video-profil" alt=""/>
