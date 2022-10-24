@@ -1,9 +1,6 @@
 import { Link, useParams } from "react-router-dom"
-import Header from "./Header";
 import { useState,useEffect } from "react";
 import "../styles/playvideo.css"
-import NameApp from "./NameApp";
-import logo from "../images/love.jpg"
 import numeral from "numeral"
 import moment from "moment/moment"
 
@@ -48,7 +45,7 @@ export default function PlayVideo(){
                 src={`https://www.youtube.com/embed/${id}`}
                 title="YouTube video player"  
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
+                allowfullscreen = "allowfullscreen">
             </iframe>
             <div className="card-played-video-infos">
                 {

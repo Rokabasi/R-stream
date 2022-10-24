@@ -28,9 +28,9 @@ export default function Content () {
                 {
                     videoLinked.map((data, index) =>{
                         return (
-                            <Link to={`/subscriptionPlayList/${data.snippet.resourceId.channelId}`} className='link'>
+                            <Link to={`/subscriptionPlayList/${data.snippet.resourceId.channelId}`} className='link link-subscription'>
                             <div key={index}>   
-                                <img src={data.snippet.thumbnails.medium.url} alt="" className="card-profil"/>
+                                <img src={data.snippet.thumbnails.default.url} alt="" className="card-profil"/>
                                 <div className="video-detail">
                                 <h3>{data.snippet.title}</h3>
                                 <div>

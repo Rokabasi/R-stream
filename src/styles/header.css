@@ -59,6 +59,10 @@ header{
     background-color: #2F3238;
     outline: none;
   }
+  .input-field::placeholder{
+    color: white;
+    font-weight: 300;
+  }
   
   .button-search{
     border-radius : 0px 10px 10px 0;
@@ -67,6 +71,7 @@ header{
     padding: 7px;
     margin-top: 0;
     border: none;
+    color: white;
   }
 
   .my-icons{
@@ -79,11 +84,11 @@ header{
   color: white;
   }
   .btn-logout{
-    
     background-color: #3B3E46;
     color: white;
     font-size: 1.1rem;
     width: 100%;
+    border: none;
   }
   .fa-moon, .fa-regular{
     color: white;

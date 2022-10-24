@@ -9,7 +9,7 @@ export default function Content () {
     const accessToken = sessionStorage.getItem('accessToken')
     const [videoLinked, setVideoLinked] = useState([])
     useEffect(()=>{
-        fetch('https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=gaming&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU',
+        fetch('https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=24&q=gaming&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU',
         { method : 'GET',headers:new Headers({'Authorization': `Bearer ${accessToken}`})})     
         .then(res => res.json())
         .then(data => {

@@ -11,7 +11,7 @@
 }
 .card-main .subscription-like{
     text-decoration: none;
-    width: 25%;
+    width: 20%;
     display: flex;
     height: 130px;
     border: 1px solid red;
@@ -25,12 +25,17 @@
     background-color: #2F3238;
     gap: 1rem;
     
+    
 }
 .card{
 
 }
+.link-subscription{
+    align-items: center;
+    width: 20%;
+}
 .card-profil{
-    margin-left: 10%;
+    margin-left: 40%;
     height: 70%;
 }
 .video-detail h3{
@@ -38,7 +43,6 @@
     font-weight: 400;
     margin-top: 5%;
     font-size: 1.3rem;
-   text-align: center;
 }
 .video-detail h5{
     text-align: center;
