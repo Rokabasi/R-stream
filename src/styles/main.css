@@ -24,6 +24,7 @@
     border:  1px solid#3B3E46;
     padding-bottom: 1%;
     overflow-wrap: break-word;
+    transition: all .9s ease-in-out;
 }
 .link:hover{
     transform: scale(1.1);

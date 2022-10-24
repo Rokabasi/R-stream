@@ -47,6 +47,10 @@ a{
 }
 .abonnements{
   font-size: 1rem;
+  background-color: #4b4c52;
+  color: white;
+  padding-bottom: 10%;
+  font-weight: 400;
   }
 .active, .side-bar ul li:hover{
   border: none;
