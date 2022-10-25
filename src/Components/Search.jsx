@@ -6,27 +6,27 @@ import moment from "moment/moment"
 export default function Content () {
 
     const {id} = useParams()
-    console.log(id);
     const accessToken = sessionStorage.getItem('accessToken')
-    const [videoLinked, setVideoLinked] = useState([])
-    useEffect(()=>{
+    const [searchVideo, setSearchVideo] = useState([])
+    const fecthData = ()=> {
         fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${id}&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU`,
         { method : 'GET',headers:new Headers({'Authorization': `Bearer ${accessToken}`})})     
         .then(res => res.json())
         .then(data => {
-            setVideoLinked(data.items)
+            setSearchVideo(data.items)
             })
         .catch((error) => console.log(error))
-    },[id]);
-       
-    console.log(videoLinked);
+    }
+    useEffect( () => {
+        fecthData()  
+    },[id, accessToken] );
 
     return(
         <>
           
             <main className="card-main">
                 {
-                    videoLinked.map((data, index) =>{
+                    searchVideo.map((data, index) =>{
                         return (
                         <Link to={`/playvideo/${data.id.videoId}/${data.snippet.channelId}`} className='link'>
                     <div key={index}>

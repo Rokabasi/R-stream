@@ -8,9 +8,11 @@
     height: 3.4rem;
     margin-top: 60px;
     display: flex;
+    gap: 1rem;
    width: 100%;
    padding-left: 1%;
-    
+   padding-right: 20px;
+   z-index: 1;
 }
 .link-video-critere{
     background-color: #42464F;

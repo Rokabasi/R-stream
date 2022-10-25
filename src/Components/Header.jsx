@@ -10,8 +10,11 @@ export default function Header (){
     const [inputValue,setInputValue] = useState("")
     const profilImage = JSON.parse(sessionStorage.getItem('profilImage'))
     const navigate = useNavigate()
-    const handleChange = event =>{
+    const handleChange = (event) =>{
         setInputValue(event.target.value)
+        if (inputValue){
+            navigate("/")
+        }
     }
     console.log(inputValue);
     const onSuccess = () => {
@@ -32,7 +35,12 @@ export default function Header (){
             </div>
             <form className='search-input'>
                 <input onChange={handleChange}  className='input-field' type="text" placeholder='Search'/>
-            <Link to={`/search/${inputValue}`}> <button  className='button-search' type="submit"><i className="fa fa-search"></i></button></Link>   
+            <Link to={`/search/${inputValue}`}> 
+                <button  className='button-search' type="submit">
+                    <i className="fa fa-search"></i>
+                </button>
+            
+            </Link>   
             </form>
             <div className='my-icons'>
                 <i className="fa-solid fa-bell"></i>

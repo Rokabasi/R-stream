@@ -3,12 +3,13 @@ import "../styles/videocritere.css"
 import { Link } from "react-router-dom"
 import numeral from "numeral"
 import moment from "moment/moment"
-
+import Loader from "./loader"
 
 export default function Content () {
     
    
     const [video, setVideo] = useState([])
+    const [loading, setLoading] = useState(true)
     const accessToken = sessionStorage.getItem('accessToken')
     useEffect(()=>{
         fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=36&&region&Code=US&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU',
@@ -16,6 +17,7 @@ export default function Content () {
         .then(res => res.json())
         .then(data => {
             setVideo(data.items)
+            setLoading(false)
         })
     },[accessToken]);
 
@@ -33,7 +35,7 @@ export default function Content () {
     // },[video])
    
     const buttonText = [
-        "Toutes","Foot","Music","NBA","SQL","react","Lakers","Africa","Ninho","Fally","Kinshasa",
+        "All","Foot","Music","NBA","SQL","react","Lakers","Africa","Ninho","Fally","html","Tiakola","css"
     ] 
 
     return(
@@ -49,7 +51,7 @@ export default function Content () {
 
             <main className="main-card">
                 {
-                    video.map((data, index) =>{
+                    !loading ? (video.map((data, index) =>{
                         return (
                             
                     <Link to={`/playvideo/${data.id}/${data.snippet.channelId}`} className='link'>
@@ -69,9 +71,7 @@ export default function Content () {
                         </div>  
                         </div> 
                     </div>
-                    </Link>
-                        )
-                    } )
+                    </Link>)})) : (<Loader/>)
                 }
                  </main>
                 <div>

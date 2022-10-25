@@ -16,7 +16,6 @@
     margin-bottom: 3%;
     border:  1px solid#3B3E46;
 }
-
 .related-video-profil{
     width: 140px;
     height: 100px;
@@ -42,6 +41,7 @@
     padding-top: 5%;
     text-transform: capitalize;
  }
+ 
  .card-played-video-infos{
    color: white;
  }
