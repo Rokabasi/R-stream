@@ -3,28 +3,34 @@ import "../styles/main.css"
 import { Link } from "react-router-dom"
 import numeral from "numeral"
 import moment from "moment/moment"
-
+import Loader from "./loader"
 
 export default function Content () {
 
     const accessToken = sessionStorage.getItem('accessToken')
-    const [videoLinked, setVideoLinked] = useState([])
-    useEffect(()=>{
+    const [videoLiked, setVideoLiked] = useState([])
+    const [loading, setLoading] = useState(true)
+    const fetchVideo = () => {
+
         fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&myRating=like&maxResults=16&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU',
         { method : 'GET',headers:new Headers({'Authorization': `Bearer ${accessToken}`})})     
         .then(res => res.json())
         .then(data => {
-            setVideoLinked(data.items)
+            setVideoLiked(data.items)
+            setLoading(false)
             })
+    }
+    useEffect(()=>{
+        fetchVideo()
     },[accessToken]);
     
     return(
         <>
        
-            
-            <main className="card-main">
+            {
+                !loading ? <main className="card-main">
                 {
-                    videoLinked.map((data, index) =>{
+                    videoLiked.map((data, index) =>{
                         return (
                             <Link to={`/playvideo/${data.id}/${data.snippet.channelId}`} className='link'>
                             <div key={index}>   
@@ -47,7 +53,9 @@ export default function Content () {
                     } )
                 }
                 
-            </main>
+            </main> : (<Loader/>) 
+            }
+            
             
       
         </>
