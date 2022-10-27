@@ -1,10 +1,11 @@
-import loader from "../images/1uoA.gif"
+import loader from "../images/loader.gif"
+import "../styles/loader.css"
 
 export default function Loader (){
 
     return(
         <>
-        <div>
+        <div className="loader">
             <img src={loader} alt="loader"/>
         </div>
         </>

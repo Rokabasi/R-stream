@@ -35,7 +35,7 @@ export default function Content () {
     // },[video])
    
     const buttonText = [
-        "All","Foot","Music","NBA","SQL","react","Lakers","Africa","Ninho","Fally","html","Tiakola","css"
+        "All","Foot","Music","NBA","SQL","react","Lakers","Africa","Ninho","Fally","html","Tiakola",
     ] 
 
     return(
