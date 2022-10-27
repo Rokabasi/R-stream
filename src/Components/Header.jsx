@@ -9,7 +9,6 @@ export default function Header (){
     
     const [inputValue,setInputValue] = useState("")
     const profilImage = JSON.parse(sessionStorage.getItem('profilImage'))
-    console.log(profilImage);
     const navigate = useNavigate()
     const handleChange = (event) =>{
         setInputValue(event.target.value)
@@ -17,14 +16,12 @@ export default function Header (){
             navigate("/")
         }
     }
-    console.log(inputValue);
     const onSuccess = () => {
         console.log('logout success');
         sessionStorage.setItem('login', false)
         navigate("/") 
         sessionStorage.clear()
     }
-   
    
     return (
         <header>

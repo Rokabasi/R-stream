@@ -11,14 +11,17 @@ export default function Content () {
     const [video, setVideo] = useState([])
     const [loading, setLoading] = useState(true)
     const accessToken = sessionStorage.getItem('accessToken')
-    useEffect(()=>{
+    const fetchData = ()=> {
         fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=36&&region&Code=US&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU',
-        { method : 'GET',headers:new Headers({'Authorization': `Bearer ${accessToken}`})})     
-        .then(res => res.json())
-        .then(data => {
-            setVideo(data.items)
-            setLoading(false)
-        })
+                        {   method : 'GET',
+                            headers: new Headers({'Authorization': `Bearer ${accessToken}`})})     
+                        .then(res => res.json())
+                        .then(data => {
+                            setVideo(data.items)
+                            setLoading(false)
+                    })}
+    useEffect(()=>{
+        fetchData()
     },[accessToken]);
 
     // useEffect(()=>{
