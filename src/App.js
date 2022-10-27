@@ -37,7 +37,7 @@ function App() {
 
        const Layout = ({children}) => {
         return (
-              <>
+              <div className='content'>
                 <Header/>
                 <div className='main-content-app'>
                   <SideBar/>
@@ -45,7 +45,7 @@ function App() {
                     {children}
                   </container>
                 </div>
-              </>
+              </div>
                 )
        }
   return (

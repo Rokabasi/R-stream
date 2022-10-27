@@ -10,8 +10,9 @@
     display: flex;
     gap: 1rem;
    width: 100%;
-   padding-left: 35px;
-   padding-right: 41px;
+   padding-left: 10px;
+  padding-right: 10px;
+  
    z-index: 1;
    overflow: hidden;
 }

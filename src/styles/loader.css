@@ -1,7 +1,7 @@
 .loader{
-    margin-left: 40%;
-    margin-top: 5%;
+    margin-left: 80vh;
+    margin-top: 30vh;
 }
 .loader img{
-    height: 50%;
+    height: 60px;
 }

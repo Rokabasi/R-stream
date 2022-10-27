@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+.content{
+    width: 100%;
+}
 .App{
     display: flex;
     flex-direction: row;
