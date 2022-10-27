@@ -16,13 +16,10 @@ const Login = () => {
         sessionStorage.setItem('accessToken', res.accessToken)
         sessionStorage.setItem('login', true)
         sessionStorage.setItem('profilImage',JSON.stringify(res.profileObj.imageUrl))
-        const profilImage = sessionStorage.getItem('profilImage')
-        console.log(profilImage);
         navigate('/main')
-
     }
     const onFaillure = (res)=>{
-        console.log(res);
+        navigate('/')
     }
     const accessToken = sessionStorage.getItem('accessToken')
     useEffect(()=>{

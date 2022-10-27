@@ -12,9 +12,6 @@ export default function Header (){
     const navigate = useNavigate()
     const handleChange = (event) =>{
         setInputValue(event.target.value)
-        if (inputValue){
-            navigate("/")
-        }
     }
     const onSuccess = () => {
         console.log('logout success');
