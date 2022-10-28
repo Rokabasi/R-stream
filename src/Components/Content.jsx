@@ -7,7 +7,6 @@ import Loader from "./loader"
 
 export default function Content () {
     
-   
     const [video, setVideo] = useState([])
     const [loading, setLoading] = useState(true)
     const accessToken = sessionStorage.getItem('accessToken')
@@ -24,18 +23,6 @@ export default function Content () {
         fetchData()
     },[accessToken]);
 
-    // useEffect(()=>{
-    //     for ( let i = 0; i < video.length ; i++){
-    //         channelId.push(video[i].snippet.channelId)
-    //         fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId[i]}&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU`,
-    //     { method : 'GET',headers:new Headers({'Authorization': `Bearer ${accessToken}`})})     
-    //     .then(res => res.json())
-    //     .then(data => {
-    //        channelImage.push(data.items)
-    //     })
-    //     }
-    //     console.log(channelImage[0]);
-    // },[video])
    
     const buttonText = [
         "All","Foot","Music","NBA","SQL","react","Lakers","Africa","Ninho","Fally","Html","css"
