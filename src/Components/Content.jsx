@@ -69,10 +69,7 @@ export default function Content () {
                 </div>
                 
                 : (<Loader/>)
-            }
-            
-               
+            } 
             </div>
-      
     )
 }

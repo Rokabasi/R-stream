@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react"
 import "../styles/like.css"
-import { Link,useParams } from "react-router-dom"
+import { Link,useLocation,useParams } from "react-router-dom"
 import moment from "moment/moment"
 import Loader from "./loader"
 
 export default function Content () {
 
-    const {id} = useParams()
+    const location = useLocation()
+    const inputValue = location.state.inputValue
+    console.log(inputValue);
     const accessToken = sessionStorage.getItem('accessToken')
     const [searchVideo, setSearchVideo] = useState([])
     const [loading,setLoading] = useState(true)
     const fecthData = ()=> {
-        fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${id}&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU`,
+        fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${inputValue}&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU`,
         { method : 'GET',headers:new Headers({'Authorization': `Bearer ${accessToken}`})})     
         .then(res => res.json())
         .then(data => {
@@ -21,7 +23,7 @@ export default function Content () {
     }
     useEffect( () => {
         fecthData()  
-    },[id, accessToken] );
+    },[inputValue, accessToken] );
 
     return(
         <>
@@ -51,7 +53,6 @@ export default function Content () {
             }
         </main> : (<Loader/>)
         }  
-           
         </>
     )
 }

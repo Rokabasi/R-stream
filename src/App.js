@@ -64,7 +64,7 @@ function App() {
         <Route path='/music' element ={<Layout><Music/></Layout>}/>
         <Route path='/sports' element ={<Layout><Sports/></Layout>}/>
         <Route path='/news' element={<Layout><News/></Layout>}/>
-        <Route path="/search/:id" element={<Layout><Search/></Layout>}/>
+        <Route path="/search" element={<Layout><Search/></Layout>}/>
       </Routes>
     </AccountInfosContext.Provider>
     </div>

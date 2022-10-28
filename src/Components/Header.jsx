@@ -14,12 +14,16 @@ export default function Header (){
         setInputValue(event.target.value)
     }
     const onSuccess = () => {
-        console.log('logout success');
         sessionStorage.setItem('login', false)
         navigate("/") 
         sessionStorage.clear()
     }
-   
+    const handleClick = (event)=>{
+        event.preventDefault()
+        if (inputValue !== ""){
+            navigate("/search", {state : {inputValue : inputValue}})
+        }
+    }
     return (
         <header>
             <div className='header'>
@@ -28,14 +32,13 @@ export default function Header (){
                     <h1>R Stream</h1>    
                 </Link>
             </div>
-            <form className='search-input'>
-                <input onChange={handleChange}  className='input-field' type="text" placeholder='Search'/>
-            <Link to={`/search/${inputValue}`}> 
+            <form className='search-input' onSubmit={handleClick}>
+                <input onChange={handleChange}  className='input-field' type="text" placeholder='Search' required/>
+            {/* <Link to={`/search/${inputValue}`}>  */}
                 <button  className='button-search' type="submit">
                     <i className="fa fa-search"></i>
                 </button>
-            
-            </Link>   
+            {/* </Link>    */}
             </form>
             <div className='my-icons'>
                 <i className="fa-solid fa-bell"></i>
