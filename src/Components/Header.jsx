@@ -20,7 +20,7 @@ export default function Header (){
     }
     const handleClick = (event)=>{
         event.preventDefault()
-        if (inputValue !== ""){
+        if (inputValue.trim()){
             navigate("/search", {state : {inputValue : inputValue}})
         }
     }
@@ -34,11 +34,10 @@ export default function Header (){
             </div>
             <form className='search-input' onSubmit={handleClick}>
                 <input onChange={handleChange}  className='input-field' type="text" placeholder='Search' required/>
-            {/* <Link to={`/search/${inputValue}`}>  */}
+           
                 <button  className='button-search' type="submit">
                     <i className="fa fa-search"></i>
                 </button>
-            {/* </Link>    */}
             </form>
             <div className='my-icons'>
                 <i className="fa-solid fa-bell"></i>

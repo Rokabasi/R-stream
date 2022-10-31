@@ -88,6 +88,7 @@ export default function PlayVideo(){
                 </div>
             </div>
             <div className="related-video-main">
+                <h1>Relared video</h1>
                 {
                     video.map((data,index)=>{
                         return(
