@@ -7,15 +7,13 @@
 .main{
     width: 85%;
     margin-left:25%;
-
 }
 .card-main .subscription-like{
     text-decoration: none;
-    width: 25%;
+    width: 22%;
     display: flex;
     height: 130px;
-    border: 1px solid red;
-    
+    transition: all .9s ease-in-out;
 }
 .card-main{
     display: flex;
@@ -24,21 +22,24 @@
     margin-top: 60px;
     background-color: #2F3238;
     gap: 1rem;
-    
+}
+.card-main-channel{
+    text-align: center;
 }
 .card{
 
 }
+.link-subscription{
+    width: 20%;
+}
 .card-profil{
-    margin-left: 10%;
-    height: 70%;
+    width: 100%;
 }
 .video-detail h3{
     color: white;
     font-weight: 400;
     margin-top: 5%;
-    font-size: 1.3rem;
-   text-align: center;
+    text-align: center;
 }
 .video-detail h5{
     text-align: center;
@@ -70,5 +71,9 @@
         margin-left: 0;
         margin-bottom: 0;
         overflow-y: scroll;
+    }
+    .link-subscription{
+        align-items: center;
+        width: 25%;
     }
 }

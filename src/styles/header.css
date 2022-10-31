@@ -31,10 +31,10 @@ header{
 }
 .search-input{
     padding-top: 1.4%;
-    width: 50%;
-    padding-left: 10%;
+    width: 70%;
+    padding-left: 25%;
     display: flex;
-    height: 50px;
+    height: 51px;
 }
 .search-input .icon{
     position: absolute;
@@ -59,6 +59,11 @@ header{
     background-color: #2F3238;
     outline: none;
   }
+  .input-field::placeholder{
+    color: white;
+    font-weight: 300;
+    font-size: 0.8rem;
+  }
   
   .button-search{
     border-radius : 0px 10px 10px 0;
@@ -67,23 +72,24 @@ header{
     padding: 7px;
     margin-top: 0;
     border: none;
+    color: white;
   }
 
   .my-icons{
     display: flex;
     width: 7%;
-  margin-left: 21%;
+  margin-left: 1.5%;
   align-items: center;
   padding-left: 3%;
   gap: 2rem;
   color: white;
   }
   .btn-logout{
-    border: none;
     background-color: #3B3E46;
     color: white;
     font-size: 1.1rem;
     width: 100%;
+    border: none;
   }
   .fa-moon, .fa-regular{
     color: white;

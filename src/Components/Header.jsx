@@ -10,18 +10,20 @@ export default function Header (){
     const [inputValue,setInputValue] = useState("")
     const profilImage = JSON.parse(sessionStorage.getItem('profilImage'))
     const navigate = useNavigate()
-    const handleChange = event =>{
+    const handleChange = (event) =>{
         setInputValue(event.target.value)
     }
-    console.log(inputValue);
     const onSuccess = () => {
-        console.log('logout success');
         sessionStorage.setItem('login', false)
         navigate("/") 
         sessionStorage.clear()
     }
-   
-   
+    const handleClick = (event)=>{
+        event.preventDefault()
+        if (inputValue.trim()){
+            navigate("/search", {state : {inputValue : inputValue}})
+        }
+    }
     return (
         <header>
             <div className='header'>
@@ -30,9 +32,12 @@ export default function Header (){
                     <h1>R Stream</h1>    
                 </Link>
             </div>
-            <form className='search-input'>
-                <input onChange={handleChange}  className='input-field' type="text" placeholder='Search'/>
-            <Link to={`/search/${inputValue}`}> <button  className='button-search' type="submit"><i className="fa fa-search"></i></button></Link>   
+            <form className='search-input' onSubmit={handleClick}>
+                <input onChange={handleChange}  className='input-field' type="text" placeholder='Search' required/>
+           
+                <button  className='button-search' type="submit">
+                    <i className="fa fa-search"></i>
+                </button>
             </form>
             <div className='my-icons'>
                 <i className="fa-solid fa-bell"></i>
