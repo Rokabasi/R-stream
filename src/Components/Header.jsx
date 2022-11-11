@@ -8,7 +8,7 @@ const clientId = '757010538260-arnh8a0826kpi72fdqcb08fsp7agceiq.apps.googleuserc
 export default function Header (){
     
     const [inputValue,setInputValue] = useState("")
-    const profilImage = JSON.parse(sessionStorage.getItem('profilImage'))
+    const profilImage =  (sessionStorage.getItem('profilImage'))
     const navigate = useNavigate()
     const handleChange = (event) =>{
         setInputValue(event.target.value)

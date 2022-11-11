@@ -5,7 +5,7 @@
 }
 .video-critere{
     background-color: #42464F;
-    height: 3.4rem;
+    height: 3.5rem;
     margin-top: 60px;
     display: flex;
     gap: 1rem;
@@ -52,10 +52,12 @@
 button:active{
     background-color: #1d2025;
 }
-@media screen  and (max-width:450px) {
+@media screen  and (max-width:980px) {
     .video-critere{
-        padding: 2%;
-        margin-top: 60px;
+        /* padding: 2%; */
+        /* margin-top: 60px; */
+        display: none;
+        overflow: hidden;
     }
     button, .all-video{
         padding: 2% 4%;
