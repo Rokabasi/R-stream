@@ -86,6 +86,29 @@ export default function PlayVideo(){
                         })
                     }
                 </div>
+                <div>
+                    <div>
+                        <h2>12 Comments</h2>
+                        <button>Display most popular</button>
+                    </div>
+                    <div>
+                        <div>
+                            <img src="" alt="mon profil"/>
+                        </div>
+                        <div>
+                            <h3>Romain kabasi</h3>
+                            <h5>17/11/2022</h5>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque possimus, obcaecati incidunt sapiente dolore odio et! Sunt amet cupiditate, qui a iure voluptatem, dicta eius tempore non, suscipit illum laudantium?                                
+                            </p>
+                            <div>
+                                <h4>Reply</h4>
+                                <h4>4</h4>
+                                <h4>4</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
             <div className="related-video-main">
                 <h1>Relared video</h1>

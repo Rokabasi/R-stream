@@ -11,6 +11,7 @@ const Login = () => {
     const navigate = useNavigate()
     const clientId = '757010538260-arnh8a0826kpi72fdqcb08fsp7agceiq.apps.googleusercontent.com'  
     const onSuccess = (res)=>{
+        console.log(res);
         const userImage =res.profileObj.imageUrl;
         sessionStorage.setItem('accessToken', res.accessToken)
         sessionStorage.setItem('login', true)

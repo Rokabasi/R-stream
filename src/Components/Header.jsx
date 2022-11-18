@@ -9,6 +9,7 @@ export default function Header (){
     
     const [inputValue,setInputValue] = useState("")
     const profilImage =  (sessionStorage.getItem('profilImage'))
+    console.log(profilImage);
     const navigate = useNavigate()
     const handleChange = (event) =>{
         setInputValue(event.target.value)
@@ -23,6 +24,9 @@ export default function Header (){
         if (inputValue.trim()){
             navigate("/search", {state : {inputValue : inputValue}})
         }
+    }
+    const handleAccountSetting = ()=>{
+        navigate("/account")
     }
     return (
         <header>
@@ -41,7 +45,7 @@ export default function Header (){
             </form>
             <div className='my-icons'>
                 <i className="fa-solid fa-bell"></i>
-                <div><img src={profilImage} alt='profil' className="count-img"/></div>
+                <div><img src={profilImage} alt='profil' onClick={handleAccountSetting} className="count-img"/></div>
             <Link to="/">
             <GoogleLogout
                 clientId={clientId}

@@ -109,6 +109,7 @@ header{
   .count-img{
     border-radius: 50px;
     width: 30px;
+    cursor: pointer;
   }
 
 @media screen and (max-width:980px) {
