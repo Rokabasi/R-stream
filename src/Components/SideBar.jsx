@@ -17,11 +17,9 @@ export default function SideBar(){
         .then(res => res.json())
         .then(data => {
             setsubscriptionChannel(data.items)
-            console.log(data.items);
             })
     },[accessToken]);
     const onSuccess = () => {
-        console.log('logout success');
         sessionStorage.setItem('login', false)
         navigate("/") 
         sessionStorage.clear()

@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react"
 import "../styles/videocritere.css"
-import { Link } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
 import numeral from "numeral"
 import moment from "moment/moment"
 import Loader from "./loader"
+import { useNavigate } from "react-router-dom"
 
 export default function Content () {
     
     const [video, setVideo] = useState([])
+    const [tagValue, setTagValue] = useState("")
     const [loading, setLoading] = useState(true)
     const accessToken = sessionStorage.getItem('accessToken')
     const fetchData = ()=> {
@@ -23,7 +25,18 @@ export default function Content () {
         fetchData()
     },[accessToken]);
 
-   
+    const navigate = useNavigate()
+
+    // const handleChange = (event) =>{
+    //     setTagValue(event.target.value)
+    // }
+
+    const handleTag = (event) => {
+        event.preventDefault()
+        setTagValue(event.target.value)
+        navigate("/search", {state : {tagValue : tagValue}})
+    }
+
     const buttonText = [
         "All","Foot","Music","NBA","SQL","react","Lakers","Africa","Ninho","Fally","Html","css"
     ] 
@@ -36,7 +49,7 @@ export default function Content () {
                     <div className="video-critere">
                         {buttonText.map((value, i) => {
                             return(
-                                <Link to={`/search/${value}`} className="link-video-critere"> <button key={i} className="all-video" type="button">{value}</button></Link>  
+                                <Link to={`/search/${value}`} className="link-video-critere"> <button key={i} className="all-video" type="button" onClick={handleTag}>{value}</button></Link>  
                             )})
                         }
                     </div>

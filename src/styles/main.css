@@ -14,6 +14,7 @@
     padding: 2% 1%;
     background-color: #2F3238;
     gap: 1rem; 
+ 
 }
 .link{
     text-decoration: none;
@@ -83,18 +84,31 @@ text-transform: uppercase;
     border: 1px solid red;
     
 }
-@media screen and (max-width:670px) {
+@media screen and (max-width:980px) {
     .main-app{
-        width: 100%;
-        margin-left: 0;
-        margin-bottom: 0;
-        overflow-y: scroll;
+        margin-left: 17%;
+        width: 83%;
+        margin-top: 65px;
+    }
+    .main-card{
+        padding-top: 13%;
     }
     .link{
-        text-decoration: none;
+        width: 26%;
+    }
+    
+}
+@media screen and (max-width:670px) {
+  
+   
+    .link{
+        width: 40%;
+    }
+}
+@media screen and (max-width:430px) {
+  
+   
+    .link{
         width: 70%;
-        margin-bottom: 25px;
-        margin-left: auto;
-        margin-right: auto;
     }
 }

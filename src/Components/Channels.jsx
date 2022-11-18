@@ -11,7 +11,7 @@ export default function Content () {
 
     const fetchChannel = () => {
         
-        fetch('https://youtube.googleapis.com/youtube/v3/subscriptions?part=snippet%2CcontentDetails%2CsubscriberSnippet%2CsubscriberSnippet&maxResults=16&mine=true&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU',
+        fetch('https://youtube.googleapis.com/youtube/v3/subscriptions?part=snippet%2CcontentDetails%2CsubscriberSnippet%2CsubscriberSnippet&maxResults=24&mine=true&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU',
         {   method : 'GET',
             headers:  new Headers({'Authorization': `Bearer ${accessToken}`})})     
         .then(res => res.json())

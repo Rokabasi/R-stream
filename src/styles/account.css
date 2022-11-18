@@ -1,0 +1,77 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+.main-account{
+    margin: 7vh 30vh;
+    padding: 10vh 5vh;
+    display: flex;
+    gap: 5%;
+    width: 85%;
+}
+.account-infos{
+    padding: 2% 5%;
+    background-color:#21252e ;
+    color: rgb(255, 255, 255);
+    border-radius: 1%;
+    width: 40%;
+}
+.account-infos > img {
+    border-radius: 50%;
+    width: 50%;
+    margin-left: 25%;
+  
+}
+.account-infos > h4{
+    font-weight: 400;
+    padding: 3% 0%;
+    font-size: 115%;
+}
+.account-infos> h5{
+    font-weight: 400;
+    text-align: center;
+    font-size: 125%;
+    padding: 3%;
+}
+
+
+.account-seting{
+    padding: 2% 3%; 
+    background-color:#21252e ;
+    color: rgb(255, 255, 255);
+    border-radius: 1%;
+    width: 60%;
+}
+.account-seting > form > h3{
+    padding-bottom: 5%;
+}
+.account-seting > form > .form-group{
+    display: flex;
+    padding: 2% 2% 7% 0;
+    gap: 3%;
+}
+.account-seting > form > .form-group input{
+  width: 90%;
+  height: 2rem;
+  border: none;
+  border-radius: 2px;
+  padding-left: 1%;  
+}
+.account-seting > form > .form-group input:focus{ 
+    outline: none;
+}
+.account-seting  > form > .form-group label{
+   font-size: 105%;
+   padding-top: 1%;
+   width: 40%;
+}
+.account-seting > form > button{
+    padding: 3% 10%;
+    background-color: #5663D1;
+    color: #ffff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}

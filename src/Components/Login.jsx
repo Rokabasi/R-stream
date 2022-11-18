@@ -11,22 +11,22 @@ const Login = () => {
     const navigate = useNavigate()
     const clientId = '757010538260-arnh8a0826kpi72fdqcb08fsp7agceiq.apps.googleusercontent.com'  
     const onSuccess = (res)=>{
-        console.log(res)
-        console.log(res.profileObj.imageUrl);
+        console.log(res);
+        const userImage =res.profileObj.imageUrl;
         sessionStorage.setItem('accessToken', res.accessToken)
         sessionStorage.setItem('login', true)
-        sessionStorage.setItem('profilImage',JSON.stringify(res.profileObj.imageUrl))
+        sessionStorage.setItem('profilImage',userImage)
         navigate('/main')
     }
     const onFaillure = (res)=>{
         navigate('/')
     }
     const accessToken = sessionStorage.getItem('accessToken')
-    useEffect(()=>{
-        if(!accessToken){
-            navigate('/')
-        }
-    })
+    // useEffect(()=>{
+    //     if(!accessToken){
+    //         navigate('/')
+    //     }
+    // })
     
     return(
         <>
