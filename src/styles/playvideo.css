@@ -94,8 +94,8 @@
     text-transform: capitalize;
  }
  .channel-infos .channel-infos-image{
-   width: 60px;
-   height: 50px;
+   width: 7%;
+   height: 3rem;
    border-radius: 50%;
  }
  .channel-infos button{
@@ -116,6 +116,127 @@
     font-weight: 400;
     padding-top: 4%;
  }
+.comment-main{
+   color: white;
+   padding-top: 5%;
+}
+.comment-main > .comment-header{
+   display: flex;
+   gap: 15%;
+   padding-bottom: 3%;
+
+}
+.comment-main > .comment-header >  button{
+   background-color: #5663D1;
+   border: none;
+   width: 12%;
+   height: 2rem;
+   color: white;
+   border-radius: 5px;
+}
+.add-comment{
+   display: flex;
+   padding-bottom: 7%;
+   padding-left: 1%;
+   padding-top: 2%;
+   gap: 3%;
+}
+.add-comment > .user-picture {
+   width: 6%;
+}
+.add-comment > .user-picture  >img {
+   border-radius: 50%;
+   width: 100%;
+   background-color: #5663D1;
+}
+.add-comment > form {
+   display: flex;
+   gap: 4%;
+   width: 90%;
+}
+.add-comment > form > input {
+   border: none;
+   width: 80%;
+   height: 90%;
+   padding-left: 1%;
+   outline: none;
+}
+
+.add-comment > form > button {
+   background-color: #5663D1;
+   border: none;
+   width: 15%;
+   height: 90%;
+   color: white;
+   border-radius: 2px;
+}
+.comment-contain{
+   padding-left: 1%;
+   display: flex;
+   gap: 3%;
+   padding-bottom: 4%;
+}
+.comment-contain > .user-picture {
+   width: 6%;
+}
+.comment-contain > .user-picture > img {
+   border-radius: 50%;
+   width: 100%;
+}
+.comment-contain > .comment-infos {
+   width: 90%;
+}
+.comment-contain > .comment-infos > h3{
+   font-weight: 500;
+}
+.comment-contain > .comment-infos > h5 {
+   font-weight: 400;
+   color: rgb(187, 184, 181);
+   padding: 1% 0;
+}
+.comment-contain > .comment-infos > p{
+   padding: 2% 0%;
+}
+.comment-details > .comment-detail-infos > h4 {
+   cursor: pointer;
+}
+
+.comment-contain > .comment-infos > .comment-details{
+   display: flex;
+   padding: 1% 0;
+   
+}
+.comment-contain > .comment-infos > .comment-details> .comment-detail-infos{
+   display: flex;
+   width: 40%;
+   gap: 10%;
+}
+.comment-reply-contain{
+   padding-left: 5%;
+   display: flex;
+   gap: 10%;
+   width: 60%;
+}
+.comment-reply-contain  > input {
+   width: 80%;
+   height: 120%;
+   padding-left: 1%;
+   outline: none;
+}
+.comment-reply-contain  > button{
+   width: 15%;
+   background-color: #5663D1;
+   color: white;
+   border: none;
+   height: 120%;
+   border-radius: 2px;
+   cursor: pointer;
+}
+.comment-reply-contain > button:active{
+   border: none;
+   background-color: #5663D1;
+   
+}
  @media screen and (max-width:670px) {
    .play-video-content{
       display: block;
