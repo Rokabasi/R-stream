@@ -13,6 +13,7 @@ export default function PlayVideo(){
     const [videoPlayedInfos, setVideoPlayedInfos] = useState([])
     const [videoPlayedChannelInfos,setVideoPlayedChannelInfos] = useState([])
     const accessToken = sessionStorage.getItem('accessToken')
+    const userId = sessionStorage.getItem('userid')
     const [loading,setLoading] = useState(true)
     const [commentsData, setCommentsData] = useState([])
     const [videoComments, setVideoComments] = useState([])
@@ -25,6 +26,7 @@ export default function PlayVideo(){
     const [newSousComment, setNewSousComment] = useState(true)
     const [newCommentLike, setNewCommentLike] = useState(true)
     const [newCommentDislike, setNewCommentDislike] = useState(true)
+    const [sortState, setSortState] = useState(true)
     const url = 'http://localhost:9000/comments'
     const sendCommentUrl = 'http://localhost:9000/comments/addcomment'
     const sendSousCommentUrl = 'http://localhost:9000/souscomment/add'
@@ -71,7 +73,8 @@ export default function PlayVideo(){
         fetch(url,{ method : 'GET'})
             .then(res => res.json())
             .then(data => {
-                    setCommentsData(data)})                        
+                    setCommentsData(data)
+                console.log(data)})                        
     }
     const getSousComments = () => {
         fetch(getSousCommentsUrl,{method : 'GET'})
@@ -110,9 +113,20 @@ export default function PlayVideo(){
     useEffect( () => {
         getSousComments()
     },[])
+
+    // useEffect( () => {
+    //     setCommentsData(commentsData.sort((a,b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()))
+    //     console.log(commentsData);
+    // },[sortState])
   
+    const handleReply = () =>{
+        const elems = document.getElementsByClassName('comment-reply-contain');
+            for (var i=0;i<elems.length;i+=1){
+                elems[i].style.display = 'block';
+            }
+    }    
     const handleChangeComment = (event) =>{
-    setUserComment(event.target.value)
+        setUserComment(event.target.value)
     }
 
     const handleChangeSousComment = (event) =>{
@@ -125,6 +139,7 @@ export default function PlayVideo(){
             Axios.post(sendCommentUrl,{
                 description: userComment,
                 video : id,
+                userid : userId,
             })
             .then(res => {
                 setUserComment("")
@@ -221,7 +236,7 @@ export default function PlayVideo(){
                    
                         
                         {
-                             commentsData.filter((comments) => comments.video.includes(id))
+                            (commentsData.filter((comments) => comments.video.includes(id))).sort((a,b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime())
                             .map((comments,index)=>{
                                 return(
                                     <>
@@ -235,16 +250,15 @@ export default function PlayVideo(){
                                             <p>{comments.description}</p>
                                             <div className="comment-details">
                                                 <div className="comment-detail-infos">
-                                                    <h4>Reply</h4>
+                                                    <h4 onClick={handleReply}>Reply 2</h4>
                                                     <h4 onClick={onSubmitCommentLike(comments._id)}><i className="fa-solid fa-thumbs-up"></i> {(commentsLike.filter((like) => like.id_comment.includes(comments._id))).length}</h4>
                                                     <h4 onClick={onSubmitCommentDislike(comments._id)}><i className="fa-solid  fa-thumbs-down"></i> {(commentsDislike.filter((dislike) => dislike.id_comment.includes(comments._id))).length}</h4>
                                                 </div>
-                                                <div className="comment-reply-contain">
-                                                        <input type="text" name="reply-comment" id="reply-comment" value={sousComment} onChange={handleChangeSousComment} placeholder="repost to this comment"/>
-                                                        <button onClick={onSubSousComment(comments._id)}>Post</button>
-                                                </div>
-                                               
                                             </div>
+                                            <div className="comment-reply-contain">
+                                                <input type="text" name="reply-comment" id="reply-comment" value={sousComment} onChange={handleChangeSousComment} placeholder="repost to this comment"/>
+                                                <button onClick={onSubSousComment(comments._id)}>Post</button>
+                                            </div>                                               
                                         </div>
                                     </div>
                                     

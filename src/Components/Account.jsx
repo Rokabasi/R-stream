@@ -1,7 +1,25 @@
 import '../styles/account.css'
 import profil from "../images/profil.jpg"
+import Axios from "axios"
+import { useState, useEffect } from "react"
 
 export default function Account (){
+
+    const [userData,setUserData]= useState([])
+    const sendUserData = 'http://localhost:9000/users/user'
+    const userEmail = sessionStorage.getItem('userEmail')
+
+    const getOneUser =  () => {
+        Axios.post(sendUserData,{
+            email: userEmail
+        })
+        .then(res => {console.log(res.data)
+                        setUserData(res.data)            
+        })
+    }   
+    useEffect(()=>{
+        getOneUser()
+    },[])
 
     return(
         <>
@@ -10,7 +28,7 @@ export default function Account (){
                     <img src={profil} alt="mon profil"/>
                         <h5>Romain</h5>
                         <h5>00243 819 600 518</h5>
-                        <h5>kabasiromain@gmail.com</h5>
+                        <h5>{userData.name}</h5>
                         <h4><i className="fa-solid fa fa-bell"></i> Notifications  11</h4>
                         <h4><i class="fa-brands fa fa-square-facebook"></i> Romain Kabashi</h4>
                         <h4><i class="fa-brands fa fa-instagram"></i> Romain Kabashi</h4>
