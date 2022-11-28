@@ -9,6 +9,7 @@ const Logout = () => {
     const onSuccess = () => {
         console.log('logout success');
         sessionStorage.setItem('login', false)
+        sessionStorage.clear()
     }
 
     return(

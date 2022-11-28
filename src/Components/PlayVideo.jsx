@@ -28,7 +28,7 @@ export default function PlayVideo(){
     const [newCommentDislike, setNewCommentDislike] = useState(true)
     const [sortState, setSortState] = useState(true)
     const url = 'http://localhost:9000/comments'
-    const sendCommentUrl = 'http://localhost:9000/comments/addcomment'
+    const sendCommentUrl = 'http://localhost:9000/comments/add'
     const sendSousCommentUrl = 'http://localhost:9000/souscomment/add'
     const getSousCommentsUrl = 'http://localhost:9000/souscomment'
     const getCommentsLikeUrl = 'http://localhost:9000/like'
@@ -87,7 +87,8 @@ export default function PlayVideo(){
         fetch(getCommentsLikeUrl,{method : 'GET'})
             .then(res => res.json())
             .then(data => {
-                setCommentsLike(data)})
+                setCommentsLike(data)
+            console.log(data)})
     }
     const getCommentsDislike = () => {
         fetch(getCommentsDislikeUrl,{method : 'GET'})
@@ -104,11 +105,11 @@ export default function PlayVideo(){
 
     useEffect( () => {
         getCommentsLike()
-    },[newCommentLike])
+    },[newCommentLike,newCommentDislike])
 
     useEffect( () => {
         getCommentsDislike()
-    },[newCommentDislike])
+    },[newCommentDislike,newCommentLike])
 
     useEffect( () => {
         getSousComments()
@@ -163,14 +164,16 @@ export default function PlayVideo(){
     }
     const onSubmitCommentLike = (commentid) => ()=> {
         Axios.post(sendCommentLikeUrl,{
-            commentid : commentid
+            commentId : commentid,
+            userId: userId
         })
         .then(res => { console.log(res.data)
             setNewCommentLike(!newCommentLike) })
     }
     const onSubmitCommentDislike = (commentid) => ()=> {
         Axios.post(sendCommentDislikeUrl,{
-            commentid : commentid
+            commentId : commentid,
+            userId: userId
         })
         .then(res => { console.log(res.data)
             setNewCommentDislike(!newCommentDislike) })
@@ -206,7 +209,7 @@ export default function PlayVideo(){
                         videoPlayedChannelInfos.map((data,index)=> {
                             return(
                                 <>
-                                <div className="channel-infos">
+                                <div className="channel-infos" key={index}>
                                     <img src={data.snippet.thumbnails.default.url} className="channel-infos-image" alt="channel logo"/>
                                     <div className="channel-infos-title">
                                         <h3>{data.snippet.title}</h3>
@@ -251,8 +254,8 @@ export default function PlayVideo(){
                                             <div className="comment-details">
                                                 <div className="comment-detail-infos">
                                                     <h4 onClick={handleReply}>Reply 2</h4>
-                                                    <h4 onClick={onSubmitCommentLike(comments._id)}><i className="fa-solid fa-thumbs-up"></i> {(commentsLike.filter((like) => like.id_comment.includes(comments._id))).length}</h4>
-                                                    <h4 onClick={onSubmitCommentDislike(comments._id)}><i className="fa-solid  fa-thumbs-down"></i> {(commentsDislike.filter((dislike) => dislike.id_comment.includes(comments._id))).length}</h4>
+                                                    <h4 onClick={onSubmitCommentLike(comments._id)}><i className="fa-solid fa-thumbs-up"></i> {(commentsLike.filter((like) => like.idComment.includes(comments._id))).length}</h4>
+                                                    <h4 onClick={onSubmitCommentDislike(comments._id)}><i className="fa-solid  fa-thumbs-down"></i> {(commentsDislike.filter((dislike) => dislike.idComment.includes(comments._id))).length}</h4>
                                                 </div>
                                             </div>
                                             <div className="comment-reply-contain">

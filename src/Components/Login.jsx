@@ -21,7 +21,7 @@ const Login = () => {
             email: email
         })
         .then(res => {console.log(res.data.user)
-            sessionStorage.setItem('userid',res.data.user._id)
+            sessionStorage.setItem('userId',res.data.user._id)
         })
         
     }
@@ -31,7 +31,7 @@ const Login = () => {
         sessionStorage.setItem('accessToken', res.accessToken)
         sessionStorage.setItem('login', true)
         sessionStorage.setItem('profilImage',userImage)
-        sessionStorage.setItem('user', res.profileObj.email)
+        sessionStorage.setItem('userEmail', res.profileObj.email)
         navigate('/main')
        
        onSubmitUser(res.profileObj.givenName,res.profileObj.email)
@@ -40,13 +40,6 @@ const Login = () => {
         navigate('/')
     }
     const accessToken = sessionStorage.getItem('accessToken')
-
-
-    // useEffect(()=>{
-    //     if(!accessToken){
-    //         navigate('/')
-    //     }
-    // })
     
     return(
         <>
