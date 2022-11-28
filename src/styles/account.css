@@ -69,9 +69,10 @@
 }
 .account-seting > form > button{
     padding: 3% 10%;
-    background-color: #5663D1;
+    background-color: #6470da;
     color: #ffff;
     border: none;
-    cursor: pointer;
     border-radius: 4px;
+    cursor: not-allowed;
 }
+

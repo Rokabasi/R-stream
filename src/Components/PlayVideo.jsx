@@ -13,7 +13,8 @@ export default function PlayVideo(){
     const [videoPlayedInfos, setVideoPlayedInfos] = useState([])
     const [videoPlayedChannelInfos,setVideoPlayedChannelInfos] = useState([])
     const accessToken = sessionStorage.getItem('accessToken')
-    const userId = sessionStorage.getItem('userid')
+    const userId = sessionStorage.getItem('userId')
+    console.log(userId);
     const [loading,setLoading] = useState(true)
     const [commentsData, setCommentsData] = useState([])
     const [videoComments, setVideoComments] = useState([])
@@ -155,7 +156,7 @@ export default function PlayVideo(){
         if(sousComment.trim()){
             Axios.post(sendSousCommentUrl,{
                 description: sousComment,
-                commentid : commentid
+                commentId : commentid
             })
             .then(res => {
                 console.log(res.data)
@@ -258,10 +259,28 @@ export default function PlayVideo(){
                                                     <h4 onClick={onSubmitCommentDislike(comments._id)}><i className="fa-solid  fa-thumbs-down"></i> {(commentsDislike.filter((dislike) => dislike.idComment.includes(comments._id))).length}</h4>
                                                 </div>
                                             </div>
-                                            <div className="comment-reply-contain">
-                                                <input type="text" name="reply-comment" id="reply-comment" value={sousComment} onChange={handleChangeSousComment} placeholder="repost to this comment"/>
-                                                <button onClick={onSubSousComment(comments._id)}>Post</button>
-                                            </div>                                               
+                                            <div>
+                                                <div className="comment-reply-contain">
+                                                    <input type="text" name="reply-comment" id="reply-comment" value={sousComment} onChange={handleChangeSousComment} placeholder="repost to this comment"/>
+                                                    <button onClick={onSubSousComment(comments._id)}>Post</button>
+                                                </div>
+                                                <div className="comment-reply">
+                                                    <div className="user-picture">
+                                                        <img src={profilImage} alt="" />
+                                                    </div>
+                                                    <div className="comment-reply-detail">
+                                                        <h4>Romain</h4>
+                                                        <h5>le 22 novembre</h5>
+                                                        <h5>Premier sous commentaire</h5>
+                                                        <div className="comment-reply-detail-infos">
+                                                            <h4 onClick={handleReply}>Reply 2</h4>
+                                                            <h4 onClick={onSubmitCommentLike(comments._id)}><i className="fa-solid fa-thumbs-up"></i> {(commentsLike.filter((like) => like.idComment.includes(comments._id))).length}</h4>
+                                                            <h4 onClick={onSubmitCommentDislike(comments._id)}><i className="fa-solid  fa-thumbs-down"></i> {(commentsDislike.filter((dislike) => dislike.idComment.includes(comments._id))).length}</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>   
+                                            </div>
+                                                                                       
                                         </div>
                                     </div>
                                     

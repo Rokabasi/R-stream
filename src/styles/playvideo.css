@@ -214,22 +214,23 @@
 .comment-reply-contain{
    padding-top: 3%;
    display: flex;
-   gap: 10%;
    width: 60%;
    display: none;
+   /* gap: 10%; */
 }
 .comment-reply-contain  > input {
    width: 80%;
-   height: 120%;
+   height: 1.5rem;
    padding-left: 1%;
    outline: none;
 }
 .comment-reply-contain  > button{
    width: 15%;
+   margin-left: 5%;
    background-color: #5663D1;
    color: white;
    border: none;
-   height: 120%;
+   height: 1.48rem;
    border-radius: 2px;
    cursor: pointer;
 }
