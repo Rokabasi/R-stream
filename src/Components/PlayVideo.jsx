@@ -14,7 +14,6 @@ export default function PlayVideo(){
     const [videoPlayedChannelInfos,setVideoPlayedChannelInfos] = useState([])
     const accessToken = sessionStorage.getItem('accessToken')
     const userId = sessionStorage.getItem('userId')
-    console.log(userId);
     const [loading,setLoading] = useState(true)
     const [commentsData, setCommentsData] = useState([])
     const [videoComments, setVideoComments] = useState([])
@@ -74,22 +73,21 @@ export default function PlayVideo(){
         fetch(url,{ method : 'GET'})
             .then(res => res.json())
             .then(data => {
-                    setCommentsData(data)
-                console.log(data)})                        
+                    setCommentsData(data)})                        
     }
     const getSousComments = () => {
         fetch(getSousCommentsUrl,{method : 'GET'})
             .then(res => res.json())
             .then(data => {
                     setSousComments(data)
+                    console.log(data)
                     setNewSousComment(!newSousComment)})
     }
     const getCommentsLike = () => {
         fetch(getCommentsLikeUrl,{method : 'GET'})
             .then(res => res.json())
             .then(data => {
-                setCommentsLike(data)
-            console.log(data)})
+                setCommentsLike(data)})
     }
     const getCommentsDislike = () => {
         fetch(getCommentsDislikeUrl,{method : 'GET'})
@@ -122,7 +120,7 @@ export default function PlayVideo(){
     // },[sortState])
   
     const handleReply = () =>{
-        const elems = document.getElementsByClassName('comment-reply-contain');
+        const elems = document.getElementsByClassName('reply-comment');
             for (var i=0;i<elems.length;i+=1){
                 elems[i].style.display = 'block';
             }
@@ -210,14 +208,14 @@ export default function PlayVideo(){
                         videoPlayedChannelInfos.map((data,index)=> {
                             return(
                                 <>
-                                <div className="channel-infos" key={index}>
-                                    <img src={data.snippet.thumbnails.default.url} className="channel-infos-image" alt="channel logo"/>
-                                    <div className="channel-infos-title">
-                                        <h3>{data.snippet.title}</h3>
-                                        <h5> { numeral(data.statistics.subscriberCount).format("O.a")} subscriber</h5>
-                                    </div>   
-                                    <button className="channel-infos-button">S'abonner</button>
-                                </div>
+                                    <div className="channel-infos" key={index}>
+                                        <img src={data.snippet.thumbnails.default.url} className="channel-infos-image" alt="channel logo"/>
+                                        <div className="channel-infos-title">
+                                            <h3>{data.snippet.title}</h3>
+                                            <h5> { numeral(data.statistics.subscriberCount).format("O.a")} subscriber</h5>
+                                        </div>   
+                                        <button className="channel-infos-button">S'abonner</button>
+                                    </div>
                                 </>
                             )
                         })
@@ -259,28 +257,44 @@ export default function PlayVideo(){
                                                     <h4 onClick={onSubmitCommentDislike(comments._id)}><i className="fa-solid  fa-thumbs-down"></i> {(commentsDislike.filter((dislike) => dislike.idComment.includes(comments._id))).length}</h4>
                                                 </div>
                                             </div>
-                                            <div>
-                                                <div className="comment-reply-contain">
+                                            <div className="comment-reply-contain">
                                                     <input type="text" name="reply-comment" id="reply-comment" value={sousComment} onChange={handleChangeSousComment} placeholder="repost to this comment"/>
                                                     <button onClick={onSubSousComment(comments._id)}>Post</button>
                                                 </div>
+                                            {
+                                               
+                                                sousComments
+                                                .filter(sousComments => sousComments.id_comment.includes(comments._id)  > 0)
+                                                .map((sousComment, index) =>{
+                                                    
+                                                    return(
+                                                        <>
+                                                             <div className="reply-comment" key={index}>
+                                                
+                                               
                                                 <div className="comment-reply">
                                                     <div className="user-picture">
                                                         <img src={profilImage} alt="" />
                                                     </div>
                                                     <div className="comment-reply-detail">
                                                         <h4>Romain</h4>
-                                                        <h5>le 22 novembre</h5>
-                                                        <h5>Premier sous commentaire</h5>
-                                                        <div className="comment-reply-detail-infos">
-                                                            <h4 onClick={handleReply}>Reply 2</h4>
+                                                        <h5>{moment(sousComment.createdAt).fromNow()}</h5>
+                                                        <h5>{sousComment.description}</h5>
+                                                        {/* <div className="comment-reply-detail-infos">
                                                             <h4 onClick={onSubmitCommentLike(comments._id)}><i className="fa-solid fa-thumbs-up"></i> {(commentsLike.filter((like) => like.idComment.includes(comments._id))).length}</h4>
                                                             <h4 onClick={onSubmitCommentDislike(comments._id)}><i className="fa-solid  fa-thumbs-down"></i> {(commentsDislike.filter((dislike) => dislike.idComment.includes(comments._id))).length}</h4>
-                                                        </div>
+                                                        </div> */}
                                                     </div>
                                                 </div>   
-                                            </div>
-                                                                                       
+                                            </div>      
+                                                        </>
+                                                    )
+                                                    
+                                                })
+
+                                                                                    
+                                            }
+                                            
                                         </div>
                                     </div>
                                     

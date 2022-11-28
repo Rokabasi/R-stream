@@ -211,11 +211,14 @@
    width: 40%;
    gap: 10%;
 }
+.reply-comment{
+   display: none;
+}
 .comment-reply-contain{
    padding-top: 3%;
    display: flex;
    width: 60%;
-   display: none;
+ 
    /* gap: 10%; */
 }
 .comment-reply-contain  > input {
@@ -239,6 +242,38 @@
    background-color: #5663D1;
    
 }
+.comment-reply{
+   padding: 3% 0% 0% 1% ;
+   display: flex;
+   gap: 3%;
+}
+.comment-reply > .user-picture{
+   width: 6%;
+}
+.comment-reply > .user-picture > img{
+   border-radius: 50%;
+   width: 100%;
+}
+.comment-reply > .comment-reply-detail{
+   width: 80%;
+   display : block;
+}
+.comment-reply-detail >*:nth-child(1){
+   font-weight: 400;
+ } 
+.comment-reply-detail >*:nth-child(2){
+  font-weight: 300;
+  padding: 1% 0%;
+} 
+.comment-reply-detail >*:nth-child(3){
+   padding: 2% 0%;
+  font-weight: 400; 
+} 
+.comment-reply-detail-infos{
+   display: flex;
+   gap: 3%;
+}
+
  @media screen and (max-width:670px) {
    .play-video-content{
       display: block;
