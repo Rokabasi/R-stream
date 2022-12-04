@@ -5,7 +5,7 @@ import { AccountInfosContext} from './context/AccountContext';
 import { useEffect, useState } from 'react';
 import { gapi } from 'gapi-script';
 import Like from './Components/Like'
-import PlayVideo from './Components/PlayVideo';
+import PlayVideo from './pages/PlayVideo';
 import Dislike from './Components/Dislike'
 import SubscriptionPlayList from './Components/SubscriptionPlayList'
 import Music from './Components/Music'
