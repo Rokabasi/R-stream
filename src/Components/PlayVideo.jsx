@@ -5,7 +5,7 @@ import numeral from "numeral"
 import moment from "moment/moment"
 import Loader from "./loader";
 import Axios from 'axios'
-import CommentForm from "./CommentForm";
+import CommentForm from "../comments/CommentForm";
 
 export default function PlayVideo(){
     const {id,channelId} = useParams()

@@ -3,6 +3,7 @@ import "../styles/playvideo.css"
 import moment from 'moment'
 import CommentForm from './CommentForm'
 import axios from 'axios'
+import LikeComment from './LikeComment'
 
 function Comment({videoId}) {
 
@@ -95,8 +96,9 @@ function Comment({videoId}) {
                                             <div className="comment-details">
                                                 <div className="comment-detail-infos">
                                                     {/* <h4 onClick={handleReply}>Reply 2</h4> */}
-                                                    <h4 onClick={onSubmitCommentLike(comments._id)}><i className="fa-solid fa-thumbs-up"></i> {(commentsLike.filter((like) => like.idComment.includes(comments._id))).length}</h4>
-                                                    <h4 onClick={onSubmitCommentDislike(comments._id)}><i className="fa-solid  fa-thumbs-down"></i> {(commentsDislike.filter((dislike) => dislike.idComment.includes(comments._id))).length}</h4>
+                                                    {/* <h4 onClick={onSubmitCommentLike(comments._id)}><i className="fa-solid fa-thumbs-up"></i> {(commentsLike.filter((like) => like.idComment.includes(comments._id))).length}</h4> */}
+                                                    <LikeComment userId={userId} commentId={comments._id}/>
+                                                    {/* <h4 onClick={onSubmitCommentDislike(comments._id)}><i className="fa-solid  fa-thumbs-down"></i> {(commentsDislike.filter((dislike) => dislike.idComment.includes(comments._id))).length}</h4> */}
                                                 </div>
                                             </div>
                                         </div>
