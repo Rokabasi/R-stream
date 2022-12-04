@@ -22,22 +22,12 @@ export default function PlayVideo(){
     const [commentsData, setCommentsData] = useState([])
     const [videoComments, setVideoComments] = useState([])
     const [sousComments, setSousComments] = useState([])
-    const [commentsLike, setCommentsLike] = useState([])
-    const [commentsDislike, setCommentsDislike] = useState([]) 
     const [sousComment, setSousComment] = useState("")
-  
     const [newSousComment, setNewSousComment] = useState(true)
-    const [newCommentLike, setNewCommentLike] = useState(true)
-    const [newCommentDislike, setNewCommentDislike] = useState(true)
     const [sortState, setSortState] = useState(true)
     const url = 'http://localhost:9000/comments'
-   
     const sendSousCommentUrl = 'http://localhost:9000/souscomment/add'
     const getSousCommentsUrl = 'http://localhost:9000/souscomment'
-    const getCommentsLikeUrl = 'http://localhost:9000/like'
-    const sendCommentLikeUrl = 'http://localhost:9000/like/add'
-    const getCommentsDislikeUrl = 'http://localhost:9000/dislike'
-    const sendCommentDislikeUrl = 'http://localhost:9000/dislike/add'
    
     // useEffect(()=>{
     //     fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${id}&type=video&maxResults=16&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU`,
@@ -86,32 +76,16 @@ export default function PlayVideo(){
                     console.log(data)
                     setNewSousComment(!newSousComment)})
     }
-    const getCommentsLike = () => {
-        fetch(getCommentsLikeUrl,{method : 'GET'})
-            .then(res => res.json())
-            .then(data => {
-                setCommentsLike(data)})
-    }
-    const getCommentsDislike = () => {
-        fetch(getCommentsDislikeUrl,{method : 'GET'})
-            .then(res => res.json())
-            .then(data => {
-                setCommentsDislike(data)
-            })
-    }
+ 
   
     useEffect( () => {
         getComments()
        
     },[])
 
-    useEffect( () => {
-        getCommentsLike()
-    },[newCommentLike,newCommentDislike])
 
-    useEffect( () => {
-        getCommentsDislike()
-    },[newCommentDislike,newCommentLike])
+
+  
 
     useEffect( () => {
         getSousComments()
@@ -146,22 +120,8 @@ export default function PlayVideo(){
                 setSousComment("")})
         }
     }
-    const onSubmitCommentLike = (commentid) => ()=> {
-        Axios.post(sendCommentLikeUrl,{
-            commentId : commentid,
-            userId: userId
-        })
-        .then(res => { console.log(res.data)
-            setNewCommentLike(!newCommentLike) })
-    }
-    const onSubmitCommentDislike = (commentid) => ()=> {
-        Axios.post(sendCommentDislikeUrl,{
-            commentId : commentid,
-            userId: userId
-        })
-        .then(res => { console.log(res.data)
-            setNewCommentDislike(!newCommentDislike) })
-    }
+
+
    
     return(
         <>
@@ -176,7 +136,7 @@ export default function PlayVideo(){
                 </iframe>
                 <div className="card-played-video-infos">
                     {
-                        videoPlayedInfos.map((video, index) => {
+                        videoPlayedInfos?.map((video, index) => {
                          
                             return (
                                 <div key={index}>  
@@ -191,7 +151,7 @@ export default function PlayVideo(){
                             )})
                     }
                     {
-                        videoPlayedChannelInfos.map((data,index)=> {
+                        videoPlayedChannelInfos?.map((data,index)=> {
                             return(
                                 <>
                                     <div className="channel-infos" key={index}>

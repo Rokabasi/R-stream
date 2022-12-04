@@ -3,7 +3,6 @@ import { useState } from 'react'
 import axios from 'axios'
 
 function CommentForm ({videoId}) {
-    console.log("fezf",videoId);
     const profilImage =  (sessionStorage.getItem('profilImage'))
     const userId = sessionStorage.getItem('userId')
     const [userComment, setUserComment] = useState("")

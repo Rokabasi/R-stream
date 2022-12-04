@@ -197,7 +197,7 @@
 .comment-contain > .comment-infos > p{
    padding: 2% 0%;
 }
-.comment-details > .comment-detail-infos > h4 {
+ .comment-detail-infos > h4 {
    cursor: pointer;
 }
 
@@ -206,7 +206,7 @@
    padding: 1% 0;
    
 }
-.comment-contain > .comment-infos > .comment-details> .comment-detail-infos{
+ .comment-detail-infos{
    display: flex;
    width: 40%;
    gap: 10%;

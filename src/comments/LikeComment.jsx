@@ -5,8 +5,6 @@ import "../styles/playvideo.css"
 
 function LikeComment({userId,commentId}) {
 
-   
-    console.log(commentId)
     const [commentsLike, setCommentsLike] = useState([])
     const [newCommentLike, setNewCommentLike] = useState(true)
     const [newCommentDislike, setNewCommentDislike] = useState(true)
@@ -22,7 +20,7 @@ function LikeComment({userId,commentId}) {
             commentId : commentid,
             userId: userId
         })
-        .then(res => { console.log(res.data)
+        .then(res => { 
             setNewCommentLike(!newCommentLike) })
     }
 
@@ -31,7 +29,7 @@ function LikeComment({userId,commentId}) {
             commentId : commentid,
             userId: userId
         })
-        .then(res => { console.log(res.data)
+        .then(res => { 
             setNewCommentDislike(!newCommentDislike) })
     }
 
