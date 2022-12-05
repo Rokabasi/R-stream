@@ -73,7 +73,6 @@ export default function PlayVideo(){
             .then(res => res.json())
             .then(data => {
                     setSousComments(data)
-                    console.log(data)
                     setNewSousComment(!newSousComment)})
     }
  

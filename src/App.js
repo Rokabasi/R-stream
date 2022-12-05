@@ -25,7 +25,6 @@ function App() {
         const [imgUrl, setImgUrl] = useState ()
         const [accessToken, setAccessToken] = useState()
         const login = JSON.parse(sessionStorage.getItem('login'))
-        console.log(login);
         useEffect(() => {
           function start() {
              gapi.client.init({

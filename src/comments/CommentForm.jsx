@@ -2,10 +2,11 @@ import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 
-function CommentForm ({videoId}) {
+function CommentForm ({videoId, parentId}) {
     const profilImage =  (sessionStorage.getItem('profilImage'))
     const userId = sessionStorage.getItem('userId')
     const [userComment, setUserComment] = useState("")
+    const isTextareaDisabled = userComment.trim().length === 0
     const sendCommentUrl = 'http://localhost:9000/comments/add'
     const handleChangeComment = (event) =>{
         setUserComment(event.target.value)
@@ -17,16 +18,11 @@ function CommentForm ({videoId}) {
                 description: userComment,
                 video : videoId,
                 userid : userId,
-                parentId : null
+                parentId : parentId
             })
             .then(res => {
                 setUserComment("")
-                console.log(res.data);
-            })
-            console.log(userComment);
-
-            // setNewComment(!newComment)
-             
+            })   
         }
 
     }
@@ -37,7 +33,7 @@ function CommentForm ({videoId}) {
     </div>
     <form onSubmit={((e)=>submit(e))}>
         <input type="text" name="comment" id="comment" value={userComment} placeholder="Add a comment" onChange={handleChangeComment} required/>
-        <button>Post</button>
+        <button disabled={isTextareaDisabled}>Post</button>
     </form>    
 </div>
   )

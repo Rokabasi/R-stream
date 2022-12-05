@@ -36,8 +36,7 @@ export default function Header (){
         Axios.post(sendUserData,{
             email: userEmail
         })
-        .then(res => {
-            console.log(res.data.user.name);
+        .then(res => {  
             setUserName(res.data.user.name)  
         })
     }

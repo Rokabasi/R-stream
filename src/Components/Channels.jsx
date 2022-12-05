@@ -3,7 +3,7 @@ import "../styles/subscription.css"
 import { Link } from "react-router-dom"
 import Loader from "./loader"
 
-export default function Content () {
+export default function Channels () {
 
     const accessToken = sessionStorage.getItem('accessToken')
     const [channel, setChannel] = useState([])
