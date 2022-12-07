@@ -5,7 +5,6 @@ import numeral from "numeral"
 import moment from "moment/moment"
 import Loader from "../Components/loader";
 import Axios from 'axios'
-import CommentForm from "../comments/CommentForm";
 import Comments from "../comments/Comment"
 
 export default function PlayVideo(){
@@ -19,16 +18,7 @@ export default function PlayVideo(){
     const accessToken = sessionStorage.getItem('accessToken')
     const userId = sessionStorage.getItem('userId')
     const [loading,setLoading] = useState(true)
-    const [commentsData, setCommentsData] = useState([])
-    const [videoComments, setVideoComments] = useState([])
-    const [sousComments, setSousComments] = useState([])
-    const [sousComment, setSousComment] = useState("")
-    const [newSousComment, setNewSousComment] = useState(true)
-    const [sortState, setSortState] = useState(true)
-    const url = 'http://localhost:9000/comments'
-    const sendSousCommentUrl = 'http://localhost:9000/souscomment/add'
-    const getSousCommentsUrl = 'http://localhost:9000/souscomment'
-   
+      
     // useEffect(()=>{
     //     fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${id}&type=video&maxResults=16&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU`,
     //     { method : 'GET',headers:new Headers({'Authorization': `Bearer ${accessToken}`})})     
@@ -59,67 +49,7 @@ export default function PlayVideo(){
    const handleclick = () =>{
             window.scroll(0,0)
    }
-    const postVideoId = () => {
-        Axios.post()
-    }
-    const getComments = () => {
-        fetch(url,{ method : 'GET'})
-            .then(res => res.json())
-            .then(data => {
-                    setCommentsData(data)})                        
-    }
-    const getSousComments = () => {
-        fetch(getSousCommentsUrl,{method : 'GET'})
-            .then(res => res.json())
-            .then(data => {
-                    setSousComments(data)
-                    setNewSousComment(!newSousComment)})
-    }
- 
-  
-    useEffect( () => {
-        getComments()
-       
-    },[])
-
-
-
-  
-
-    useEffect( () => {
-        getSousComments()
-    },[])
-
-    // useEffect( () => {
-    //     setCommentsData(commentsData.sort((a,b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()))
-    //     console.log(commentsData);
-    // },[sortState])
-  
-    const handleReply = () =>{
-        const elems = document.getElementsByClassName('reply-comment');
-            for (var i=0;i<elems.length;i+=1){
-                elems[i].style.display = 'block';
-            }
-    }    
-  
-
-    const handleChangeSousComment = (event) =>{
-        setSousComment(event.target.value)
-        }
-    
-  
-    const onSubSousComment = (commentid) => ()=> {
-        if(sousComment.trim()){
-            Axios.post(sendSousCommentUrl,{
-                description: sousComment,
-                commentId : commentid
-            })
-            .then(res => {
-                console.log(res.data)
-                setSousComment("")})
-        }
-    }
-
+   
 
    
     return(
