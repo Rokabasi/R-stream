@@ -17,7 +17,6 @@ const Login = () => {
       displayName: displayName,
       email: email,
     };
-    console.log(user);
     socket.emit("sendUser", (user));
   };
   socket.on("receiveUser", (user) => {

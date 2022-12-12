@@ -69,7 +69,9 @@ export default function Header() {
         <h3>{userName}</h3>
         <IconButton>
           <Badge badgeContent={1} color="secondary">
-            <NotificationsIcon color="primary" />
+            <Link to="/notification">
+              <NotificationsIcon color="primary" />
+            </Link>
           </Badge>
         </IconButton>
         <StyledBadge

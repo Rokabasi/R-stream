@@ -3,7 +3,7 @@ import "../styles/playvideo.css";
 import io from "socket.io-client";
 const socket = io.connect("http://localhost:9001");
 
-function LikeComment({ userId, commentId, like, dislike }) {
+function LikeComment({ userId, commentId, like, dislike, commentUserId }) {
   const [likeData, setLikeData] = useState([]);
   const [dislikeData, setDislikeData] = useState([]);
 
@@ -22,6 +22,7 @@ function LikeComment({ userId, commentId, like, dislike }) {
         commentId : commentId,
         userId : userId
     }
+    console.log(commentUserId , "romzin");
       socket.emit("sendDislike", ({dislikeData}));
       socket.emit("getDislike", {});
       socket.emit("getLike", {});

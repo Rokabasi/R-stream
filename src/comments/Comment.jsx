@@ -19,6 +19,7 @@ function Comment({ videoId }) {
     getAllComment();
     socket.on("receiveAllComments", (comment) => {
       setComments(comment);
+      console.log(comment);
     });
   }, []);
 

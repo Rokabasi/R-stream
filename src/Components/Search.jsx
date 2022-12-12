@@ -8,7 +8,6 @@ export default function Search () {
 
     const location = useLocation()
     const inputValue = location.state.inputValue
-    console.log(inputValue);
     const accessToken = sessionStorage.getItem('accessToken')
     const [searchVideo, setSearchVideo] = useState([])
     const [loading,setLoading] = useState(true)

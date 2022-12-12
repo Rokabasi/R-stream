@@ -4,7 +4,7 @@ import "../styles/playvideo.css";
 import io from "socket.io-client";
 const socket = io.connect("http://localhost:9001");
 
-function LikeComment({ userId, commentId }) {
+function LikeComment({ userId, commentId, commentUserId }) {
   const [like, setLike] = useState([]);
   const [dislike, setDislike] = useState([]);
 
@@ -40,6 +40,7 @@ function LikeComment({ userId, commentId }) {
         dislike={dislike}
         commentId ={commentId}
         userId={userId}
+        commentUserId={commentUserId}
       />
     </>
   );

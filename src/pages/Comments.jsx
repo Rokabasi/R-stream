@@ -43,7 +43,7 @@ function Comments({ comments, videoId, replies, parentId = null }) {
         <p>{comments.description}</p>
         <div className="comment-details">
           <div className="comment-detail-infos">
-            <LikeComment userId={userId} commentId={comments._id} />
+            <LikeComment userId={userId} commentUserId={comments.userId} commentId={comments._id} />
             {(
               <h4 onClick={() => displayRepliesForm()}>Reply</h4>
             )}
