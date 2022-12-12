@@ -44,15 +44,19 @@ function Comments({ comments, videoId, replies, parentId = null }) {
         <div className="comment-details">
           <div className="comment-detail-infos">
             <LikeComment userId={userId} commentId={comments._id} />
-            {canReply && parentId === null && (
+            {(
               <h4 onClick={() => displayRepliesForm()}>Reply</h4>
             )}
           </div>
         </div>
-        {isReplying && (
+        {isReplying && parentId === null &&  (
           <CommentForm videoId={videoId} parentId={comments._id} />
         )}
-        {comments.parentId === null && canReply && (
+        {isReplying && parentId !== null &&  (
+          <CommentForm videoId={videoId} parentId={parentId} />
+        )}
+        
+        {comments.parentId === null  && (
           <div className="sous-comments">
             <button onClick={() => displayReplies()}>
               <i class="fa-solid fa-arrow-down"></i>   {replies.length} Answers
@@ -67,6 +71,9 @@ function Comments({ comments, videoId, replies, parentId = null }) {
                 replies={[]}
                 key={replies.key}
                 parentId={comments._id}
+                activeComment={activeComment}
+                setActiveComment={setActiveComment}
+                videoId={videoId}
               />
             ))}
           </div>

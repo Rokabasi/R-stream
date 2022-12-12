@@ -19,6 +19,7 @@ import SideBar from './Components/SideBar';
 import Content from './Components/Content';
 import Channels from './Components/Channels';
 import Account from './Components/Account';
+import UpdateUser from './pages/UpdateUserProfil';
 
 const clientId = '757010538260-arnh8a0826kpi72fdqcb08fsp7agceiq.apps.googleusercontent.com' 
 function App() {
@@ -66,6 +67,7 @@ function App() {
         <Route path='/news' element={<Layout><News/></Layout>}/>
         <Route path="/search" element={<Layout><Search/></Layout>}/>
         <Route path='/account' element={<Layout><Account/></Layout>}/>
+        <Route path='/UpdateUser' element={<Layout><UpdateUser/></Layout>}/>
       </Routes>
     </AccountInfosContext.Provider>
     </div>

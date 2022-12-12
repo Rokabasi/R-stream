@@ -1,66 +1,48 @@
-import React from 'react'
-import axios from 'axios'
-import { useState,useEffect } from 'react'
-import "../styles/playvideo.css"
+import { useState, useEffect } from "react";
+import LikeCommentForm from "./LikeCommentForm"
+import "../styles/playvideo.css";
+import io from "socket.io-client";
+const socket = io.connect("http://localhost:9001");
 
-function LikeComment({userId,commentId}) {
+function LikeComment({ userId, commentId }) {
+  const [like, setLike] = useState([]);
+  const [dislike, setDislike] = useState([]);
 
-    const [commentsLike, setCommentsLike] = useState([])
-    const [newCommentLike, setNewCommentLike] = useState(true)
-    const [newCommentDislike, setNewCommentDislike] = useState(true)
-    const [commentsDislike, setCommentsDislike] = useState([]) 
+  const getAllLike = () => {
+    socket.emit("getLike", {});
+  };
 
-    const getCommentsLikeUrl = 'http://localhost:9000/like'
-    const sendCommentLikeUrl = 'http://localhost:9000/like/add'
-    const getCommentsDislikeUrl = 'http://localhost:9000/dislike'
-    const sendCommentDislikeUrl = 'http://localhost:9000/dislike/add'
+  const getAllDislike = () => {
+    socket.emit("getDislike", {});
+  };
 
-    const onSubmitCommentLike = (commentid) => ()=> {
-        axios.post(sendCommentLikeUrl,{
-            commentId : commentid,
-            userId: userId
-        })
-        .then(res => { 
-            setNewCommentLike(!newCommentLike) })
-    }
+  useEffect(() => {
+    getAllLike();
+    socket.on("receiveAllLike", (like) => {
+      setLike(like);
 
-    const onSubmitCommentDislike = (commentid) => ()=> {
-        axios.post(sendCommentDislikeUrl,{
-            commentId : commentid,
-            userId: userId
-        })
-        .then(res => { 
-            setNewCommentDislike(!newCommentDislike) })
-    }
+    });
+  }, []);
 
-    const getCommentsLike = () => {
-        fetch(getCommentsLikeUrl,{method : 'GET'})
-            .then(res => res.json())
-            .then(data => {
-                setCommentsLike(data)})
-    }
-    const getCommentsDislike = () => {
-        fetch(getCommentsDislikeUrl,{method : 'GET'})
-            .then(res => res.json())
-            .then(data => {
-                setCommentsDislike(data)
-            })
-    }
+  useEffect(() => {
+    getAllDislike();
+    socket.on("receiveAllDislike", (dislike) => {
+      setDislike(dislike);
+    });
+  }, []);
 
-    useEffect( () => {
-        getCommentsLike()
-    },[newCommentLike,newCommentDislike])
-
-    useEffect( () => {
-        getCommentsDislike()
-    },[newCommentDislike,newCommentLike])
+ 
 
   return (
-    <div className='comment-detail-infos'>
-         <h4 onClick={onSubmitCommentLike(commentId)}><i className="fa-solid fa-thumbs-up"></i> {(commentsLike.filter((like) => like.idComment.includes(commentId))).length}</h4>
-         <h4 onClick={onSubmitCommentDislike(commentId)}><i className="fa-solid  fa-thumbs-down"></i> {(commentsDislike.filter((dislike) => dislike.idComment.includes(commentId))).length}</h4>
-    </div>
-  )
+    <>
+      <LikeCommentForm
+        like={like}
+        dislike={dislike}
+        commentId ={commentId}
+        userId={userId}
+      />
+    </>
+  );
 }
 
-export default LikeComment
+export default LikeComment;

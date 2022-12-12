@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.main-account {
+  margin: 7vh 35vh;
+  padding: 10vh 5vh;
+
+  display: flex;
+  gap: 5%;
+  width: 100%;
+}
+input:focus{
+    outline: none;
+}
+.account-infos {
+  padding: 5% 5%;
+  background-color: #21252e;
+  color: rgb(255, 255, 255);
+  border-radius: 1%;
+  width: 70%;
+}
+.account-infos > h2 {
+  text-align: center;
+  padding-bottom: 4%;
+  font-weight: 500;
+}
+
+.account-infos > div > img {
+  border-radius: 50%;
+  width: 30%;
+  margin-left: 35%;
+}
+.account-infos > div > .form-group {
+  display: flex;
+  margin: 3% 0%;
+  display: flex;
+  gap: 2%;
+}
+.account-infos > div > .form-group > input {
+  height: 1.4rem;
+}
+.account-infos > div > .form-group-link-text {
+  display: flex;
+  margin: 7% 0%;
+  display: flex;
+  gap: 8%;
+}
+#displayname {
+  width: 60%;
+  padding-left: 2%;
+}
+
+.account-infos > div > .form-group-link-text > .link-group {
+  display: flex;
+  width: 40%;
+  gap: 10%;
+}
+.account-infos > div > .form-group-link-text > .link-group > input {
+  height: 120%;
+}
+.account-infos > div > .form-group-link-text > .text-group {
+  display: flex;
+  width: 40%;
+  gap: 10%;
+}
+.account-infos > div > .form-group-link-text > .text-group > input {
+  height: 120%;
+}
+.account-infos > .btn-save {
+  background-color: #5663d1;
+  color: #ffff;
+  border: none;
+  border-radius: 4px;
+  width: 20%;
+  height: 6%;
+  cursor: pointer;
+}

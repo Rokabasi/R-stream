@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import "../styles/playvideo.css";
 import CommentForm from "./CommentForm";
-import io from "socket.io-client";
 import Comments from "../pages/Comments";
-const socket = io.connect("http://localhost:9000");
+import io from "socket.io-client";
+const socket = io.connect("http://localhost:9001");
 
 function Comment({ videoId }) {
   const [comments, setComments] = useState([]);
-  const allComments = comments.filter((comment) => comment.parentId === null);
+  const allComments = comments.filter((comments)=>comments.video === videoId).filter((comment) => comment.parentId === null);
   const getReplies = (commentId) => {
     return comments.filter((comment) => comment.parentId === commentId);
   };
@@ -21,6 +21,8 @@ function Comment({ videoId }) {
       setComments(comment);
     });
   }, []);
+
+
 
   return (
     <>
