@@ -5,7 +5,7 @@ import Comments from "../pages/Comments";
 import io from "socket.io-client";
 const socket = io.connect("http://localhost:9001");
 
-function Comment({ videoId }) {
+function Comment({ videoId,channelId }) {
   const [comments, setComments] = useState([]);
   const allComments = comments.filter((comments)=>comments.video === videoId).filter((comment) => comment.parentId === null);
   const getReplies = (commentId) => {
@@ -19,7 +19,6 @@ function Comment({ videoId }) {
     getAllComment();
     socket.on("receiveAllComments", (comment) => {
       setComments(comment);
-      console.log(comment);
     });
   }, []);
 
@@ -34,7 +33,7 @@ function Comment({ videoId }) {
             <i class="fa-solid fa-arrow-up-wide-short"></i> Filter
           </button>
         </div>
-        <CommentForm videoId={videoId} parentId={null} />
+        <CommentForm videoId={videoId} parentId={null}  />
         <div className="all-comments">
           {allComments.map((comments) => (
             <Comments
@@ -42,6 +41,7 @@ function Comment({ videoId }) {
               replies={getReplies(comments._id)}
               comments={comments}
               videoId={videoId}
+              channelId = {channelId}
             />
           ))}
         </div>

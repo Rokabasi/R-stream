@@ -7,27 +7,25 @@ function LikeComment({ userId, commentId, like, dislike, commentUserId }) {
   const [likeData, setLikeData] = useState([]);
   const [dislikeData, setDislikeData] = useState([]);
 
-  
-    const onSubmitLike = ()=>{
-      const likeData = {
-          commentId : commentId,
-          userId : userId
-      }
-      socket.emit("sendLike", ({likeData}));
-      socket.emit("getLike", {});
-      socket.emit("getDislike", {});
-    }
-    const onSubmitDislike = ()=>{
-      const dislikeData = {
-        commentId : commentId,
-        userId : userId
-    }
-    console.log(commentUserId , "romzin");
-      socket.emit("sendDislike", ({dislikeData}));
-      socket.emit("getDislike", {});
-      socket.emit("getLike", {});
-    
-  }
+  const onSubmitLike = () => {
+    const likeData = {
+      commentId: commentId,
+      userId: userId,
+    };
+    socket.emit("sendLike", { likeData });
+    socket.emit("getLike", {});
+    socket.emit("getDislike", {});
+  };
+  const onSubmitDislike = () => {
+    const dislikeData = {
+      commentId: commentId,
+      userId: userId,
+    };
+
+    socket.emit("sendDislike", { dislikeData });
+    socket.emit("getDislike", {});
+    socket.emit("getLike", {});
+  };
 
   return (
     <div className="comment-detail-infos">
@@ -37,7 +35,10 @@ function LikeComment({ userId, commentId, like, dislike, commentUserId }) {
       </h4>
       <h4 onClick={onSubmitDislike}>
         <i className="fa-solid  fa-thumbs-down"></i>{" "}
-        {dislike.filter((dislike) => dislike.idComment.includes(commentId)).length}
+        {
+          dislike.filter((dislike) => dislike.idComment.includes(commentId))
+            .length
+        }
       </h4>
     </div>
   );

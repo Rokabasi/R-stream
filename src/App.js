@@ -20,6 +20,7 @@ import Content from "./Components/Content";
 import Channels from "./Components/Channels";
 import Account from "./Components/Account";
 import UpdateUser from "./pages/UpdateUserProfil";
+import Notifications from "./Components/Notifications";
 import Notification from "./pages/Notification";
 
 const clientId =
@@ -166,6 +167,14 @@ function App() {
             element={
               <Layout>
                 <UpdateUser />
+              </Layout>
+            }
+          />
+          <Route
+            path="/notification"
+            element={
+              <Layout>
+                <Notifications/>
               </Layout>
             }
           />

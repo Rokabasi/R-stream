@@ -2,7 +2,7 @@ import "../styles/header.css";
 import { useState, useEffect } from "react";
 import { GoogleLogout } from "react-google-login";
 import { Link, useNavigate } from "react-router-dom";
-import Axios from "axios";
+import {HashLink} from "react-router-hash-link"
 import IconButton from "@mui/material/Button";
 import { Badge } from "@mui/material";
 import NotificationsIcon from "@mui/icons-material/Notifications";
@@ -17,7 +17,20 @@ export default function Header() {
   const [inputValue, setInputValue] = useState("");
   const profilImage = sessionStorage.getItem("profilImage");
   const userEmail = sessionStorage.getItem("userEmail");
-  const [userName, setUserName] = useState("");
+  const userId = sessionStorage.getItem("userId");
+  const userName = sessionStorage.getItem("userName");
+  const [notifications, setNotifications] = useState([]);
+
+  const newNotifications = notifications.filter((notification)=>notification.mention === null)
+  
+  useEffect(() => {
+    socket.emit("getNotifications", userId);
+    socket.on("receiveAllNotifications", (notifications) => {
+      setNotifications(notifications);
+    });
+  }, []);
+
+
   const navigate = useNavigate();
   const handleChange = (event) => {
     setInputValue(event.target.value);
@@ -36,11 +49,12 @@ export default function Header() {
   const handleAccountSetting = () => {
     navigate("/account");
   };
+  const getNotifications = () => {
+    socket.emit("UpdateNotifications", userId);
+    navigate('/notification')
+  };
 
-  useEffect(() => {
-    socket.emit("getOneUser", userEmail);
-    socket.on("receiveOneUser", (user) => {});
-  }, []);
+
 
   return (
     <header>
@@ -66,12 +80,13 @@ export default function Header() {
         </button>
       </form>
       <div className="my-icons">
-        <h3>{userName}</h3>
-        <IconButton>
-          <Badge badgeContent={1} color="secondary">
-            <Link to="/notification">
+        <HashLink to="/notification#page" smooth><h3>{userName}</h3></HashLink>
+        
+        <IconButton onClick={getNotifications}>
+          <Badge badgeContent={newNotifications.length} color="secondary">
+           
               <NotificationsIcon color="primary" />
-            </Link>
+       
           </Badge>
         </IconButton>
         <StyledBadge

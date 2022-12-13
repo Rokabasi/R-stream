@@ -19,15 +19,15 @@ export default function PlayVideo(){
     const userId = sessionStorage.getItem('userId')
     const [loading,setLoading] = useState(true)
       
-    // useEffect(()=>{
-    //     fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${id}&type=video&maxResults=16&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU`,
-    //     { method : 'GET',headers:new Headers({'Authorization': `Bearer ${accessToken}`})})     
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         setVideo(data.items)
-    //         setLoading(false)
-    //     })
-    // },[id]);
+    useEffect(()=>{
+        fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${id}&type=video&maxResults=16&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU`,
+        { method : 'GET',headers:new Headers({'Authorization': `Bearer ${accessToken}`})})     
+        .then(res => res.json())
+        .then(data => {
+            setVideo(data.items)
+            setLoading(false)
+        })
+    },[id]);
     useEffect(()=>{
         fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${id}&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU`,
         { method : 'GET',headers:new Headers({'Authorization': `Bearer ${accessToken}`})})     
@@ -97,11 +97,11 @@ export default function PlayVideo(){
                         
                     }
                 </div>
-                 <Comments videoId={videoId}/>   
+                 <Comments videoId={videoId} channelId={channelId}/>   
             </div>
             <div className="related-video-main">
                 <h1>Relared video</h1>
-                {/* {
+                {
                     video.map((data,index)=>{
                         return(
                         <Link onClick={handleclick} href="#top" to={`/playvideo/${data.id.videoId}/${data.snippet.channelId}`}>
@@ -118,7 +118,7 @@ export default function PlayVideo(){
                         </Link>
                     )
                     })
-                } */}
+                }
             </div>
             </div> : (<Loader/>)
         }

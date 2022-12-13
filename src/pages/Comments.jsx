@@ -4,7 +4,7 @@ import LikeComment from "../comments/LikeComment";
 import CommentForm from "../comments/CommentForm";
 import { useState } from "react";
 
-function Comments({ comments, videoId, replies, parentId = null }) {
+function Comments({ comments, videoId, replies, parentId = null, channelId }) {
   const userId = sessionStorage.getItem("userId");
   const profilImage = sessionStorage.getItem("profilImage");
   const [activeComment, setActiveComment] = useState(null);
@@ -31,9 +31,10 @@ function Comments({ comments, videoId, replies, parentId = null }) {
     setActiveComment({ id: comments._id, type: "replying" });
     setShowReplyForm(!showReplyFrom);
   };
-
+ 
   return (
-    <div className="comment-contain">
+    <div id={comments._id} className="comment-contain">
+      
       <div className="user-picture">
         <img src={profilImage} alt="mon profil" />
       </div>
@@ -43,23 +44,35 @@ function Comments({ comments, videoId, replies, parentId = null }) {
         <p>{comments.description}</p>
         <div className="comment-details">
           <div className="comment-detail-infos">
-            <LikeComment userId={userId} commentUserId={comments.userId} commentId={comments._id} />
-            {(
-              <h4 onClick={() => displayRepliesForm()}>Reply</h4>
-            )}
+            <LikeComment
+              userId={userId}
+              commentUserId={comments.userId}
+              commentId={comments._id}
+            />
+            {<h4 onClick={() => displayRepliesForm()}>Reply</h4>}
           </div>
         </div>
-        {isReplying && parentId === null &&  (
-          <CommentForm videoId={videoId} parentId={comments._id} />
+        {isReplying && parentId === null && (
+          <CommentForm
+            videoId={videoId}
+            parentId={comments._id}
+            commentUserId={comments.userId}
+            channelId={channelId}
+          />
         )}
-        {isReplying && parentId !== null &&  (
-          <CommentForm videoId={videoId} parentId={parentId} />
+        {isReplying && parentId !== null && (
+          <CommentForm
+            videoId={videoId}
+            parentId={parentId}
+            commentUserId={comments.userId}
+            channelId={channelId}
+          />
         )}
-        
-        {comments.parentId === null  && (
+
+        {comments.parentId === null && (
           <div className="sous-comments">
             <button onClick={() => displayReplies()}>
-              <i class="fa-solid fa-arrow-down"></i>   {replies.length} Answers
+              <i class="fa-solid fa-arrow-down"></i> {replies.length} Answers
             </button>
           </div>
         )}
@@ -74,6 +87,7 @@ function Comments({ comments, videoId, replies, parentId = null }) {
                 activeComment={activeComment}
                 setActiveComment={setActiveComment}
                 videoId={videoId}
+                channelId ={channelId}
               />
             ))}
           </div>
