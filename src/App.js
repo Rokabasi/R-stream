@@ -1,7 +1,7 @@
 import Login from "./Components/Login";
 import "./styles/App.css";
 import { Route, Routes } from "react-router-dom";
-import { AccountInfosContext } from "./context/AccountContext";
+import { Context } from "./context/context";
 import { useEffect, useState } from "react";
 import { gapi } from "gapi-script";
 import Like from "./Components/Like";
@@ -22,11 +22,13 @@ import Account from "./Components/Account";
 import UpdateUser from "./pages/UpdateUserProfil";
 import Notifications from "./Components/Notifications";
 import Notification from "./pages/Notification";
+import io from "socket.io-client";
+const socket = io.connect('http://localhost:9001')
 
 const clientId =
   "757010538260-arnh8a0826kpi72fdqcb08fsp7agceiq.apps.googleusercontent.com";
 function App() {
-  const [imgUrl, setImgUrl] = useState();
+  const [commentState, setCommentState] = useState(false);
   const [accessToken, setAccessToken] = useState();
   const login = JSON.parse(sessionStorage.getItem("login"));
   useEffect(() => {
@@ -52,16 +54,13 @@ function App() {
   };
   return (
     <div className="App">
-      <AccountInfosContext.Provider
-        value={{ imgUrl, setImgUrl, accessToken, setAccessToken }}
-      >
+      <Context.Provider value={{socket}}>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route
             path="/main"
             element={
               <Layout>
-                {" "}
                 <Content />
               </Layout>
             }
@@ -174,7 +173,7 @@ function App() {
             path="/notification"
             element={
               <Layout>
-                <Notifications/>
+                <Notifications />
               </Layout>
             }
           />
@@ -182,12 +181,12 @@ function App() {
             path="/notification"
             element={
               <Layout>
-                <Notification/>
+                <Notification />
               </Layout>
             }
           />
         </Routes>
-      </AccountInfosContext.Provider>
+      </Context.Provider>
     </div>
   );
 }

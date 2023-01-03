@@ -1,6 +1,6 @@
 import "../styles/update-profil.css";
 import profil from "../images/profil.jpg";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import io from "socket.io-client";
 const socket = io.connect("http://localhost:9001");
@@ -17,6 +17,8 @@ export default function UserProfil() {
     instagramLinkText: "",
     linkedInLinkText: "",
   });
+  const [chooseImage, setChooseImage] = useState('')
+  const hiddenFileInput = useRef(null);
   const userEmail = sessionStorage.getItem("userEmail");
   const navigate = useNavigate();
 
@@ -32,6 +34,12 @@ export default function UserProfil() {
     setUserData(newData);
   };
 
+  const handleChangeImage = (event) => {
+    hiddenFileInput.current.click();
+    setChooseImage(event.target.value)
+  };
+  console.log(chooseImage);
+
   const submitUpdateUserData = () => {
     socket.emit("updateOneUser", userData);
     navigate("/account");
@@ -43,7 +51,16 @@ export default function UserProfil() {
         <div className="account-infos">
           <h2>Update Profil</h2>
           <div>
-            <img src={profil} alt="mon profil" />
+            <img src={userData.userImage} alt="mon profil" />
+
+            <button class="input-file-image" onClick={(event)=> handleChangeImage(event)}>
+              +
+            </button>
+            <input
+              ref={hiddenFileInput}
+              type="file"
+              className="input-select"
+            ></input>
             <div className="form-group">
               <label htmlFor="displayname">Displayname</label>
               <input

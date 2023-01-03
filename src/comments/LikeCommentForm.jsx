@@ -1,30 +1,54 @@
 import { useState, useEffect } from "react";
 import "../styles/playvideo.css";
-import io from "socket.io-client";
-const socket = io.connect("http://localhost:9001");
+import { Context } from "../context/context";
+import { useContext } from "react";
 
-function LikeComment({ userId, commentId, like, dislike, commentUserId }) {
-  const [likeData, setLikeData] = useState([]);
-  const [dislikeData, setDislikeData] = useState([]);
+function LikeComment({
+  userId,
+  commentId,
+  like,
+  dislike,
+  commentUserId,
+  channelId,
+  videoId,
+}) {
+  const { socket } = useContext(Context);
+  const userName = sessionStorage.getItem("userName");
+  const profilImage = sessionStorage.getItem("profilImage");
 
+  useEffect(() => {}, []);
   const onSubmitLike = () => {
     const likeData = {
       commentId: commentId,
       userId: userId,
+      video: videoId,
+      commentUserId: commentUserId,
+      notification: "has liked your post",
+      userName: userName,
+      channelId: channelId,
+      userImage: profilImage,
     };
+
     socket.emit("sendLike", { likeData });
-    socket.emit("getLike", {});
-    socket.emit("getDislike", {});
+    // socket.emit("getLike", {});
+    // socket.emit("getDislike", {});
+    socket.emit("getNotifications", userId);
   };
+
   const onSubmitDislike = () => {
     const dislikeData = {
       commentId: commentId,
       userId: userId,
+      video: videoId,
+      commentUserId: commentUserId,
+      notification: "has disliked your post",
+      userName: userName,
+      userImage: profilImage,
     };
-
     socket.emit("sendDislike", { dislikeData });
-    socket.emit("getDislike", {});
-    socket.emit("getLike", {});
+    // socket.emit("getDislike", {});
+    // socket.emit("getLike", {});
+    socket.emit("getNotifications", userId);
   };
 
   return (

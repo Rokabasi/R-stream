@@ -12,10 +12,12 @@ const Login = () => {
     "757010538260-arnh8a0826kpi72fdqcb08fsp7agceiq.apps.googleusercontent.com";
   const [userData, setUserData] = useState([]);
 
-  const onSubmitUser = (displayName, email) => {
+
+  const onSubmitUser = (displayName, email, userImage) => {
     const user = {
       displayName: displayName,
       email: email,
+      userImage : userImage
     };
     socket.emit("sendUser", (user));
   };
@@ -23,21 +25,21 @@ const Login = () => {
     setUserData(user);
     sessionStorage.setItem("userId", user._id);
     sessionStorage.setItem("userName", user.displayName);
+    sessionStorage.setItem("profilImage", user.userImage);
+    sessionStorage.setItem("userEmail", user.email);
   });
   const onSuccess = (res) => {
+  
     const userImage = res.profileObj.imageUrl;
     sessionStorage.setItem("accessToken", res.accessToken);
-    sessionStorage.setItem("login", true);
-    sessionStorage.setItem("profilImage", userImage);
-    sessionStorage.setItem("userEmail", res.profileObj.email);
+    sessionStorage.setItem("login", true);  
     navigate("/main");
-
-    onSubmitUser(res.profileObj.givenName, res.profileObj.email);
+    onSubmitUser(res.profileObj.givenName, res.profileObj.email,userImage);
   };
   const onFaillure = (res) => {
     navigate("/");
   };
-  const accessToken = sessionStorage.getItem("accessToken");
+
 
   return (
     <>

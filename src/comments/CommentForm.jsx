@@ -1,12 +1,13 @@
 import React from "react";
 import { useState } from "react";
-import io from "socket.io-client";
-const socket = io.connect("http://localhost:9001");
+import { Context } from "../context/context";
+import { useContext } from "react";
 
-function CommentForm({ videoId, parentId, commentUserId,channelId  }) {
+function CommentForm({ videoId, parentId, commentUserId, channelId }) {
+  const { socket } = useContext(Context);
   const profilImage = sessionStorage.getItem("profilImage");
   const userId = sessionStorage.getItem("userId");
-  const userName =  sessionStorage.getItem("userName");
+  const userName = sessionStorage.getItem("userName");
   const [currentComment, setCurrentComment] = useState("");
   const isTextareaDisabled = currentComment.trim().length === 0;
   const handleChangeComment = (event) => {
@@ -22,14 +23,12 @@ function CommentForm({ videoId, parentId, commentUserId,channelId  }) {
       parentId: parentId,
       notification: "has commented on your post",
       commentUserId: commentUserId,
-      userName : userName,
-      channelId : channelId
+      userName: userName,
+      channelId: channelId,
+      userImage: profilImage,
     };
-
     socket.emit("sendComment", comment);
-    socket.emit("getAllComments", {});
     socket.emit("getNotifications", userId);
-    socket.emit("getSomeNotifications", userId);
     setCurrentComment("");
   };
 

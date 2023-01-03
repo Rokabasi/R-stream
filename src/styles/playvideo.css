@@ -3,12 +3,12 @@
     padding-top: 90px;
     display: flex;
     width: 100%;
-  margin-left: 5%;
 }
 .related-video-main{
-    margin-left: 5%;
+    margin-left: 3%;
     height: 100%;
     width: 60%;
+    padding: 0 2%;
 }
 .related-video-main h1{
    color: white;
@@ -160,8 +160,13 @@
    height: 90%;
    padding-left: 1%;
    outline: none;
+   background-color: #2F3238;
+   border-bottom: 1px solid white;
+   color : white;
 }
-
+.add-comment > form > input::placeholder {
+color: white;
+}
 .add-comment > form > button {
    background-color: #5663D1;
    border: none;

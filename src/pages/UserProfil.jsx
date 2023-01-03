@@ -17,7 +17,7 @@ export default function UserProfil({ userData, profilImage }) {
             <i class="fa-solid fa-pen"></i> Update
           </button>
           <div>
-            <img src={profilImage} alt="mon profil" />
+            <img src={userData.userImage} alt="mon profil" />
 
             <h5>{userData.displayName}</h5>
             <h5>{userData.email}</h5>

@@ -5,6 +5,7 @@ import CommentForm from "../comments/CommentForm";
 import { useState } from "react";
 
 function Comments({ comments, videoId, replies, parentId = null, channelId }) {
+
   const userId = sessionStorage.getItem("userId");
   const profilImage = sessionStorage.getItem("profilImage");
   const [activeComment, setActiveComment] = useState(null);
@@ -31,15 +32,15 @@ function Comments({ comments, videoId, replies, parentId = null, channelId }) {
     setActiveComment({ id: comments._id, type: "replying" });
     setShowReplyForm(!showReplyFrom);
   };
- 
+
   return (
     <div id={comments._id} className="comment-contain">
       
       <div className="user-picture">
-        <img src={profilImage} alt="mon profil" />
+        <img src={comments.userImage} alt="mon profil" />
       </div>
       <div className="comment-infos">
-        <h3>Romain kabasi</h3>
+        <h3>{comments.userName}</h3>
         <h5>{moment(comments.createdAt).fromNow()}</h5>
         <p>{comments.description}</p>
         <div className="comment-details">
@@ -48,6 +49,8 @@ function Comments({ comments, videoId, replies, parentId = null, channelId }) {
               userId={userId}
               commentUserId={comments.userId}
               commentId={comments._id}
+              videoId={videoId}
+              channelId = {channelId}
             />
             {<h4 onClick={() => displayRepliesForm()}>Reply</h4>}
           </div>

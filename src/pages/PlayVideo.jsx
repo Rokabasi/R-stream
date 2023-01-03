@@ -4,14 +4,11 @@ import "../styles/playvideo.css"
 import numeral from "numeral"
 import moment from "moment/moment"
 import Loader from "../Components/loader";
-import Axios from 'axios'
 import Comments from "../comments/Comment"
 
 export default function PlayVideo(){
     const {id,channelId} = useParams()
     const videoId = id
-   
-    const profilImage =  (sessionStorage.getItem('profilImage'))
     const [video, setVideo] = useState([])
     const [videoPlayedInfos, setVideoPlayedInfos] = useState([])
     const [videoPlayedChannelInfos,setVideoPlayedChannelInfos] = useState([])
@@ -27,7 +24,7 @@ export default function PlayVideo(){
             setVideo(data.items)
             setLoading(false)
         })
-    },[id]);
+    },[id,accessToken]);
     useEffect(()=>{
         fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${id}&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU`,
         { method : 'GET',headers:new Headers({'Authorization': `Bearer ${accessToken}`})})     
@@ -36,7 +33,7 @@ export default function PlayVideo(){
             setVideoPlayedInfos(data.items)
             setLoading(false)
         })
-    },[id]);
+    },[id,accessToken]);
     useEffect(()=>{
         fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU`,
         { method : 'GET',headers:new Headers({'Authorization': `Bearer ${accessToken}`})})     
@@ -44,7 +41,7 @@ export default function PlayVideo(){
         .then(data => { setVideoPlayedChannelInfos(data.items)
             setLoading(false)
         })  
-    },[channelId])
+    },[channelId,accessToken])
 
    const handleclick = () =>{
             window.scroll(0,0)
@@ -102,7 +99,7 @@ export default function PlayVideo(){
             <div className="related-video-main">
                 <h1>Relared video</h1>
                 {
-                    video.map((data,index)=>{
+                    video?.map((data,index)=>{
                         return(
                         <Link onClick={handleclick} href="#top" to={`/playvideo/${data.id.videoId}/${data.snippet.channelId}`}>
                             <div key={index} className="related-video-card">

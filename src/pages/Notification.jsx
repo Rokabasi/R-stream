@@ -1,8 +1,8 @@
 import "../styles/notification.css";
-import profil from "../images/profil.jpg";
 import moment from "moment";
 import { HashLink } from "react-router-hash-link";
-function Notification({ notifications, profilImage }) {
+function Notification({ notifications }) {
+ console.log(notifications);
   return (
     <div className="notification-main">
       <h2>Notifications</h2>
@@ -13,12 +13,12 @@ function Notification({ notifications, profilImage }) {
           smooth>
            
               <div className="notification-profil">
-                <img src={profilImage} alt="" />
+                <img src={notification.userImage} alt="" />
               </div>
               <div className="notification-infos">
                 <div className="notification-description">
                   <span>{notification.userName}</span>
-                  <p>{notification.description}</p>
+                  <p>{notification.description } {}</p>
                 </div>
                 <div className="notification-time">
                   <span>{moment(notification.createdAt).fromNow()}</span>
@@ -29,39 +29,7 @@ function Notification({ notifications, profilImage }) {
         );
       })}
 
-      <div className="notification-content">
-        <div className="notification-profil">
-          <img src={profil} alt="" />
-        </div>
-        <div className="notification-infos">
-          <div className="notification-description">
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur
-              temporibus eum qui dolor. Praesentium, dolorum error quos nostrum
-              atque hic, aliquam deserunt exercitationem, obcaecati soluta qui
-              placeat a tempore perferendis.
-            </p>
-          </div>
-          <div className="notification-time">30 minutes ago</div>
-        </div>
-      </div>
-      <div className="notification-content">
-        <div className="notification-profil">
-          <img src={profil} alt="" />
-        </div>
-        <div className="notification-infos">
-          <div className="notification-description">
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur
-              temporibus eum qui dolor. Praesentium, dolorum error quos nostrum
-              atque hic, aliquam deserunt exercitationem, obcaecati soluta qui
-              placeat a tempore perferendis.
-            </p>
-          </div>
-          <div id="page">cdin</div>
-          <div className="notification-time">30 minutes ago</div>
-        </div>
-      </div>
+      
     </div>
   );
 }

@@ -2,18 +2,19 @@ import "../styles/header.css";
 import { useState, useEffect } from "react";
 import { GoogleLogout } from "react-google-login";
 import { Link, useNavigate } from "react-router-dom";
-import {HashLink} from "react-router-hash-link"
+import { HashLink } from "react-router-hash-link";
 import IconButton from "@mui/material/Button";
 import { Badge } from "@mui/material";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { StyledBadge } from "./StyledBadge";
-import io from "socket.io-client";
-const socket = io.connect("http://localhost:9001");
+import { Context } from "../context/context";
+import { useContext } from "react";
 
 const clientId =
   "757010538260-arnh8a0826kpi72fdqcb08fsp7agceiq.apps.googleusercontent.com";
 
 export default function Header() {
+  const { socket } = useContext(Context);
   const [inputValue, setInputValue] = useState("");
   const profilImage = sessionStorage.getItem("profilImage");
   const userEmail = sessionStorage.getItem("userEmail");
@@ -21,15 +22,19 @@ export default function Header() {
   const userName = sessionStorage.getItem("userName");
   const [notifications, setNotifications] = useState([]);
 
-  const newNotifications = notifications.filter((notification)=>notification.mention === null)
-  
+  const newNotifications = notifications
+    .filter((notification) => notification.mention === null)
+    .filter((notification) => notification.commentUserId === userId);
+
   useEffect(() => {
     socket.emit("getNotifications", userId);
     socket.on("receiveAllNotifications", (notifications) => {
       setNotifications(notifications);
     });
-  }, []);
-
+    socket.on("receiveNewnotification", (newNotification) => {
+      setNotifications((notifications) => [newNotification, ...notifications]);
+    });
+  }, [userId, socket]);
 
   const navigate = useNavigate();
   const handleChange = (event) => {
@@ -51,10 +56,8 @@ export default function Header() {
   };
   const getNotifications = () => {
     socket.emit("UpdateNotifications", userId);
-    navigate('/notification')
+    navigate("/notification");
   };
-
-
 
   return (
     <header>
@@ -80,13 +83,13 @@ export default function Header() {
         </button>
       </form>
       <div className="my-icons">
-        <HashLink to="/notification#page" smooth><h3>{userName}</h3></HashLink>
-        
+        <HashLink to="/notification#page" smooth>
+          <h3>{userName}</h3>
+        </HashLink>
+
         <IconButton onClick={getNotifications}>
           <Badge badgeContent={newNotifications.length} color="secondary">
-           
-              <NotificationsIcon color="primary" />
-       
+            <NotificationsIcon style={{ color: "#fff" }} />
           </Badge>
         </IconButton>
         <StyledBadge

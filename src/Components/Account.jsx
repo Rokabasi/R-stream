@@ -8,6 +8,7 @@ const socket = io.connect("http://localhost:9001");
 export default function Account() {
   const [userData, setUserData] = useState({
     displayName: "",
+    userImage : "",
     facebookLink: "",
     twitterLink: "",
     instagramLink: "",

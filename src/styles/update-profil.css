@@ -77,3 +77,14 @@ input:focus{
   height: 6%;
   cursor: pointer;
 }
+.input-file-image{
+  all: unset;
+  border: none;
+  background-color: #5663d1;
+  color: white;
+  width: 2rem;
+  text-align: center;
+}
+.input-file-image:active{
+  background-color: #5663d1;
+}
