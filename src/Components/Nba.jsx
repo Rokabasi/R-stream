@@ -4,7 +4,7 @@ import moment from "moment/moment"
 import { Link } from "react-router-dom"
 import Loader from "./loader"
 
-export default function Content () {
+export default function Nba () {
 
     const accessToken = sessionStorage.getItem('accessToken')
     const [nbaVideo, setNbaVideo] = useState([])

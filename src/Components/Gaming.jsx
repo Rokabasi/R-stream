@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 import Loader from "./loader"
 
 
-export default function Content () {
+export default function Gaming () {
 
     const accessToken = sessionStorage.getItem('accessToken')
     const [gamingVideo, setGamingVideo] = useState([])

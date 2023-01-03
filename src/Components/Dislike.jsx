@@ -6,7 +6,7 @@ import numeral from "numeral"
 import moment from "moment/moment"
 import Loader from "./loader"
 
-export default function Content () {
+export default function Dislike () {
 
    
     const accessToken = sessionStorage.getItem('accessToken')

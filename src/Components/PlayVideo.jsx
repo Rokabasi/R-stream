@@ -4,23 +4,49 @@ import "../styles/playvideo.css"
 import numeral from "numeral"
 import moment from "moment/moment"
 import Loader from "./loader";
+import Axios from 'axios'
+import CommentForm from "../comments/CommentForm";
 
 export default function PlayVideo(){
     const {id,channelId} = useParams()
+    const videoId = id
+   
+    const profilImage =  (sessionStorage.getItem('profilImage'))
     const [video, setVideo] = useState([])
     const [videoPlayedInfos, setVideoPlayedInfos] = useState([])
     const [videoPlayedChannelInfos,setVideoPlayedChannelInfos] = useState([])
     const accessToken = sessionStorage.getItem('accessToken')
+    const userId = sessionStorage.getItem('userId')
     const [loading,setLoading] = useState(true)
-    useEffect(()=>{
-        fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${id}&type=video&maxResults=16&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU`,
-        { method : 'GET',headers:new Headers({'Authorization': `Bearer ${accessToken}`})})     
-        .then(res => res.json())
-        .then(data => {
-            setVideo(data.items)
-            setLoading(false)
-        })
-    },[id]);
+    const [commentsData, setCommentsData] = useState([])
+    const [videoComments, setVideoComments] = useState([])
+    const [sousComments, setSousComments] = useState([])
+    const [commentsLike, setCommentsLike] = useState([])
+    const [commentsDislike, setCommentsDislike] = useState([]) 
+    const [sousComment, setSousComment] = useState("")
+  
+    const [newSousComment, setNewSousComment] = useState(true)
+    const [newCommentLike, setNewCommentLike] = useState(true)
+    const [newCommentDislike, setNewCommentDislike] = useState(true)
+    const [sortState, setSortState] = useState(true)
+    const url = 'http://localhost:9000/comments'
+   
+    const sendSousCommentUrl = 'http://localhost:9000/souscomment/add'
+    const getSousCommentsUrl = 'http://localhost:9000/souscomment'
+    const getCommentsLikeUrl = 'http://localhost:9000/like'
+    const sendCommentLikeUrl = 'http://localhost:9000/like/add'
+    const getCommentsDislikeUrl = 'http://localhost:9000/dislike'
+    const sendCommentDislikeUrl = 'http://localhost:9000/dislike/add'
+   
+    // useEffect(()=>{
+    //     fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${id}&type=video&maxResults=16&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU`,
+    //     { method : 'GET',headers:new Headers({'Authorization': `Bearer ${accessToken}`})})     
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         setVideo(data.items)
+    //         setLoading(false)
+    //     })
+    // },[id]);
     useEffect(()=>{
         fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${id}&key=AIzaSyAWhMB1MsRJRjw4FkGU2OfZfSlW9YzcTHU`,
         { method : 'GET',headers:new Headers({'Authorization': `Bearer ${accessToken}`})})     
@@ -42,6 +68,99 @@ export default function PlayVideo(){
    const handleclick = () =>{
             window.scroll(0,0)
    }
+    const postVideoId = () => {
+        Axios.post()
+    }
+    const getComments = () => {
+        fetch(url,{ method : 'GET'})
+            .then(res => res.json())
+            .then(data => {
+                    setCommentsData(data)})                        
+    }
+    const getSousComments = () => {
+        fetch(getSousCommentsUrl,{method : 'GET'})
+            .then(res => res.json())
+            .then(data => {
+                    setSousComments(data)
+                    console.log(data)
+                    setNewSousComment(!newSousComment)})
+    }
+    const getCommentsLike = () => {
+        fetch(getCommentsLikeUrl,{method : 'GET'})
+            .then(res => res.json())
+            .then(data => {
+                setCommentsLike(data)})
+    }
+    const getCommentsDislike = () => {
+        fetch(getCommentsDislikeUrl,{method : 'GET'})
+            .then(res => res.json())
+            .then(data => {
+                setCommentsDislike(data)
+            })
+    }
+  
+    useEffect( () => {
+        getComments()
+       
+    },[])
+
+    useEffect( () => {
+        getCommentsLike()
+    },[newCommentLike,newCommentDislike])
+
+    useEffect( () => {
+        getCommentsDislike()
+    },[newCommentDislike,newCommentLike])
+
+    useEffect( () => {
+        getSousComments()
+    },[])
+
+    // useEffect( () => {
+    //     setCommentsData(commentsData.sort((a,b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()))
+    //     console.log(commentsData);
+    // },[sortState])
+  
+    const handleReply = () =>{
+        const elems = document.getElementsByClassName('reply-comment');
+            for (var i=0;i<elems.length;i+=1){
+                elems[i].style.display = 'block';
+            }
+    }    
+  
+
+    const handleChangeSousComment = (event) =>{
+        setSousComment(event.target.value)
+        }
+    
+  
+    const onSubSousComment = (commentid) => ()=> {
+        if(sousComment.trim()){
+            Axios.post(sendSousCommentUrl,{
+                description: sousComment,
+                commentId : commentid
+            })
+            .then(res => {
+                console.log(res.data)
+                setSousComment("")})
+        }
+    }
+    const onSubmitCommentLike = (commentid) => ()=> {
+        Axios.post(sendCommentLikeUrl,{
+            commentId : commentid,
+            userId: userId
+        })
+        .then(res => { console.log(res.data)
+            setNewCommentLike(!newCommentLike) })
+    }
+    const onSubmitCommentDislike = (commentid) => ()=> {
+        Axios.post(sendCommentDislikeUrl,{
+            commentId : commentid,
+            userId: userId
+        })
+        .then(res => { console.log(res.data)
+            setNewCommentDislike(!newCommentDislike) })
+    }
    
     return(
         <>
@@ -57,6 +176,7 @@ export default function PlayVideo(){
                 <div className="card-played-video-infos">
                     {
                         videoPlayedInfos.map((video, index) => {
+                         
                             return (
                                 <div key={index}>  
                                     <h2>{video.snippet.title}</h2>
@@ -73,46 +193,110 @@ export default function PlayVideo(){
                         videoPlayedChannelInfos.map((data,index)=> {
                             return(
                                 <>
-                                <div className="channel-infos">
-                                    <img src={data.snippet.thumbnails.default.url} className="channel-infos-image" alt="channel logo"/>
-                                    <div className="channel-infos-title">
-                                        <h3>{data.snippet.title}</h3>
-                                        <h5> { numeral(data.statistics.subscriberCount).format("O.a")} subscriber</h5>
-                                    </div>   
-                                    <button className="channel-infos-button">S'abonner</button>
-                                </div>
+                                    <div className="channel-infos" key={index}>
+                                        <img src={data.snippet.thumbnails.default.url} className="channel-infos-image" alt="channel logo"/>
+                                        <div className="channel-infos-title">
+                                            <h3>{data.snippet.title}</h3>
+                                            <h5> { numeral(data.statistics.subscriberCount).format("O.a")} subscriber</h5>
+                                        </div>   
+                                        <button className="channel-infos-button">S'abonner</button>
+                                    </div>
                                 </>
                             )
                         })
+                        
                     }
                 </div>
-                <div>
-                    <div>
-                        <h2>12 Comments</h2>
-                        <button>Display most popular</button>
+                <div className="comment-main">
+                    <div className="comment-header">
+                        <h2>{ commentsData.filter((comments) => comments.video.includes(id)).length} Comments</h2>
+                        <button><i class="fa-solid fa-arrow-up-wide-short"></i> Filter</button>
                     </div>
-                    <div>
-                        <div>
-                            <img src="" alt="mon profil"/>
+                    {/* <div className="add-comment">
+                        <div className="user-picture">
+                            <img src={profilImage}  alt="mon profil"/>
                         </div>
-                        <div>
-                            <h3>Romain kabasi</h3>
-                            <h5>17/11/2022</h5>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque possimus, obcaecati incidunt sapiente dolore odio et! Sunt amet cupiditate, qui a iure voluptatem, dicta eius tempore non, suscipit illum laudantium?                                
-                            </p>
-                            <div>
-                                <h4>Reply</h4>
-                                <h4>4</h4>
-                                <h4>4</h4>
-                            </div>
-                        </div>
-                    </div>
+                        <form onSubmit={((e)=>submit(e))}>
+                            <input type="text" name="comment" id="comment" value={userComment} placeholder="Add a comment" onChange={handleChangeComment} required/>
+                            <button>Post</button>
+                        </form>    
+                    </div> */}
+                    <CommentForm videoId={videoId} />
+                
+                        
+                        {
+                            (commentsData.filter((comments) => comments.video.includes(id))).sort((a,b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime())
+                            .map((comments,index)=>{
+                                return(
+                                    <>
+                                    <div className="comment-contain" key={index}>
+                                        <div className="user-picture">
+                                            <img src={profilImage}  alt="mon profil"/>
+                                        </div>
+                                        <div className="comment-infos">
+                                            <h3>Romain kabasi</h3>
+                                            <h5>{moment(comments.createdAt).fromNow()}</h5>
+                                            <p>{comments.description}</p>
+                                            <div className="comment-details">
+                                                <div className="comment-detail-infos">
+                                                    <h4 onClick={handleReply}>Reply 2</h4>
+                                                    <h4 onClick={onSubmitCommentLike(comments._id)}><i className="fa-solid fa-thumbs-up"></i> {(commentsLike.filter((like) => like.idComment.includes(comments._id))).length}</h4>
+                                                    <h4 onClick={onSubmitCommentDislike(comments._id)}><i className="fa-solid  fa-thumbs-down"></i> {(commentsDislike.filter((dislike) => dislike.idComment.includes(comments._id))).length}</h4>
+                                                </div>
+                                            </div>
+                                            <div className="comment-reply-contain">
+                                                    <input type="text" name="reply-comment" id="reply-comment" value={sousComment} onChange={handleChangeSousComment} placeholder="repost to this comment"/>
+                                                    <button onClick={onSubSousComment(comments._id)}>Post</button>
+                                                </div>
+                                            {
+                                               
+                                                sousComments
+                                                .filter(sousComments => sousComments.id_comment.includes(comments._id)  > 0)
+                                                .map((sousComment, index) =>{
+                                                    
+                                                    return(
+                                                        <>
+                                                             <div className="reply-comment" key={index}>
+                                                
+                                               
+                                                <div className="comment-reply">
+                                                    <div className="user-picture">
+                                                        <img src={profilImage} alt="" />
+                                                    </div>
+                                                    <div className="comment-reply-detail">
+                                                        <h4>Romain</h4>
+                                                        <h5>{moment(sousComment.createdAt).fromNow()}</h5>
+                                                        <h5>{sousComment.description}</h5>
+                                                        {/* <div className="comment-reply-detail-infos">
+                                                            <h4 onClick={onSubmitCommentLike(comments._id)}><i className="fa-solid fa-thumbs-up"></i> {(commentsLike.filter((like) => like.idComment.includes(comments._id))).length}</h4>
+                                                            <h4 onClick={onSubmitCommentDislike(comments._id)}><i className="fa-solid  fa-thumbs-down"></i> {(commentsDislike.filter((dislike) => dislike.idComment.includes(comments._id))).length}</h4>
+                                                        </div> */}
+                                                    </div>
+                                                </div>   
+                                            </div>      
+                                                        </>
+                                                    )
+                                                    
+                                                })
+
+                                                                                    
+                                            }
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                    </>
+                                )
+                            })
+                        }
+                        
+                
 
                 </div>
             </div>
             <div className="related-video-main">
                 <h1>Relared video</h1>
-                {
+                {/* {
                     video.map((data,index)=>{
                         return(
                         <Link onClick={handleclick} href="#top" to={`/playvideo/${data.id.videoId}/${data.snippet.channelId}`}>
@@ -129,7 +313,7 @@ export default function PlayVideo(){
                         </Link>
                     )
                     })
-                }
+                } */}
             </div>
             </div> : (<Loader/>)
         }

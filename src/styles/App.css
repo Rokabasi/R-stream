@@ -18,6 +18,7 @@
 }
 .content-app-main{
 margin-left: 15%;
+width: 100%;
 }
 @media screen and (max-width:670px) {
     .App{

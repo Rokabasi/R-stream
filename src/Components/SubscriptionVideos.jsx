@@ -3,7 +3,7 @@ import "../styles/like.css"
 import { Link } from "react-router-dom"
 
 
-export default function Content () {
+export default function SubscriptionVideo () {
 
     const accessToken = sessionStorage.getItem('accessToken')
     const [videoLinked, setVideoLinked] = useState([])

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import moment from "moment/moment"
 import Loader from "./loader"
 
-export default function Content () {
+export default function Music () {
 
     const accessToken = sessionStorage.getItem('accessToken')
     const [musicVideo, setMusicVideo] = useState([])
