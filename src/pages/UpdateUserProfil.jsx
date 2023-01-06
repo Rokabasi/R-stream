@@ -1,13 +1,15 @@
 import "../styles/update-profil.css";
-import profil from "../images/profil.jpg";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import io from "socket.io-client";
-const socket = io.connect("http://localhost:9001");
+import axios from 'axios'
+import { Context } from "../context/context";
+import { useContext } from "react";
+
 
 export default function UserProfil() {
   const [userData, setUserData] = useState({
     displayName: "",
+    userImage : "",
     facebookLink: "",
     twitterLink: "",
     instagramLink: "",
@@ -18,6 +20,10 @@ export default function UserProfil() {
     linkedInLinkText: "",
   });
   const [chooseImage, setChooseImage] = useState('')
+  const [fileInputState,setFileInputState] = useState('')
+  const [previewSource,setPreviewSource] = useState('')
+  const [picture,setPicture] = useState('')
+  const { socket } = useContext(Context);
   const hiddenFileInput = useRef(null);
   const userEmail = sessionStorage.getItem("userEmail");
   const navigate = useNavigate();
@@ -35,24 +41,63 @@ export default function UserProfil() {
   };
 
   const handleChangeImage = (event) => {
+    event.preventDefault()
     hiddenFileInput.current.click();
-    setChooseImage(event.target.value)
-  };
-  console.log(chooseImage);
-
-  const submitUpdateUserData = () => {
-    socket.emit("updateOneUser", userData);
-    navigate("/account");
   };
 
+
+  const submitUpdateUserData = (e) => {
+    e.preventDefault()
+    handleSubmitFile() 
+    // navigate("/account");
+  
+  };
+  const handleFIleInputChange = (e) => {
+    const file = e.target.files[0]
+    previewFile(file)
+    setPicture(file)
+  };
+
+  const previewFile = (file)=>{
+      const reader = new FileReader()
+      reader.readAsDataURL(file)
+      reader.onloadend = ()=>{
+        setPreviewSource(reader.result)
+      }
+  }
+
+  const handleSubmitFile = async()=>{
+   
+    if(!previewSource) return
+   uploadImage(picture)
+    
+  }
+
+  const uploadImage = async(file)=>{
+    console.log(file, "file");
+    const formdata = new FormData()
+    formdata.append("file",file)
+    formdata.append("upload_preset","pathymavuba")
+    
+    let link = ""
+    await axios.post(
+      "https://api.cloudinary.com/v1_1/dyejqdtgf/upload",
+      formdata).then((res)=>{
+        userData.userImage =  res.data["secure_url"]
+        socket.emit("updateOneUser", userData);
+        console.log( userData, "update") 
+        })
+  }
   return (
     <>
       <div className="main-account">
         <div className="account-infos">
           <h2>Update Profil</h2>
-          <div>
-            <img src={userData.userImage} alt="mon profil" />
-
+          <form onSubmit={submitUpdateUserData}>
+            <div className="display-img">
+              <img src={previewSource ? previewSource : userData.userImage} alt="mon profil" />
+            </div>
+            
             <button class="input-file-image" onClick={(event)=> handleChangeImage(event)}>
               +
             </button>
@@ -60,6 +105,9 @@ export default function UserProfil() {
               ref={hiddenFileInput}
               type="file"
               className="input-select"
+              onChange={handleFIleInputChange}
+              value={fileInputState}
+              style={{display:'none'}}
             ></input>
             <div className="form-group">
               <label htmlFor="displayname">Displayname</label>
@@ -163,10 +211,10 @@ export default function UserProfil() {
                 />
               </div>
             </div>
-          </div>
-          <button onClick={submitUpdateUserData} className="btn-save">
+          <button type="submit" className="btn-save">
             Save
           </button>
+          </form>
         </div>
       </div>
     </>

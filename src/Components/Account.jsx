@@ -24,6 +24,7 @@ export default function Account() {
     socket.emit("getOneUser", userEmail);
     socket.on("receiveOneUser", (user) => {
       setUserData(user);
+      console.log(user);
     });
   }, []);
  
