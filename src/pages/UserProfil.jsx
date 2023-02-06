@@ -1,9 +1,12 @@
 import "../styles/account.css";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { userPicture } from "../context/context";
 
 export default function UserProfil({ userData, profilImage }) {
   const navigate = useNavigate();
-
+  const userImage = useContext(userPicture)
+  const userAvatar = userImage.state.userImage
   const updateUserdata = () => {
     navigate("/UpdateUser");
   };
@@ -17,7 +20,7 @@ export default function UserProfil({ userData, profilImage }) {
             <i class="fa-solid fa-pen"></i> Update
           </button>
           <div>
-            <img src={userData.userImage} alt="mon profil" />
+            <img src={userAvatar ? userAvatar : userData.userImage} alt="mon profil" />
 
             <h5>{userData.displayName}</h5>
             <h5>{userData.email}</h5>

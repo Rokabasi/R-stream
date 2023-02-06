@@ -1,10 +1,8 @@
 import "../styles/update-profil.css";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef,useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from 'axios'
-import { Context } from "../context/context";
-import { useContext } from "react";
-
+import { Context, userPicture } from "../context/context";
+import axios from "axios"
 
 export default function UserProfil() {
   const [userData, setUserData] = useState({
@@ -19,7 +17,8 @@ export default function UserProfil() {
     instagramLinkText: "",
     linkedInLinkText: "",
   });
-  const [chooseImage, setChooseImage] = useState('')
+  const userImage = useContext(userPicture)
+  const userAvatar = userImage.state.userImage
   const [fileInputState,setFileInputState] = useState('')
   const [previewSource,setPreviewSource] = useState('')
   const [picture,setPicture] = useState('')
@@ -32,12 +31,14 @@ export default function UserProfil() {
     socket.emit("getOneUser", userEmail);
     socket.on("receiveOneUser", (user) => {
       setUserData(user);
+      console.log(user);
     });
-  }, []);
+  }, [socket,userEmail]);
   const handleChange = (e) => {
     const newData = { ...userData };
     newData[e.target.name] = e.target.value;
     setUserData(newData);
+  
   };
 
   const handleChangeImage = (event) => {
@@ -49,7 +50,7 @@ export default function UserProfil() {
   const submitUpdateUserData = (e) => {
     e.preventDefault()
     handleSubmitFile() 
-    // navigate("/account");
+    navigate("/account");
   
   };
   const handleFIleInputChange = (e) => {
@@ -77,16 +78,17 @@ export default function UserProfil() {
     console.log(file, "file");
     const formdata = new FormData()
     formdata.append("file",file)
-    formdata.append("upload_preset","pathymavuba")
+    formdata.append("upload_preset","romainkabasi")
     
     let link = ""
     await axios.post(
-      "https://api.cloudinary.com/v1_1/dyejqdtgf/upload",
+      "https://api.cloudinary.com/v1_1/dqhpuopc7/upload",
       formdata).then((res)=>{
+        console.log(res.data["secure_url"]);
         userData.userImage =  res.data["secure_url"]
         socket.emit("updateOneUser", userData);
-        console.log( userData, "update") 
-        })
+        userImage.dispatch({type:"update",payload:res.data["secure_url"]})
+      })
   }
   return (
     <>

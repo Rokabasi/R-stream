@@ -1,9 +1,8 @@
 import "../styles/account.css";
 import profilImage from "../images/profil.jpg";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import UserProfil from "../pages/UserProfil";
-import io from "socket.io-client";
-const socket = io.connect("http://localhost:9001");
+import {  Context } from "../context/context";
 
 export default function Account() {
   const [userData, setUserData] = useState({
@@ -19,14 +18,13 @@ export default function Account() {
     linkedInLinkText: "",
   });
   const userEmail = sessionStorage.getItem("userEmail");
-
+  const { socket } = useContext(Context);
   useEffect(() => {
     socket.emit("getOneUser", userEmail);
     socket.on("receiveOneUser", (user) => {
       setUserData(user);
-      console.log(user);
     });
-  }, []);
+  }, [socket,userEmail]);
  
 
   return (

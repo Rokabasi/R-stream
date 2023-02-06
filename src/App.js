@@ -29,7 +29,6 @@ const clientId =
   "757010538260-arnh8a0826kpi72fdqcb08fsp7agceiq.apps.googleusercontent.com";
 function App() {
   const [commentState, setCommentState] = useState(false);
-  const [accessToken, setAccessToken] = useState();
   const login = JSON.parse(sessionStorage.getItem("login"));
   useEffect(() => {
     function start() {

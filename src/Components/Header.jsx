@@ -7,7 +7,7 @@ import IconButton from "@mui/material/Button";
 import { Badge } from "@mui/material";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { StyledBadge } from "./StyledBadge";
-import { Context } from "../context/context";
+import { Context,userPicture } from "../context/context";
 import { useContext } from "react";
 
 const clientId =
@@ -21,7 +21,8 @@ export default function Header() {
   const userId = sessionStorage.getItem("userId");
   const userName = sessionStorage.getItem("userName");
   const [notifications, setNotifications] = useState([]);
-
+  const userImage = useContext(userPicture)
+  const userAvatar = userImage.state.userImage
   const newNotifications = notifications
     .filter((notification) => notification.mention === null)
     .filter((notification) => notification.commentUserId === userId);
@@ -99,7 +100,7 @@ export default function Header() {
         >
           <div>
             <img
-              src={profilImage}
+              src={ userAvatar? userAvatar : profilImage}
               alt="profil"
               onClick={handleAccountSetting}
               className="count-img"

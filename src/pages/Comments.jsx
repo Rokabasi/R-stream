@@ -13,11 +13,13 @@ function Comments({ comments, videoId, replies, parentId = null, channelId }) {
   const [showResponses, setShowResponses] = useState(false);
   const [showReplyFrom, setShowReplyForm] = useState(false);
   const canReply = Boolean(userId);
+  console.log(comments);
   const isReplying =
     activeComment &&
     activeComment.type === "replying" &&
     activeComment.id === comments._id &&
     showReplyFrom;
+    
   const canDisplay =
     activeDisplayComment &&
     activeDisplayComment.type === "displaying" &&
