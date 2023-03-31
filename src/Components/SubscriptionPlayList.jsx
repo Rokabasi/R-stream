@@ -4,7 +4,7 @@ import { Link,useParams } from "react-router-dom"
 import moment from "moment/moment"
 import Loader from "./loader"
 
-export default function Content () {
+export default function SubscriptionPlayList () {
 
     const {id} = useParams() 
     const accessToken = sessionStorage.getItem('accessToken')

@@ -74,11 +74,12 @@ header{
     margin-top: 0;
     border: none;
     color: white;
+    cursor: pointer;
   }
 
   .my-icons{
     display: flex;
-    width: 15%;
+    width: 25%;
   margin-left: 1.5%;
   align-items: center;
   padding-left: 3%;

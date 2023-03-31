@@ -1,0 +1,96 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.main-account {
+  margin: 15vh 0 0 0;
+  padding:  2vh;
+  display: flex;
+  gap: 5%;
+  width: 100%;
+}
+input:focus{
+    outline: none;
+}
+.account-infos {
+  padding: 5% 5%;
+  background-color: #21252e;
+  color: rgb(255, 255, 255);
+  border-radius: 1%;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.account-infos > h2 {
+  text-align: center;
+  padding-bottom: 4%;
+  font-weight: 500;
+}
+.account-infos > form > .display-img > {
+  width: 10%;
+  border: 1px solid red;
+  height: 20%;
+}
+.account-infos > form > div > img {
+  border-radius: 50%;
+  width: 130px;
+  margin-left: 38%;
+}
+.account-infos > form > .form-group {
+  display: flex;
+  margin: 3% 0%;
+  display: flex;
+  gap: 2%;
+}
+.account-infos > form > .form-group > input {
+  height: 1.4rem;
+}
+.account-infos > form > .form-group-link-text {
+  display: flex;
+  margin: 7% 0%;
+  display: flex;
+  gap: 8%;
+}
+#displayname {
+  width: 60%;
+  padding-left: 2%;
+}
+
+.account-infos > form > .form-group-link-text > .link-group {
+  display: flex;
+  width: 40%;
+  gap: 10%;
+}
+.account-infos > form > .form-group-link-text > .link-group > input {
+  height: 120%;
+}
+.account-infos > form > .form-group-link-text > .text-group {
+  display: flex;
+  width: 40%;
+  gap: 10%;
+}
+.account-infos > form > .form-group-link-text > .text-group > input {
+  height: 120%;
+}
+.account-infos > form > .btn-save {
+  background-color: #5663d1;
+  color: #ffff;
+  border: none;
+  border-radius: 4px;
+  width: 20%;
+  padding: 1%;
+  cursor: pointer;
+}
+.input-file-image{
+  all: unset;
+  border: none;
+  background-color: #5663d1;
+  color: white;
+  width: 2rem;
+  text-align: center;
+  margin-left: 60%;
+}
+.input-file-image:active{
+  background-color: #5663d1;
+}

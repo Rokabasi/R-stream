@@ -4,7 +4,7 @@ import moment from "moment/moment"
 import { Link } from "react-router-dom"
 import Loader from "./loader"
 
-export default function Content () {
+export default function Sports () {
 
     const accessToken = sessionStorage.getItem('accessToken')
     const [loading,setLoading] = useState(true)

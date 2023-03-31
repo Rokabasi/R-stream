@@ -4,11 +4,10 @@ import { Link,useLocation,useParams } from "react-router-dom"
 import moment from "moment/moment"
 import Loader from "./loader"
 
-export default function Content () {
+export default function Search () {
 
     const location = useLocation()
     const inputValue = location.state.inputValue
-    console.log(inputValue);
     const accessToken = sessionStorage.getItem('accessToken')
     const [searchVideo, setSearchVideo] = useState([])
     const [loading,setLoading] = useState(true)

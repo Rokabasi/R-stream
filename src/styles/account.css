@@ -5,35 +5,51 @@
     
 }
 .main-account{
-    margin: 7vh 30vh;
+    margin: 7vh 35vh ;
     padding: 10vh 5vh;
+    
     display: flex;
     gap: 5%;
-    width: 85%;
+    width: 100%;
 }
 .account-infos{
     padding: 2% 5%;
+  
     background-color:#21252e ;
     color: rgb(255, 255, 255);
     border-radius: 1%;
-    width: 40%;
+    width: 70%;
+    
 }
-.account-infos > img {
+.account-infos > .btn-update{
+    background-color: #5663D1;
+    border: none;
+    color: white;
+    width: 30%;
+    height: 2rem;
+    cursor: pointer;
+    float: right;
+}
+
+.account-infos > div > img {
     border-radius: 50%;
-    width: 50%;
-    margin-left: 25%;
+    width: 30%;
+    margin-left: 35%;
   
 }
-.account-infos > h4{
-    font-weight: 400;
-    padding: 3% 0%;
-    font-size: 115%;
-}
-.account-infos> h5{
+.account-infos > div > h5{
     font-weight: 400;
     text-align: center;
     font-size: 125%;
     padding: 3%;
+}
+.account-infos > div > div > a >h4{
+    font-weight: 400;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3%;
+    font-size: 115%;
+    text-align: center;
 }
 
 
@@ -72,6 +88,6 @@
     background-color: #5663D1;
     color: #ffff;
     border: none;
-    cursor: pointer;
     border-radius: 4px;
 }
+

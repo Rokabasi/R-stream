@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+.notification-main{
+    margin-top: 10vh ;
+    padding: 1%;
+    width: 100%;
+}
+.notification-main > h2{
+    color: white;
+    padding: 2vh;
+    margin: 0 2%;
+}
+.notification-content{
+    display: flex;
+    padding: 2% 3%; 
+    gap: 1%;
+    background-color:#353941;
+    margin: 2% 3% ;
+    color: white;
+}
+.notification-content > .notification-profil {
+    width: 5%;
+}
+.notification-content > .notification-profil > img {
+    border-radius: 50%;
+    width: 70%;
+}
+.notification-content> .notification-infos {
+    width: 100%;
+    display: flex;
+    gap: 5%;
+}
+.notification-content > .notification-infos > .notification-description {
+    width: 85%;
+    line-height: 1.5rem;
+    display: flex;
+    gap: 1%;
+    font-size: 1.1rem;
+}
+.notification-content > .notification-infos > .notification-time {
+    width: 15%;
+}
